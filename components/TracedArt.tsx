@@ -1,20 +1,19 @@
 import { withBase } from "../lib/base-path";
 
 type TracedArtProps = {
-  name: "portrait" | "torana" | "buddha";
+  name: "portrait";
   layers: readonly string[];
   width: number;
   height: number;
-  reveal?: "load" | "scroll";
   className?: string;
 };
 
-export function TracedArt({ name, layers, width, height, reveal = "scroll", className }: TracedArtProps) {
+export function TracedArt({ name, layers, width, height, className }: TracedArtProps) {
   return (
-    <div data-art={name} data-art-mode={reveal} className={className} style={{ aspectRatio: `${width} / ${height}` }}>
+    <div data-art={name} className={className} style={{ aspectRatio: `${width} / ${height}` }}>
       {layers.map((layer, i) => {
-        // the first layer of a picture in the first viewport is its base: fetch it early so it can paint
-        const base = reveal === "load" && i === 0;
+        // the first layer of the picture sits in the first viewport and is its base: fetch it early so it can paint
+        const base = i === 0;
         return (
           <img
             key={layer}

@@ -1,34 +1,22 @@
 import { Fragment } from "react";
-import { Gateway } from "./Gateway";
 import { Portrait } from "./Portrait";
 import { RoleRotator } from "./RoleRotator";
-import { RouteLine } from "./RouteLine";
-import { Shield } from "./Shield";
 import styles from "./Landing.module.css";
-
-type Place = { en: string; te?: string };
 
 type LandingProps = {
   name: string;
-  roles: readonly string[];
-  heroLine: string;
-  from?: Place;
-  to: Place;
-  skipLabel: string;
+  title: string;
+  descriptors: readonly string[];
+  contactLabel: string;
   scrollCue: string;
   scrollCueAria: string;
-  heroGraphicAria: string;
 };
 
 export function Landing(props: LandingProps) {
   const cueAria = props.scrollCueAria.includes(props.scrollCue) ? props.scrollCueAria : undefined;
   return (
     <section id="home" className={styles.landing}>
-      <Gateway />
-      <div className={styles.stage}>
-        <Shield ariaLabel={props.heroGraphicAria} />
-      </div>
-      <div className={styles.foot}>
+      <div className={styles.text}>
         <h1 className={styles.name}>
           {props.name.split(" ").map((word, i) => (
             <Fragment key={word}>
@@ -37,24 +25,19 @@ export function Landing(props: LandingProps) {
             </Fragment>
           ))}
         </h1>
-        <div className={styles.role}>
-          <RoleRotator roles={props.roles} />
+        <p className={styles.title}>{props.title}</p>
+        <div className={styles.descriptor}>
+          <RoleRotator items={props.descriptors} />
         </div>
-        <div className={styles.side}>
-          <p className={styles.hero}>{props.heroLine}</p>
-          <RouteLine from={props.from} to={props.to} />
-        </div>
-        <Portrait />
-      </div>
-      <div className={styles.actions}>
+        <a className={`button ${styles.contact}`} href="#contact">
+          {props.contactLabel}
+        </a>
         <a className={styles.cue} href="#projects" aria-label={cueAria}>
           <span className={styles.tick} aria-hidden="true" />
           {props.scrollCue}
         </a>
-        <a className={styles.skip} href="#experience">
-          {props.skipLabel}
-        </a>
       </div>
+      <Portrait />
     </section>
   );
 }

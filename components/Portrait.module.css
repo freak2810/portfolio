@@ -1,13 +1,17 @@
 .portrait {
-  grid-area: portrait;
-  align-self: start;
-  width: clamp(84px, 24vw, 120px);
+  width: min(72vw, 280px);
   aspect-ratio: 660 / 800;
+  justify-self: center;
+}
+
+.portrait > div {
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .portrait {
-    align-self: end;
-    width: clamp(120px, 11vw, 160px);
+    width: min(560px, 46vw, calc((100svh - 2 * (var(--nav-h) + var(--space-5))) * 660 / 800));
+    justify-self: start;
+    margin-left: calc(-1 * var(--space-7));
   }
 }

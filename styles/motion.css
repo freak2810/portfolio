@@ -27,18 +27,6 @@
     }
   }
 
-  @keyframes draw {
-    from {
-      stroke-dasharray: 1 2;
-      stroke-dashoffset: 1;
-    }
-
-    to {
-      stroke-dasharray: 1 2;
-      stroke-dashoffset: 0;
-    }
-  }
-
   @keyframes flare {
     50% {
       transform: scale(1.25);
@@ -70,13 +58,6 @@
     }
   }
 
-  @keyframes ripple {
-    50% {
-      opacity: 0.35;
-      transform: scaleX(1.12);
-    }
-  }
-
   html[data-egg-play="star"] [data-flare] {
     transform-box: fill-box;
     transform-origin: center;
@@ -88,61 +69,9 @@
     animation: throw 1.6s var(--ease-out) both;
   }
 
-  html[data-egg-play="lake"] [data-ripple] {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: ripple 1.8s var(--ease-out) backwards;
-  }
-
-  html[data-egg-play="lake"] [data-ripple="1"] {
-    animation-delay: 0.15s;
-  }
-
-  html[data-egg-play="lake"] [data-ripple="2"] {
-    animation-delay: 0.3s;
-  }
-
-  html[data-egg-play="lake"] [data-ripple="3"] {
-    animation-delay: 0.45s;
-  }
-
   @keyframes art-fade {
     from {
       opacity: 0;
-    }
-  }
-
-  @keyframes art-wipe {
-    from {
-      clip-path: inset(0 100% 0 0);
-    }
-
-    to {
-      clip-path: inset(0);
-    }
-  }
-
-  @keyframes art-rise {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-  }
-
-  @keyframes art-shimmer {
-    0% {
-      opacity: 0;
-      transform: translateX(-1.2%);
-    }
-
-    50% {
-      opacity: 1;
-      transform: translateX(1.2%);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateX(0);
     }
   }
 
@@ -164,7 +93,7 @@
     }
   }
 
-  html.js [data-art-mode="load"] [data-layer] {
+  html.js [data-art="portrait"] [data-layer] {
     animation: art-fade 0.7s var(--ease-out) both;
   }
 
@@ -186,22 +115,6 @@
     animation-delay: 1.6s;
   }
 
-  html.js [data-art-mode="load"][data-art="torana"] [data-layer="dark"] {
-    animation-delay: 0.1s;
-  }
-
-  html.js [data-art-mode="load"][data-art="torana"] [data-layer="stone"] {
-    animation-name: art-wipe;
-    animation-duration: 1.2s;
-    animation-delay: 0.2s;
-    animation-fill-mode: backwards;
-  }
-
-  html.js [data-art-mode="load"][data-art="torana"] [data-layer="red"] {
-    animation-duration: 0.9s;
-    animation-delay: 1.3s;
-  }
-
   @supports (animation-timeline: view()) {
     html.js [data-reveal] {
       animation: reveal-fade both var(--ease-out);
@@ -211,68 +124,6 @@
 
     html.js [data-reveal="rise"] {
       animation-name: reveal-rise;
-    }
-
-    html.js [data-art-mode="scroll"] {
-      view-timeline: --art block;
-    }
-
-    html.js [data-art-mode="scroll"] [data-layer] {
-      animation: art-fade linear both;
-      animation-timeline: --art;
-      animation-range: entry 0% entry 100%;
-    }
-
-    html.js [data-art="torana"][data-art-mode="scroll"] [data-layer="dark"] {
-      animation-range: entry 0% entry 40%;
-    }
-
-    html.js [data-art="torana"][data-art-mode="scroll"] [data-layer="stone"] {
-      animation-name: art-wipe;
-      animation-fill-mode: backwards;
-      animation-range: entry 0% entry 60%;
-    }
-
-    html.js [data-art="torana"][data-art-mode="scroll"] [data-layer="red"] {
-      animation-range: entry 30% entry 100%;
-    }
-
-    html.js [data-art="buddha"] [data-layer="body"] {
-      animation-name: art-rise;
-      animation-range: entry 0% entry 60%;
-    }
-
-    html.js [data-art="buddha"] [data-layer="water"] {
-      animation-name: art-shimmer;
-      animation-range: entry 20% entry 100%;
-    }
-
-    html.js [data-art="buddha"] [data-layer="rim"] {
-      animation-name: art-rim;
-      animation-range: entry 60% entry 100%;
-    }
-
-    html.js [data-egg="lake"] {
-      timeline-scope: --art;
-    }
-
-    html.js [data-egg="lake"] > svg {
-      animation: art-fade linear both;
-      animation-timeline: --art;
-      animation-range: entry 20% entry 100%;
-    }
-
-    html.js [data-divider] {
-      view-timeline: --divider block;
-    }
-
-    html.js [data-draw] {
-      animation: draw linear backwards;
-      animation-timeline: --divider;
-    }
-
-    html.js [data-draw="rules"] {
-      animation-range: cover 5% cover 35%;
     }
   }
 }
