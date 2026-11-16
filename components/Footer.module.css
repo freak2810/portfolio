@@ -7,51 +7,20 @@
   text-align: center;
 }
 
-.glyph {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+.mark {
+  position: relative;
 }
 
-.glyph svg {
-  width: 16px;
-  height: 19px;
-  fill: none;
-  stroke: var(--line-strong);
-  stroke-width: 10;
+.shieldHit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .line {
   color: var(--muted);
   font-size: var(--step--1);
-}
-
-.credits {
-  display: grid;
-  gap: var(--space-3);
-  max-width: 60ch;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: var(--muted);
-  font-size: var(--step--1);
-}
-
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: var(--space-4);
-}
-
-.links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--red);
 }
 
 @media (min-width: 768px) {

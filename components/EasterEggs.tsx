@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { SHIELD_OUTLINE } from "./shieldGeometry";
 import styles from "./EasterEggs.module.css";
 
 export type Egg = { id: string; target: string; message: string };
@@ -31,8 +30,9 @@ export function EasterEggs({ eggs }: { eggs: readonly Egg[] }) {
     <>
       <div ref={toast} className={styles.toast} role="status" aria-live="polite" />
       <span ref={flyer} className={styles.flyer} data-flyer aria-hidden="true">
-        <svg viewBox="0 0 200 240">
-          <path d={SHIELD_OUTLINE} />
+        <svg viewBox="0 0 200 200">
+          <circle cx={100} cy={100} r={94} />
+          <circle cx={100} cy={100} r={58} />
         </svg>
       </span>
     </>
