@@ -18,7 +18,7 @@ export function Experience({ summary, entries }: ExperienceProps) {
     <>
       <p className={styles.lede}>{summary}</p>
       {entries.map((entry) => (
-        <article key={entry.id} className={styles.entry}>
+        <article key={entry.id} className={styles.entry} data-reveal>
           <div className={styles.meta}>
             <h3 className={styles.company}>{entry.company}</h3>
             {entry.about && <p className={styles.about}>{entry.about}</p>}

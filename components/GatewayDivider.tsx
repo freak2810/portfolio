@@ -10,15 +10,15 @@ export function GatewayDivider() {
   return (
     <div className={styles.divider} data-divider aria-hidden="true">
       <svg className={styles.rule} viewBox="0 0 100 96" preserveAspectRatio="none">
-        <line className={styles.line} x1={100} y1={88} x2={0} y2={88} pathLength={1} />
+        <line className={styles.line} x1={100} y1={88} x2={0} y2={88} pathLength={1} data-draw="rules" />
       </svg>
       <svg className={styles.motif} viewBox="0 0 360 96" preserveAspectRatio="xMidYMax meet">
-        <path className={styles.line} d={pillars} pathLength={1} />
-        <path className={styles.line} d={lintel} pathLength={1} />
-        <path className={styles.line} d={arch} pathLength={1} />
+        <path className={styles.line} d={pillars} pathLength={1} data-draw="motif" />
+        <path className={styles.line} d={lintel} pathLength={1} data-draw="motif" />
+        <path className={styles.line} d={arch} pathLength={1} data-draw="motif" />
       </svg>
       <svg className={styles.rule} viewBox="0 0 100 96" preserveAspectRatio="none">
-        <line className={styles.line} x1={0} y1={88} x2={100} y2={88} pathLength={1} />
+        <line className={styles.line} x1={0} y1={88} x2={100} y2={88} pathLength={1} data-draw="rules" />
       </svg>
     </div>
   );

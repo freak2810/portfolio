@@ -1,6 +1,7 @@
 import "../styles/tokens.css";
 import "../styles/base.css";
 import "../styles/nav-target.css";
+import "../styles/motion.css";
 import type { ReactNode } from "react";
 import { Big_Shoulders, Hanken_Grotesk, Noto_Sans_Telugu } from "next/font/google";
 import { withBase } from "../lib/base-path";

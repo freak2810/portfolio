@@ -10,7 +10,7 @@ const LANGUAGES_LABEL = "Languages";
 export function Technology({ groups, languages }: TechnologyProps) {
   const spoken = languages.map((lang) => (lang.level ? `${lang.name} (${lang.level})` : lang.name));
   return (
-    <dl className={styles.list}>
+    <dl className={styles.list} data-reveal>
       {groups.map((group) => (
         <div key={group.name} className={styles.row}>
           <dt className={styles.term}>{group.name}</dt>

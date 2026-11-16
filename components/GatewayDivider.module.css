@@ -17,6 +17,9 @@
 .line {
   fill: none;
   stroke: var(--line-strong);
-  stroke-width: 1.25px;
-  vector-effect: non-scaling-stroke;
+  stroke-width: 1.25;
+}
+
+.motif .line {
+  stroke-width: 1.4;
 }

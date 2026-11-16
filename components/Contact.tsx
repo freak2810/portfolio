@@ -12,7 +12,7 @@ type ContactProps = {
 export function Contact({ email, linkedin, github, resumeHref, resumeLabel }: ContactProps) {
   return (
     <>
-      <ul className={styles.list}>
+      <ul className={styles.list} data-reveal>
         <li>
           <a href={`mailto:${email}`}>{email}</a>
         </li>

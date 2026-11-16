@@ -21,6 +21,7 @@ export function Projects({ projects }: { projects: readonly Plate[] }) {
           key={project.id}
           className={index === 0 ? `${styles.plate} ${styles.lead}` : styles.plate}
           data-project={project.id}
+          data-reveal="rise"
         >
           <svg className={styles.edge} viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true">
             <path d={cusp} pathLength={1} />
