@@ -15,7 +15,7 @@ Two equal audiences: recruiters and hiring managers (want the resume fast, one c
 A personal resume-style portfolio for Aditya Manikanth Rao, Senior Backend Engineer | Tech Lead, based in Hyderabad, born in Warangal. Success is both equal: a hiring action (PDF download or a LinkedIn or GitHub visit within a minute, repo opened from a project card) and the visitor remembering the person and the voice.
 
 ## Positioning
-A senior backend and tech-lead record told in a Captain America code ("if we lose, we lose it together"), rooted in Warangal and Hyderabad. No other engineer's portfolio can truthfully copy that voice or those roots. The wording is the owner's own paraphrase of the Captain America idea of facing loss together; site copy stays original and never reproduces a film line.
+A senior backend and tech-lead record told in a Captain America code ("if we lose, we lose it together"), rooted in Warangal and Hyderabad. No other engineer's portfolio can truthfully copy that voice or those roots. The wording is the owner's own paraphrase of the Captain America idea of facing loss together; site copy stays original, with one exception: the landing role line may carry the quote lines listed in `content/landing.ts`, by the owner's decision of 2026-11-17.
 
 ## Operating Context
 Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data. The site is also the source of a build-time PDF resume made from the same content files.
