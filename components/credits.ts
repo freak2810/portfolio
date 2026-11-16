@@ -27,3 +27,12 @@ export const credits: readonly Credit[] = [
       "Cropped, converted to grayscale with red accents, traced to vector and split into layers. This traced version is shared under CC BY-SA 4.0.",
   },
 ];
+
+export const iconCredit = {
+  text: "Technology logos: Simple Icons 16.38.0, released under CC0 1.0.",
+  sourceName: "Simple Icons",
+  sourceUrl: "https://simpleicons.org/",
+  licenceName: "CC0 1.0",
+  licenceUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+  note: "Technology logos are trademarks of their owners and appear only to name the technology.",
+} as const;

@@ -1,4 +1,5 @@
 import { monthRange } from "./dateRange";
+import { TechList } from "./TechIcons";
 import styles from "./Experience.module.css";
 
 type Entry = {
@@ -11,9 +12,11 @@ type Entry = {
   tech: readonly string[];
 };
 
-type ExperienceProps = { summary: string; entries: readonly Entry[] };
+type ExperienceProps = { summary: string; entries: readonly Entry[]; icons: Readonly<Record<string, string>> };
 
-export function Experience({ summary, entries }: ExperienceProps) {
+const TECH_LABEL = "Technologies";
+
+export function Experience({ summary, entries, icons }: ExperienceProps) {
   return (
     <>
       <p className={styles.lede}>{summary}</p>
@@ -36,7 +39,11 @@ export function Experience({ summary, entries }: ExperienceProps) {
                 <li key={bullet.text}>{bullet.text}</li>
               ))}
             </ul>
-            {entry.tech.length > 0 && <p className={styles.tech}>{entry.tech.join(" · ")}</p>}
+            {entry.tech.length > 0 && (
+              <div className={styles.tech}>
+                <TechList names={entry.tech} icons={icons} size="sm" label={TECH_LABEL} />
+              </div>
+            )}
           </div>
         </article>
       ))}

@@ -1,4 +1,4 @@
-import { credits } from "./credits";
+import { credits, iconCredit } from "./credits";
 import { HussainSagar } from "./HussainSagar";
 import { RouteLine } from "./RouteLine";
 import { SHIELD_OUTLINE } from "./shieldGeometry";
@@ -29,6 +29,15 @@ export function Footer({ line, from, to }: { line: string; from?: Place; to: Pla
             </span>
           </li>
         ))}
+        <li>
+          <p>
+            {iconCredit.text} {iconCredit.note}
+          </p>
+          <span className={styles.links}>
+            <a href={iconCredit.sourceUrl}>{iconCredit.sourceName}</a>
+            <a href={iconCredit.licenceUrl}>{iconCredit.licenceName}</a>
+          </span>
+        </li>
       </ul>
     </footer>
   );

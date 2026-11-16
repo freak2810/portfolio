@@ -11,9 +11,10 @@ import { Landing } from "../components/Landing";
 import { LintelNav } from "../components/LintelNav";
 import { Projects } from "../components/Projects";
 import { Section } from "../components/Section";
+import { TechIconSprite } from "../components/TechIcons";
 import { Technology } from "../components/Technology";
 
-const { profile, landing, ui, links, projects, featuredProjectIds, experience, education, certifications, skills } = content;
+const { profile, landing, ui, links, projects, featuredProjectIds, experience, education, certifications, skills, techIcons } = content;
 
 const resumeHref = withBase(links.resumePath);
 const featured = featuredProjectIds.flatMap((id) => projects.find((project) => project.id === id) ?? []);
@@ -55,6 +56,7 @@ export default function Home() {
       <a className="skip" href="#experience">
         {landing.skipLabel}
       </a>
+      <TechIconSprite />
       <LintelNav {...nav} />
       <main>
         <Landing {...hero} />
@@ -63,7 +65,7 @@ export default function Home() {
         </Section>
         <GatewayDivider />
         <Section id="experience" heading={ui.headings.experience}>
-          <Experience summary={profile.summary} entries={experience} />
+          <Experience summary={profile.summary} entries={experience} icons={techIcons} />
         </Section>
         <GatewayDivider art />
         <Section id="education" heading={ui.headings.education}>
@@ -71,7 +73,7 @@ export default function Home() {
         </Section>
         <GatewayDivider />
         <Section id="technology" heading={ui.headings.technology}>
-          <Technology groups={skills} languages={profile.languages} />
+          <Technology groups={skills} languages={profile.languages} icons={techIcons} />
         </Section>
         <GatewayDivider />
         <Section id="contact" heading={ui.headings.contact}>
