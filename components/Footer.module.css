@@ -23,6 +23,12 @@
   font-size: var(--step--1);
 }
 
+.attribution {
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
 @media (min-width: 768px) {
   .footer {
     padding-inline: var(--page-pad);
