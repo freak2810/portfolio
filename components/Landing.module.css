@@ -134,3 +134,15 @@
     --arch-top: clamp(96px, 18svh, 180px);
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes tick-nudge {
+    50% {
+      transform: translateY(6px);
+    }
+  }
+
+  :global(html.js) .tick {
+    animation: tick-nudge 1.4s var(--ease-out) 2s 2;
+  }
+}

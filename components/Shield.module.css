@@ -1,3 +1,18 @@
+.wrap {
+  position: relative;
+}
+
+.hit {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  width: 30%;
+  aspect-ratio: 1;
+  translate: 0 -50%;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .shield {
   display: block;
   height: clamp(240px, 36svh, 300px);
@@ -23,8 +38,7 @@
 .trace,
 .star {
   fill: none;
-  stroke-width: 1.25px;
-  vector-effect: non-scaling-stroke;
+  stroke-width: 0.9;
 }
 
 .outline {
@@ -71,4 +85,69 @@
 
 :global(:root[data-theme="light"]) .glowCore {
   stop-opacity: 0.18;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes draw {
+    from {
+      stroke-dasharray: 1 2;
+      stroke-dashoffset: 1;
+    }
+
+    to {
+      stroke-dasharray: 1 2;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes star-in {
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+  }
+
+  @keyframes glow-pulse {
+    50% {
+      opacity: 0.9;
+    }
+  }
+
+  :global(html.js) .outline {
+    animation: draw 0.9s var(--ease-out) backwards;
+  }
+
+  :global(html.js) .ring {
+    animation: draw 0.9s var(--ease-out) 0.3s backwards;
+  }
+
+  :global(html.js) .band {
+    animation: fade-in 0.6s var(--ease-out) 0.3s backwards;
+  }
+
+  :global(html.js) .trace {
+    animation: draw 0.5s var(--ease-out) 0.9s backwards;
+  }
+
+  :global(html.js) .dot {
+    animation: fade-in 0.3s var(--ease-out) 1.3s backwards;
+  }
+
+  :global(html.js) .star {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: star-in 0.6s var(--ease-out) 0.9s backwards;
+  }
+
+  :global(html.js) .glow {
+    animation:
+      fade-in 0.6s var(--ease-out) 1.4s backwards,
+      glow-pulse 1.4s var(--ease-out) 2s 2;
+  }
 }
