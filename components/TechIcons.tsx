@@ -1,12 +1,15 @@
-import { techIconPaths } from "./techIconPaths";
+import { iconViewBoxes, strokeIconSlugs, techIconPaths } from "./techIconPaths";
+import type { IconSlug } from "../content/ids";
 import styles from "./TechIcons.module.css";
+
+const strokeProps = { fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" } as const;
 
 export function TechIconSprite() {
   return (
     <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: "absolute" }}>
       {Object.entries(techIconPaths).map(([slug, d]) => (
-        <symbol key={slug} id={`ti-${slug}`} viewBox="0 0 24 24">
-          <path d={d} />
+        <symbol key={slug} id={`ti-${slug}`} viewBox={iconViewBoxes[slug as IconSlug] ?? "0 0 24 24"}>
+          <path d={d} {...(strokeIconSlugs.has(slug) ? strokeProps : undefined)} />
         </symbol>
       ))}
     </svg>
