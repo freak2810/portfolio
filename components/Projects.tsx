@@ -9,41 +9,49 @@ type Plate = {
   tech: readonly string[];
   repoUrl?: string;
   liveUrl?: string;
+  stat?: { value: string; label: string };
 };
 
-const cusp = "M0 14 H34 C40 14 42 12 45 8 L50 1 L55 8 C58 12 60 14 66 14 H100";
-
-export function Projects({ projects }: { projects: readonly Plate[] }) {
+export function Projects({ projects, portfolio }: { projects: readonly Plate[]; portfolio?: Plate }) {
   return (
-    <div className={styles.grid}>
-      {projects.map((project, index) => (
-        <article
-          key={project.id}
-          className={index === 0 ? `${styles.plate} ${styles.lead}` : styles.plate}
-          data-project={project.id}
-          data-reveal="rise"
-        >
-          <svg className={styles.edge} viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true">
-            <path d={cusp} pathLength={1} />
-          </svg>
-          <h3 className={styles.title}>{project.title}</h3>
-          <p className={styles.headline}>{project.headline}</p>
-          {project.points.length > 0 && (
-            <ul className={styles.points}>
-              {project.points.map((point) => (
-                <li key={point.text}>{point.text}</li>
-              ))}
-            </ul>
-          )}
-          <p className={styles.tech}>{project.tech.join(" · ")}</p>
-          {(project.repoUrl || project.liveUrl) && (
-            <p className={styles.links}>
-              {project.repoUrl && <a href={project.repoUrl}>{linkText(project.repoUrl)}</a>}
-              {project.liveUrl && <a href={project.liveUrl}>{linkText(project.liveUrl)}</a>}
-            </p>
-          )}
-        </article>
-      ))}
-    </div>
+    <>
+      <div className={styles.grid}>
+        {projects.map((project, index) => {
+          const link = project.repoUrl ?? project.liveUrl;
+          return (
+            <article key={project.id} className={styles.plate} data-project={project.id} data-reveal="rise">
+              <h3 className={styles.title}>{project.title}</h3>
+              <p className={styles.headline}>{project.headline}</p>
+              {index === 0 && project.stat && (
+                <p className={styles.stat}>
+                  <span className={styles.figure}>{project.stat.value}</span>
+                  <span className={styles.figureLabel}>{project.stat.label}</span>
+                </p>
+              )}
+              {project.points.length > 0 && (
+                <ul className={styles.points}>
+                  {project.points.slice(0, 2).map((point) => (
+                    <li key={point.text}>{point.text}</li>
+                  ))}
+                </ul>
+              )}
+              <p className={styles.tech}>{project.tech.join(" · ")}</p>
+              {link && (
+                <p className={styles.links}>
+                  <a href={link}>{linkText(link)}</a>
+                </p>
+              )}
+            </article>
+          );
+        })}
+      </div>
+      {portfolio && (
+        <p className={styles.row} data-project={portfolio.id}>
+          <span className={styles.rowTitle}>{portfolio.title}</span>
+          <span className={styles.rowTech}>{portfolio.tech.join(" · ")}</span>
+          {portfolio.repoUrl && <a href={portfolio.repoUrl}>{linkText(portfolio.repoUrl)}</a>}
+        </p>
+      )}
+    </>
   );
 }
