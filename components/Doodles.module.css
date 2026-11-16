@@ -1,0 +1,66 @@
+.field {
+  position: absolute;
+  inset: 0 calc(-1 * var(--space-5)) calc(-1 * var(--space-6));
+  z-index: -1;
+  overflow: clip;
+  pointer-events: none;
+  opacity: 0.8;
+  mask-image:
+    linear-gradient(to right, transparent, black 6%, black 94%, transparent),
+    linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+  mask-composite: intersect;
+}
+
+.icon {
+  display: none;
+  position: absolute;
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.s {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.m {
+  width: 5rem;
+  height: 5rem;
+}
+
+.l {
+  width: 6.5rem;
+  height: 6.5rem;
+  stroke: color-mix(in oklch, var(--line-strong) 40%, transparent);
+}
+
+.tx {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .field {
+    inset-inline: calc(-1 * var(--page-pad));
+  }
+
+  .tx {
+    display: none;
+  }
+
+  .tm {
+    display: block;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tm {
+    display: none;
+  }
+
+  .tl {
+    display: block;
+  }
+}

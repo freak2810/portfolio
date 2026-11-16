@@ -1,4 +1,4 @@
-import { linkText } from "./linkText";
+import { Doodles } from "./Doodles";
 import { RouteLine } from "./RouteLine";
 import styles from "./Contact.module.css";
 
@@ -8,22 +8,19 @@ type About = {
   paragraphs: readonly string[];
   onRepeatLabel: string;
   onRepeat: readonly { title: string; artist: string }[];
-  closing: string;
+  closing: { before: string; link: string; after: string };
 };
 
 type ContactProps = {
   about: About;
   from?: Place;
   to: Place;
-  linkedin: string;
-  github: string;
-  resumeHref: string;
-  resumeLabel: string;
 };
 
-export function Contact({ about, from, to, linkedin, github, resumeHref, resumeLabel }: ContactProps) {
+export function Contact({ about, from, to }: ContactProps) {
   return (
-    <>
+    <div className={styles.root}>
+      <Doodles />
       <div className={styles.story}>
         <div className={styles.route} data-reveal>
           <RouteLine from={from} to={to} large />
@@ -44,19 +41,12 @@ export function Contact({ about, from, to, linkedin, github, resumeHref, resumeL
         </div>
       </div>
       <p className={styles.closing} data-reveal>
-        {about.closing}
+        {about.closing.before}
+        <a className={styles.closingLink} href="#home">
+          {about.closing.link}
+        </a>
+        {about.closing.after}
       </p>
-      <ul className={styles.list} data-reveal>
-        <li>
-          <a href={linkedin}>{linkText(linkedin)}</a>
-        </li>
-        <li>
-          <a href={github}>{linkText(github)}</a>
-        </li>
-      </ul>
-      <a className={`button ${styles.resume}`} href={resumeHref}>
-        {resumeLabel}
-      </a>
-    </>
+    </div>
   );
 }

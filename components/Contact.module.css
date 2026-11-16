@@ -1,19 +1,6 @@
-.list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--step-1);
-}
-
-.list a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  overflow-wrap: anywhere;
-}
-
-.resume {
-  margin-top: var(--space-5);
+.root {
+  position: relative;
+  isolation: isolate;
 }
 
 .story {
@@ -48,14 +35,23 @@
 
 .closing {
   max-width: 60ch;
-  margin-bottom: var(--space-4);
   font-size: var(--step-1);
 }
 
-@media (min-width: 768px) {
+.closingLink {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (min-width: 1280px) {
   .story {
     grid-template-columns: max-content 1fr;
     gap: var(--space-6);
     align-items: start;
+  }
+
+  .text {
+    padding-top: var(--space-5);
   }
 }
