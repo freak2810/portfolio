@@ -30,11 +30,11 @@
   fill: currentColor;
 }
 
-/* Loops forever; WCAG 2.2.2 is met by the pause button. Crossfade: each item rises over 2.5% of the cycle, holds, then falls over 3.5% starting when the next item starts to rise; the fall is the longer ramp so the opacities sum to at least 1 and the line is never blank. Keyframes are tuned for 7 items (1/7 of the cycle each = 14.29%, 12.6 s cycle at --slot 1.8s). Retune for N items by changing two numbers: 14.29% (100/N) and 17.79% (100/N + 3.5); also the count in the selector and --n. Any other count stays on the first item. --start defaults to 0 and an ancestor may set it. */
+/* Loops forever; WCAG 2.2.2 is met by the pause button. Crossfade: each item rises over 2.5% of the cycle, holds, then falls over 3.5% starting when the next item starts to rise; the fall is the longer ramp so the opacities sum to at least 1 and the line is never blank. Keyframes are tuned for 13 items (1/13 of the cycle each = 7.69%, 39 s cycle at --slot 3s; 3 s because the long quotes need time to read). Retune for N items by changing two numbers: 7.69% (100/N) and 11.19% (100/N + 3.5); also the count in the selector and --n. Any other count stays on the first item. --start defaults to 0 and an ancestor may set it. */
 @media (prefers-reduced-motion: no-preference) {
-  :global(html.js) .rotator[data-count="7"] {
-    --n: 7;
-    --slot: 1.8s;
+  :global(html.js) .rotator[data-count="13"] {
+    --n: 13;
+    --slot: 3s;
 
     & .items {
       display: grid;
@@ -63,11 +63,11 @@
       transform: translateY(0.35em);
     }
     2.5%,
-    14.29% {
+    7.69% {
       opacity: 1;
       transform: none;
     }
-    17.79%,
+    11.19%,
     100% {
       opacity: 0;
       transform: none;
