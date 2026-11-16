@@ -53,8 +53,6 @@ export type EasterEgg = {
   message: string;
 };
 export type Landing = {
-  heroLine: string;
-  roles: readonly [string, ...string[]];
   descriptors: readonly [string, ...string[]];
   scrollCue: string;
   skipLabel: string;
