@@ -6,7 +6,7 @@
 web
 
 ## Stack
-Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub Actions to GitHub Pages project page freak2810.github.io/Portfolio. Plain CSS with CSS-only motion and no motion library (owner decision, 2026-11-16); dark theme first on every visit with a light toggle. No CMS, no ESLint in this cut.
+Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub Actions to GitHub Pages project page freak2810.github.io/Portfolio. Plain CSS with CSS-only motion and no motion library (owner decision, 2026-11-16); one black theme on every visit, with no light theme and no toggle. No CMS, no ESLint in this cut.
 
 ## Users
 Two equal audiences: recruiters and hiring managers (want the resume fast, one click to the PDF) and developer peers (want to see real projects and open each repo from its card).
@@ -25,12 +25,12 @@ Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data.
 - Contact is a mailto link plus social links. No form, no server code. Phone number is never published.
 - First-load JavaScript at most 200 KB gzipped (measured baseline 138.5 KB). Lighthouse mobile 90 or more, layout shift under 0.1.
 - Static export under /Portfolio/ base path; all asset paths go through a base-path helper.
-- Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is dropped.
+- Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is back in the skills list.
 - Telugu touch is minimal: only the place names (Warangal, Hyderabad) in Telugu script on the web page; no Telugu tagline (owner decision). The PDF carries no Telugu.
 - Undecided: the top three projects are provisional (Wexa engine, EventDesk revival, this portfolio); old project names will come from the owner later. EventDesk framing and team size, a 2019 to 2020 intern role, certification issuers and years are unconfirmed and held back.
 
 ## Brand Commitments
-Original art only: no official Marvel logos, artwork or fonts. Captain America voice in the copy, restrained but visible. Original line art of local landmarks: the Kakatiya gateway for Warangal, and the Buddha statue in Hussain Sagar for Hyderabad (a respectful landmark silhouette, never played for a joke). These commit to existence, not to a look.
+Original or licensed art only: no official Marvel logos, artwork or fonts. Captain America voice in the copy, restrained but visible. Photo-traced vector art of local landmarks, credited on the page: the Kakatiya gateway for Warangal, and the Buddha statue in Hussain Sagar for Hyderabad (a respectful landmark image, never played for a joke). These commit to existence, not to a look.
 
 ## Evidence on Hand
 Resume and LinkedIn facts in the feature notes (identity, summary, skills, five experience entries, education, five certifications, languages). No testimonials, metrics from Innovapptive, or customer logos exist; do not fabricate them. Old code is archived on branch chore/archive-old-portfolio.
@@ -43,4 +43,4 @@ Resume and LinkedIn facts in the feature notes (identity, summary, skills, five 
 5. The voice is brave and team-first; it never mocks or boasts.
 
 ## Accessibility & Inclusion
-WCAG AA as the floor in both light and dark themes, with AAA text contrast on body copy where it is cheap. Full keyboard path, a still fallback for prefers-reduced-motion, content readable with JavaScript off, a skip option for the landing screen, Telugu text must render correctly.
+WCAG AA as the floor on the single black theme, with AAA text contrast on body copy where it is cheap. Full keyboard path, a still fallback for prefers-reduced-motion, content readable with JavaScript off, a skip option for the landing screen, Telugu text must render correctly.

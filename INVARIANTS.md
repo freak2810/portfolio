@@ -18,9 +18,9 @@ Enforced by: the banned-phrase lines of `scripts/banned.txt` and its public file
 
 ## 3. Privacy
 
-No phone number and no server code on the site. Email appears only as a mailto link. No tracking scripts or cookies. The owner's family name, a dropped skill and the lapsed personal domain stay out of `app/`, `components/` and `styles/`.
+No phone number and no server code on the site. Email appears only as a mailto link. No tracking scripts or cookies. The owner's family name, a skill the owner has not confirmed and the lapsed personal domain stay out of `app/`, `components/` and `styles/`.
 
-Enforced by: the phone-pattern rule in `scripts/check-content.ts`, which reads every content string, and the three guard lines of `scripts/banned.txt`, which the build runs over those three folders.
+Enforced by: the phone-pattern rule in `scripts/check-content.ts`, which reads every content string, and the two guard lines of `scripts/banned.txt`, which the build runs over those three folders.
 
 ## 4. Asset paths go through the base-path helper
 
