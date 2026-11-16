@@ -19,7 +19,7 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
   font-size: var(--step-0);
   line-height: 1.6;
-  caret-color: var(--red);
+  caret-color: var(--accent);
 }
 
 h1,
@@ -43,7 +43,7 @@ p {
 }
 
 a {
-  color: var(--red);
+  color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.25em;
 }
@@ -54,7 +54,7 @@ a {
 }
 
 ::selection {
-  background: var(--red);
+  background: var(--accent);
   color: var(--bg);
 }
 
@@ -92,7 +92,7 @@ a {
   justify-content: center;
   min-height: 44px;
   padding: var(--space-2) var(--space-4);
-  background: var(--red);
+  background: var(--accent);
   color: var(--bg);
   font-size: var(--step--1);
   font-weight: 600;
@@ -100,9 +100,9 @@ a {
 }
 
 .button:hover {
-  background: color-mix(in oklch, var(--red) 85%, var(--fg));
+  background: color-mix(in oklch, var(--accent) 85%, var(--fg));
 }
 
 .button:active {
-  background: color-mix(in oklch, var(--red) 70%, var(--fg));
+  background: color-mix(in oklch, var(--accent) 70%, var(--fg));
 }

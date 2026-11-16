@@ -52,7 +52,7 @@
 
 .logo:hover,
 .logo:focus-visible {
-  color: var(--red);
+  color: var(--accent);
 }
 
 .logo:hover .name,

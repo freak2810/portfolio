@@ -2,13 +2,13 @@
   color-scheme: dark;
 
   --bg: oklch(0 0 0);
-  --surface: oklch(0.16 0.006 25);
-  --fg: oklch(0.96 0.005 25);
-  --muted: oklch(0.76 0.01 25);
-  --line: oklch(0.30 0.01 25);
-  --line-strong: oklch(0.56 0.015 25);
-  --red: oklch(0.72 0.16 25);
-  --star-glow: oklch(0.93 0.03 40);
+  --surface: oklch(0.16 0.006 250);
+  --fg: oklch(0.96 0.005 250);
+  --muted: oklch(0.76 0.01 250);
+  --line: oklch(0.30 0.01 250);
+  --line-strong: oklch(0.56 0.015 250);
+  --accent: oklch(0.738 0.105 245);
+  --star-glow: oklch(0.93 0.03 245);
 
   --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);

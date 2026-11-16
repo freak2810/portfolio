@@ -3,5 +3,5 @@ html:has(#experience:target) .lintel a[href="#experience"],
 html:has(#education:target) .lintel a[href="#education"],
 html:has(#technology:target) .lintel a[href="#technology"],
 html:has(#contact:target) .lintel a[href="#contact"] {
-  background-image: linear-gradient(var(--red), var(--red));
+  background-image: linear-gradient(var(--accent), var(--accent));
 }
