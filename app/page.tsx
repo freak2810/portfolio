@@ -2,6 +2,7 @@ import { withBase } from "../lib/base-path";
 import { content } from "../content";
 import { sectionIds } from "../content/ids";
 import { Contact } from "../components/Contact";
+import { EasterEggs } from "../components/EasterEggs";
 import { Education } from "../components/Education";
 import { Experience } from "../components/Experience";
 import { Footer } from "../components/Footer";
@@ -38,6 +39,8 @@ const hero = {
   scrollCueAria: ui.aria.scrollCue,
   heroGraphicAria: ui.aria.heroGraphic,
 };
+
+const eggs = landing.easterEggs.map(({ id, tap, message }) => ({ id, target: tap.target, message }));
 
 const contact = {
   email: links.email,
@@ -77,6 +80,7 @@ export default function Home() {
         </Section>
       </main>
       <Footer line={ui.footer} from={profile.origin} to={profile.base} />
+      <EasterEggs eggs={eggs} />
     </>
   );
 }

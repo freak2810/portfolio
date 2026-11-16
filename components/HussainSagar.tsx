@@ -25,8 +25,8 @@ export function HussainSagar() {
       <path className={styles.line} d={robeLines} />
       <circle className={styles.line} cx={300} cy={30} r={9} />
       <path className={styles.line} d={topKnot} />
-      {ripples.map((r) => (
-        <path key={r.d} className={styles.line} d={r.d} pathLength={1} strokeOpacity={r.opacity} data-ripple />
+      {ripples.map((r, i) => (
+        <path key={r.d} className={styles.line} d={r.d} pathLength={1} strokeOpacity={r.opacity} data-ripple={i} />
       ))}
     </svg>
   );

@@ -7,6 +7,23 @@
   text-align: center;
 }
 
+.glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.glyph svg {
+  width: 16px;
+  height: 19px;
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 10;
+}
+
 .line {
   color: var(--muted);
   font-size: var(--step--1);
