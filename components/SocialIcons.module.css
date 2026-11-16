@@ -1,0 +1,26 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  color: var(--accent);
+}
+
+.link:hover {
+  color: var(--fg);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  fill: currentColor;
+}
+
+.stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

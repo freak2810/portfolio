@@ -1,17 +1,18 @@
 import { Fragment } from "react";
 import { Portrait } from "./Portrait";
 import { RoleRotator } from "./RoleRotator";
+import { SocialLinks, type SocialLinksProps } from "./SocialIcons";
 import styles from "./Landing.module.css";
 
 type LandingProps = {
   name: string;
   title: string;
   descriptors: readonly string[];
-  contactLabel: string;
   scrollCue: string;
   scrollCueAria: string;
   pauseLabel: string;
   playLabel: string;
+  social: SocialLinksProps;
 };
 
 export function Landing(props: LandingProps) {
@@ -31,9 +32,9 @@ export function Landing(props: LandingProps) {
         <div className={styles.descriptor}>
           <RoleRotator items={props.descriptors} pauseLabel={props.pauseLabel} playLabel={props.playLabel} />
         </div>
-        <a className={`button ${styles.contact}`} href="#contact">
-          {props.contactLabel}
-        </a>
+        <div className={styles.actions}>
+          <SocialLinks {...props.social} />
+        </div>
         <a className={styles.cue} href="#projects" aria-label={cueAria}>
           <span className={styles.tick} aria-hidden="true" />
           {props.scrollCue}

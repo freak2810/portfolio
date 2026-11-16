@@ -21,8 +21,8 @@ A senior backend and tech-lead record told in a Captain America code ("if we los
 Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data. The site is also the source of a build-time PDF resume made from the same content files.
 
 ## Capabilities and Constraints
-- Sections: landing screen, top three projects after the first scroll, then Experience, Education, Technology, Contact; resume PDF linked in one click.
-- Contact is LinkedIn, GitHub and the resume PDF only. No email address and no mailto link. No form, no server code. Phone number is never published.
+- Sections: landing screen, top three projects after the first scroll, then Experience, Education, Technology, About; resume PDF linked in one click.
+- Contact is LinkedIn, GitHub and the resume PDF only, as icon links on the landing. No email address and no mailto link. No form, no server code. Phone number is never published.
 - First-load JavaScript at most 200 KB gzipped (measured baseline 138.5 KB). Lighthouse mobile 90 or more, layout shift under 0.1.
 - Static export under /Portfolio/ base path; all asset paths go through a base-path helper.
 - Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is back in the skills list.

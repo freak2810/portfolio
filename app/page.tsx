@@ -33,11 +33,16 @@ const hero = {
   name: profile.name,
   title: profile.title,
   descriptors: landing.descriptors,
-  contactLabel: ui.nav.contact,
   scrollCue: landing.scrollCue,
   scrollCueAria: ui.aria.scrollCue,
   pauseLabel: ui.aria.rotatorPause,
   playLabel: ui.aria.rotatorPlay,
+  social: {
+    github: links.github,
+    linkedin: links.linkedin,
+    resumeHref,
+    labels: ui.social,
+  },
 };
 
 const eggs = landing.easterEggs.map(({ id, tap, message }) => ({ id, target: tap.target, message }));

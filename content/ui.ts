@@ -7,7 +7,7 @@ export const ui: Ui = {
     experience: "Experience",
     education: "Education",
     technology: "Technology",
-    contact: "Contact",
+    contact: "About",
   },
   headings: {
     home: "Home",
@@ -30,6 +30,11 @@ export const ui: Ui = {
     heroGraphic: "A star inside a shield",
     rotatorPause: "Pause the rotating list",
     rotatorPlay: "Play the rotating list",
+  },
+  social: {
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    resume: "Download resume (PDF)",
   },
   footer: "Built in Hyderabad, rooted in Warangal.",
 };
