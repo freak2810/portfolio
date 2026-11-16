@@ -18,12 +18,12 @@
   flex: none;
   width: 9px;
   height: 9px;
-  border: 1.25px solid var(--blue);
+  border: 1.25px solid var(--fg);
   border-radius: 50%;
 }
 
 .dotFilled {
-  background: var(--blue);
+  background: var(--fg);
 }
 
 .link {

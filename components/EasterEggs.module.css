@@ -42,7 +42,7 @@
   width: 100%;
   height: 100%;
   fill: var(--surface);
-  stroke: var(--blue);
+  stroke: var(--fg);
   stroke-width: 7;
 }
 

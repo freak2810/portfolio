@@ -42,7 +42,7 @@
 }
 
 .outline {
-  stroke: var(--blue);
+  stroke: var(--fg);
 }
 
 .ring,
@@ -56,12 +56,12 @@
 }
 
 .dot {
-  fill: var(--blue);
+  fill: var(--fg);
 }
 
 .glowCore {
   stop-color: var(--star-glow);
-  stop-opacity: 0.7;
+  stop-opacity: 0.5;
 }
 
 .glowEdge {
@@ -76,15 +76,6 @@
 .star {
   fill: var(--star-glow);
   stroke: var(--star-glow);
-}
-
-:global(:root[data-theme="light"]) .star {
-  fill: var(--blue);
-  stroke: var(--blue);
-}
-
-:global(:root[data-theme="light"]) .glowCore {
-  stop-opacity: 0.18;
 }
 
 @media (prefers-reduced-motion: no-preference) {

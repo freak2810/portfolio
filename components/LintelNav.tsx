@@ -1,5 +1,4 @@
 import { NavMenu } from "./NavMenu";
-import { ThemeToggle } from "./ThemeToggle";
 import styles from "./LintelNav.module.css";
 
 type NavItem = { id: string; label: string };
@@ -11,7 +10,6 @@ type LintelNavProps = {
   items: readonly NavItem[];
   resumeHref: string;
   resumeLabel: string;
-  themeLabels: { toLight: string; toDark: string };
 };
 
 const MENU_LABEL = "Menu";
@@ -56,7 +54,6 @@ export function LintelNav(props: LintelNavProps) {
         <a className="button" href={props.resumeHref}>
           {props.resumeLabel}
         </a>
-        <ThemeToggle {...props.themeLabels} />
       </nav>
     </header>
   );

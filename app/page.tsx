@@ -25,7 +25,6 @@ const nav = {
   items: sectionIds.filter((id) => id !== "home").map((id) => ({ id, label: ui.nav[id] })),
   resumeHref,
   resumeLabel: ui.resumeLinkLabel,
-  themeLabels: ui.themeToggle,
 };
 
 const hero = {

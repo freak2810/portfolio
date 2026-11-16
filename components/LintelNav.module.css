@@ -107,9 +107,7 @@
   .nav {
     padding-inline: var(--page-pad);
   }
-}
 
-@media (min-width: 52rem) {
   .links {
     display: block;
   }

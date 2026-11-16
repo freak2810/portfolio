@@ -5,7 +5,8 @@ import "../styles/motion.css";
 import type { ReactNode } from "react";
 import { Big_Shoulders, Hanken_Grotesk, Noto_Sans_Telugu } from "next/font/google";
 import { withBase } from "../lib/base-path";
-import { headScript } from "../components/theme";
+
+const addJsClass = 'document.documentElement.classList.add("js")';
 
 export const metadata = { title: "Aditya Manikanth Rao" };
 
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <head>
         <link rel="icon" href={withBase("/art/favicon.svg")} type="image/svg+xml" />
-        <script dangerouslySetInnerHTML={{ __html: headScript }} />
+        <script dangerouslySetInnerHTML={{ __html: addJsClass }} />
       </head>
       <body>{children}</body>
     </html>
