@@ -22,7 +22,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: var(--muted);
+  color: var(--accent);
   cursor: pointer;
 }
 
@@ -30,30 +30,31 @@
   fill: currentColor;
 }
 
-/* Loops forever; WCAG 2.2.2 is met by the pause button. Keyframes are tuned for 9 items (1/9 of the cycle each); any other count stays on the first item. --start defaults to 0 and an ancestor may set it. */
+/* Loops forever; WCAG 2.2.2 is met by the pause button. Crossfade: each item rises over 2.5% of the cycle, holds, then falls over 3.5% starting when the next item starts to rise; the fall is the longer ramp so the opacities sum to at least 1 and the line is never blank. Keyframes are tuned for 7 items (1/7 of the cycle each = 14.29%, 12.6 s cycle at --slot 1.8s). Retune for N items by changing two numbers: 14.29% (100/N) and 17.79% (100/N + 3.5); also the count in the selector and --n. Any other count stays on the first item. --start defaults to 0 and an ancestor may set it. */
 @media (prefers-reduced-motion: no-preference) {
-  :global(html.js) .rotator[data-count="9"] {
+  :global(html.js) .rotator[data-count="7"] {
+    --n: 7;
     --slot: 1.8s;
-  }
 
-  :global(html.js) .rotator[data-count="9"] .items {
-    display: grid;
-  }
+    & .items {
+      display: grid;
+    }
 
-  :global(html.js) .rotator[data-count="9"] .toggle {
-    display: grid;
-  }
+    & .toggle {
+      display: grid;
+    }
 
-  :global(html.js) .rotator[data-count="9"] .item {
-    display: block;
-    grid-area: 1 / 1;
-    opacity: 0;
-    animation: cycle calc(9 * var(--slot)) var(--ease-out) infinite backwards;
-    animation-delay: calc(var(--start, 0s) + var(--i) * var(--slot));
-  }
+    & .item {
+      display: block;
+      grid-area: 1 / 1;
+      opacity: 0;
+      animation: cycle calc(var(--n) * var(--slot)) var(--ease-out) infinite backwards;
+      animation-delay: calc(var(--start, 0s) + var(--i) * var(--slot));
+    }
 
-  :global(html.js) .rotator[data-paused] .item {
-    animation-play-state: paused;
+    &[data-paused] .item {
+      animation-play-state: paused;
+    }
   }
 
   @keyframes cycle {
@@ -61,12 +62,12 @@
       opacity: 0;
       transform: translateY(0.35em);
     }
-    1.5%,
-    9.6% {
+    2.5%,
+    14.29% {
       opacity: 1;
       transform: none;
     }
-    11.1%,
+    17.79%,
     100% {
       opacity: 0;
       transform: none;

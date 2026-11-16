@@ -18,7 +18,7 @@ export function RoleRotator({ items, pauseLabel, playLabel }: Props) {
         ))}
       </span>
       <button type="button" className={styles.toggle} aria-label={paused ? playLabel : pauseLabel} onClick={() => setPaused(!paused)}>
-        <svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" focusable="false">
+        <svg viewBox="0 0 10 10" width="15" height="15" aria-hidden="true" focusable="false">
           {paused ? <path d="M2 1 9 5 2 9z" /> : <path d="M1.5 1h2.5v8H1.5zM6 1h2.5v8H6z" />}
         </svg>
       </button>

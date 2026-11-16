@@ -2,15 +2,13 @@ import type { Landing } from "./types.ts";
 
 export const landing: Landing = {
   descriptors: [
-    "Backend systems",
-    "AI agent platforms",
-    "Cloud and DevOps",
-    "API design",
-    "Team leadership",
-    "Distributed systems",
-    "Data pipelines",
-    "Observability and performance",
-    "Microservices and event-driven",
+    "Engineer / Coder",
+    "Chai lover",
+    "CS graduate",
+    "Gen Z",
+    "Bathroom singer",
+    "Husband, still trying to be a great one",
+    "Stubborn debugger",
   ],
   scrollCue: "Scroll to the record",
   skipLabel: "Skip to resume",
