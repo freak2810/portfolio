@@ -6,7 +6,7 @@ import { EasterEggs } from "../components/EasterEggs";
 import { Education } from "../components/Education";
 import { Experience } from "../components/Experience";
 import { Footer } from "../components/Footer";
-import { GatewayDivider } from "../components/GatewayDivider";
+import { Divider } from "../components/Divider";
 import { Landing } from "../components/Landing";
 import { LintelNav } from "../components/LintelNav";
 import { Projects } from "../components/Projects";
@@ -18,6 +18,7 @@ const { profile, landing, ui, links, projects, featuredProjectIds, experience, e
 
 const resumeHref = withBase(links.resumePath);
 const featured = featuredProjectIds.flatMap((id) => projects.find((project) => project.id === id) ?? []);
+const portfolio = projects.find((project) => project.id === "this-portfolio");
 
 const nav = {
   name: profile.name,
@@ -30,14 +31,11 @@ const nav = {
 
 const hero = {
   name: profile.name,
-  roles: landing.roles,
-  heroLine: landing.heroLine,
-  from: profile.origin,
-  to: profile.base,
-  skipLabel: landing.skipLabel,
+  title: profile.title,
+  descriptors: landing.descriptors,
+  contactLabel: ui.nav.contact,
   scrollCue: landing.scrollCue,
   scrollCueAria: ui.aria.scrollCue,
-  heroGraphicAria: ui.aria.heroGraphic,
 };
 
 const eggs = landing.easterEggs.map(({ id, tap, message }) => ({ id, target: tap.target, message }));
@@ -61,26 +59,26 @@ export default function Home() {
       <main>
         <Landing {...hero} />
         <Section id="projects" heading={ui.headings.projects}>
-          <Projects projects={featured} />
+          <Projects projects={featured} portfolio={portfolio} />
         </Section>
-        <GatewayDivider />
+        <Divider />
         <Section id="experience" heading={ui.headings.experience}>
           <Experience summary={profile.summary} entries={experience} icons={techIcons} />
         </Section>
-        <GatewayDivider art />
+        <Divider />
         <Section id="education" heading={ui.headings.education}>
           <Education entries={education.entries} majorProject={education.majorProject} certifications={certifications} />
         </Section>
-        <GatewayDivider />
+        <Divider />
         <Section id="technology" heading={ui.headings.technology}>
           <Technology groups={skills} languages={profile.languages} icons={techIcons} />
         </Section>
-        <GatewayDivider />
+        <Divider />
         <Section id="contact" heading={ui.headings.contact}>
           <Contact {...contact} />
         </Section>
       </main>
-      <Footer line={ui.footer} from={profile.origin} to={profile.base} />
+      <Footer line={ui.footer} from={profile.origin} to={profile.base} starLabel={ui.aria.heroGraphic} />
       <EasterEggs eggs={eggs} />
     </>
   );
