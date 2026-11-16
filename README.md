@@ -46,5 +46,9 @@ Third-party works used in this repository, in the site's earlier art or in its g
 - **Buddha at Hussain Sagar**: "Monolithic Buddha statue in Hussain Sagar, Hyderabad.jpg" by iMahesh, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), [file page](https://commons.wikimedia.org/wiki/File:Monolithic_Buddha_statue_in_Hussain_Sagar,_Hyderabad.jpg). Changes: cropped, converted to grayscale with red accents, traced to vector and split into layers.
   The traced files `public/art/buddha-*.svg` (git history only) are a derivative of this photo and are shared under CC BY-SA 4.0: credit the author and the file page, say what you changed, keep the same licence. These files are an exception to this repository's MIT licence.
 - **Simple Icons** 16.38.0, [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), from [simpleicons.org](https://simpleicons.org/). Technology logos are trademarks of their owners and appear only to name the technology.
+- **Lucide** 1.73.0, [ISC](https://github.com/lucide-icons/lucide/blob/main/LICENSE), from [lucide.dev](https://lucide.dev/). Copyright (c) Lucide Icons and Contributors; some icons derive from Feather, copyright (c) 2013-present Cole Bemis, [MIT](https://github.com/feathericons/feather/blob/main/LICENSE). Used for the skills with no brand logo. Changes: the elements of each icon are merged into one path.
+- **OpenAI mark** from [SVG Logos](https://github.com/gilbarbara/logos), [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The mark is a trademark of OpenAI and appears only to name the technology.
+
+Some icons are trademarks of their owners and are shown only to name the technology. A used mark is not an endorsement. AWS, MetaMask and LlamaIndex show generic glyphs because their marks are not freely licensed.
 
 The torana and Buddha traces are not on the site now (parked for a later phase) and remain in git history.
