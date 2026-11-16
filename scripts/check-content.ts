@@ -168,6 +168,7 @@ const checkIcons = (c: Content, add: Add): void => {
     if (value !== "chip" && !slugs.includes(value)) add(`techIcons.${key}`, "icon-slug", `${value} is neither chip nor a slug in iconSlugs`);
   }
   for (const slug of slugs) if (!used.has(slug)) add(`iconSlugs.${slug}`, "icon-unused", "slug is the value of no table entry");
+  for (const slug of slugs) if (!/^[a-z0-9]+$/.test(slug)) add(`iconSlugs.${slug}`, "icon-slug-shape", "sprite id must be lowercase letters and digits");
 };
 
 const checkFeatured = (c: Content, add: Add): void =>
