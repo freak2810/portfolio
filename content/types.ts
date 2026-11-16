@@ -1,4 +1,4 @@
-import type { SectionId } from "./ids.ts";
+import type { IconSlug, SectionId } from "./ids.ts";
 
 export type Bilingual = { en: string; te?: string };
 export type YearMonth = `${number}-${number}`;
@@ -21,6 +21,7 @@ export type Links = {
   github: string;
   resumePath: "/resume.pdf";
 };
+export type TechIcon = IconSlug | "chip";
 export type SkillGroup = { name: string; items: readonly string[] };
 export type Role = { title: string; start: YearMonth; end: End };
 export type Experience = {
@@ -61,9 +62,8 @@ export type Ui = {
   nav: Record<SectionId, string>;
   headings: Record<SectionId, string>;
   resumeLinkLabel: string;
-  themeToggle: { toLight: string; toDark: string };
   notFound: { title: string; body: string; homeLabel: string };
-  aria: { nav: string; themeToggle: string; resumeLink: string; scrollCue: string; heroGraphic: string };
+  aria: { nav: string; resumeLink: string; scrollCue: string; heroGraphic: string };
   footer: string;
 };
 export type SectionKey = "profile" | "links" | "skills" | "experience" | "education" | "certifications" | "projects" | "landing" | "ui";
@@ -78,5 +78,6 @@ export type Content = {
   featuredProjectIds: readonly [string, string, string];
   landing: Landing;
   ui: Ui;
+  techIcons: Readonly<Record<string, TechIcon>>;
   status: Record<SectionKey, Confirmation>;
 };

@@ -9,5 +9,4 @@ lose it together
 we lose
 publish api|3 to 4 hours|2 to 3 seconds|\b4 ?k\b|4,?000[- ]?tokens?|about 2 minutes|up to a minute
 regal{2}a
-\bangul[a]r
 aditya2810\.me

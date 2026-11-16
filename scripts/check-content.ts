@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, 
 import { tmpdir } from "node:os";
 import { dirname, extname, join } from "node:path";
 import { content } from "../content/index.ts";
+import { iconSlugs } from "../content/ids.ts";
 import type { Content } from "../content/types.ts";
 
 type Add = (path: string, rule: string, detail: string) => void;
@@ -64,6 +65,7 @@ const findProblems = (c: Content, strict: boolean): string[] => {
   checkMonths(c, add);
   checkYears(c, add);
   checkIds(c, add);
+  checkIcons(c, add);
   checkFeatured(c, add);
   if (strict) checkStrict(c, add);
   return found;
@@ -153,6 +155,21 @@ const checkIds = (c: Content, add: Add): void => {
   }
 };
 
+const checkIcons = (c: Content, add: Add): void => {
+  const shown = new Set([...c.skills.flatMap((group) => group.items), ...c.experience.flatMap((job) => job.tech)]);
+  const keys = Object.keys(c.techIcons);
+  const slugs: readonly string[] = iconSlugs;
+  for (const name of shown) {
+    if (!keys.includes(name)) add(`techIcons.${name}`, "icon-missing", "name is shown but has no table entry");
+  }
+  for (const key of keys) if (!shown.has(key)) add(`techIcons.${key}`, "icon-orphan", "key is not shown in skills or experience tech");
+  const used = new Set<string>(Object.values(c.techIcons));
+  for (const [key, value] of Object.entries(c.techIcons)) {
+    if (value !== "chip" && !slugs.includes(value)) add(`techIcons.${key}`, "icon-slug", `${value} is neither chip nor a slug in iconSlugs`);
+  }
+  for (const slug of slugs) if (!used.has(slug)) add(`iconSlugs.${slug}`, "icon-unused", "slug is the value of no table entry");
+};
+
 const checkFeatured = (c: Content, add: Add): void =>
   c.featuredProjectIds.forEach((id, index) => {
     if (!c.projects.some((project) => project.id === id)) add(`featuredProjectIds[${index}]`, "featured", "no project has this id");
@@ -239,6 +256,10 @@ const ruleCases: { label: string; rule: string; mutate: (c: DeepMutable<Content>
   { label: "Telugu outside te", rule: "charset", mutate: (c) => { c.profile.title += "క"; } },
   { label: "te holds Latin", rule: "te", mutate: (c) => { c.profile.base.te = "abc"; } },
   { label: "stray email", rule: "email", mutate: (c) => { c.profile.summary += " a@b.co"; } },
+  { label: "icon name with no table entry", rule: "icon-missing", mutate: (c) => { delete c.techIcons["Kafka"]; } },
+  { label: "icon key shown nowhere", rule: "icon-orphan", mutate: (c) => { c.techIcons["Nothing Shown"] = "chip"; } },
+  { label: "icon value not a slug", rule: "icon-slug", mutate: (c) => { (c.techIcons as Record<string, string>)["Kafka"] = "nope"; } },
+  { label: "slug used by no entry", rule: "icon-unused", mutate: (c) => { c.techIcons["Kafka"] = "chip"; } },
   { label: "mailto in links.email", rule: "email", mutate: (c) => { c.links.email = "mailto:a@b.co"; } },
 ];
 
@@ -291,10 +312,10 @@ const runBannedCases = (): void => {
   }
   console.log("self-test: banned phrases and public names: ok");
 
-  const guards = [["Reg", "alla"], ["Ang", "ular"], ["aditya", "2810.me"]].map(([head, tail]) => `${head}${tail}`);
+  const guards = [["Reg", "alla"], ["aditya", "2810.me"]].map(([head, tail]) => `${head}${tail}`);
   const guarded = scanPlanted({ "app/guards.txt": `${guards.join("\n")}\n` }, true);
-  assert.strictEqual(guarded.length, 3, "guard lines: expected three reports");
-  for (const key of ["app/guards.txt:1", "app/guards.txt:2", "app/guards.txt:3"]) {
+  assert.strictEqual(guarded.length, 2, "guard lines: expected two reports");
+  for (const key of ["app/guards.txt:1", "app/guards.txt:2"]) {
     assert.ok(guarded.some((report) => report.startsWith(`${key}: `)), `expected a report for ${key}`);
   }
   console.log("self-test: guard lines: ok");

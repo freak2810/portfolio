@@ -3,7 +3,7 @@ import type { SkillGroup } from "./types.ts";
 export const skills: readonly SkillGroup[] = [
   {
     name: "Architecture",
-    items: ["System Design", "Distributed Systems", "API Design", "Performance Optimization", "Observability"],
+    items: ["System Design", "Distributed Systems", "API Design", "Performance Optimization", "Observability", "Performance Tuning"],
   },
   {
     name: "Messaging & Streaming",
@@ -11,19 +11,19 @@ export const skills: readonly SkillGroup[] = [
   },
   {
     name: "AI",
-    items: ["LangChain", "LangGraph", "LlamaIndex", "RAG", "Vector Search", "Agentic AI", "LLMs"],
+    items: ["LangChain", "LangGraph", "LlamaIndex", "RAG", "Vector Search", "Agentic AI", "LLMs", "Generative AI"],
   },
   {
     name: "Cloud & DevOps",
-    items: ["AWS (Lambda, S3, CloudFront)", "Docker", "GitHub Actions", "Sentry"],
+    items: ["AWS (Lambda, S3, CloudFront)", "Docker", "GitHub Actions", "Sentry", "Git", "GitHub"],
   },
   {
     name: "Frontend",
-    items: ["React.js", "Next.js", "React Native"],
+    items: ["React.js", "Next.js", "React Native", "Angular", "HTML", "CSS", "SASS"],
   },
   {
     name: "Databases",
-    items: ["PostgreSQL", "MongoDB", "DynamoDB", "Elasticsearch", "Redis", "Qdrant"],
+    items: ["PostgreSQL", "MongoDB", "DynamoDB", "Elasticsearch", "Redis", "Qdrant", "Relational Databases", "Firebase"],
   },
   {
     name: "Programming Languages",
@@ -31,6 +31,14 @@ export const skills: readonly SkillGroup[] = [
   },
   {
     name: "Backend",
-    items: ["Node.js", "Express.js", "FastAPI", "GraphQL", "REST", "Microservices", "Event-Driven Architecture"],
+    items: ["Node.js", "Express.js", "FastAPI", "GraphQL", "REST", "Microservices", "Event-Driven Architecture", "Stripe"],
+  },
+  {
+    name: "Blockchain",
+    items: ["Solidity", "MetaMask", "Blockchain"],
+  },
+  {
+    name: "Engineering Practice",
+    items: ["Unit Testing", "Agile", "Object-Oriented Programming", "Team Leadership", "Team Management"],
   },
 ];

@@ -18,7 +18,6 @@ export const ui: Ui = {
     contact: "Send word. A real person answers.",
   },
   resumeLinkLabel: "Resume PDF",
-  themeToggle: { toLight: "Switch to the light theme", toDark: "Switch to the dark theme" },
   notFound: {
     title: "Off the map.",
     body: "No such position here. Fall back to the start.",
@@ -26,7 +25,6 @@ export const ui: Ui = {
   },
   aria: {
     nav: "Primary",
-    themeToggle: "Colour theme",
     resumeLink: "Download the resume as a PDF",
     scrollCue: "Scroll to the projects",
     heroGraphic: "A glowing star inside a shield in a stone gateway",

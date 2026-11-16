@@ -7,6 +7,7 @@ import { featuredProjectIds, projects } from "./projects.ts";
 import { profile } from "./profile.ts";
 import { skills } from "./skills.ts";
 import { status } from "./status.ts";
+import { techIcons } from "./techIcons.ts";
 import { ui } from "./ui.ts";
 import type { Content } from "./types.ts";
 
@@ -34,5 +35,6 @@ export const content = dropHeld({
   featuredProjectIds,
   landing,
   ui,
+  techIcons,
   status,
 }) as Content;
