@@ -2,8 +2,8 @@ import type { About } from "./types.ts";
 
 export const about: About = {
   paragraphs: [
-    "Namaste. I am Aditya, from Warangal. I moved to Hyderabad in 2017 for my degree, started building software in 2019, and finished university in August 2021 on my way into a first full stack job at a startup.",
-    "Off the clock I listen to Hindi and Telugu music, mostly Arijit Singh and Sid Sriram. I am into the MCU and the usual superhero stuff, and I rewatch The Big Bang Theory, How I Met Your Mother and Modern Family.",
+    "I am from Warangal. In 2017 I moved to Hyderabad for my degree, and I have lived here since. I started building software in 2019 and graduated in 2021. Today I build backend systems, lead a team, and spend a good part of my days on AI features.",
+    "Away from the keyboard, I am a chai person and a bathroom singer. Hindi and Telugu songs fill my playlist, Arijit Singh and Sid Sriram first. I rewatch The Big Bang Theory, How I Met Your Mother, Friends and Modern Family more than I should, and I always have time for the MCU.",
   ],
   onRepeatLabel: "On repeat",
   onRepeat: [
@@ -13,5 +13,5 @@ export const about: About = {
     { title: "Shri Krishna Govind Hare Murari", artist: "Simpal Kharel" },
     { title: "Zara Zara", artist: "Bombay Jayashri" },
   ],
-  closing: "If you made it this far, thank you. Do not forget to drop a message.",
+  closing: { before: "If you made it this far, thank you. Do not forget to ", link: "drop a message", after: "." },
 };

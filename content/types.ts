@@ -24,7 +24,7 @@ export type About = {
   paragraphs: readonly [string, ...string[]];
   onRepeatLabel: string;
   onRepeat: readonly { title: string; artist: string }[];
-  closing: string;
+  closing: { before: string; link: string; after: string };
 };
 export type TechIcon = IconSlug | "chip";
 export type SkillGroup = { name: string; items: readonly string[] };

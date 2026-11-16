@@ -51,10 +51,6 @@ const contact = {
   about,
   from: profile.origin,
   to: profile.base,
-  linkedin: links.linkedin,
-  github: links.github,
-  resumeHref,
-  resumeLabel: ui.resumeLinkLabel,
 };
 
 export default function Home() {
