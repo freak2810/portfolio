@@ -44,6 +44,7 @@ export type Project = {
   tech: readonly string[];
   repoUrl?: string;
   liveUrl?: string;
+  stat?: { value: string; label: string };
 } & Flagged;
 export type EasterEgg = {
   id: string;
@@ -54,6 +55,7 @@ export type EasterEgg = {
 export type Landing = {
   heroLine: string;
   roles: readonly [string, ...string[]];
+  descriptors: readonly [string, ...string[]];
   scrollCue: string;
   skipLabel: string;
   easterEggs: readonly EasterEgg[];

@@ -11,7 +11,7 @@ export const ui: Ui = {
   },
   headings: {
     home: "Home",
-    projects: "Three missions worth showing.",
+    projects: "Selected work.",
     experience: "Field record.",
     education: "Where the training happened.",
     technology: "The kit.",
@@ -27,7 +27,7 @@ export const ui: Ui = {
     nav: "Primary",
     resumeLink: "Download the resume as a PDF",
     scrollCue: "Scroll to the projects",
-    heroGraphic: "A glowing star inside a shield in a stone gateway",
+    heroGraphic: "A star inside a shield",
   },
   footer: "Built in Hyderabad, rooted in Warangal. Nobody on this team stands alone.",
 };

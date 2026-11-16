@@ -8,9 +8,9 @@ export const projects: readonly Project[] = [
     points: [
       { text: "Autonomous multi-step workflows with data sharing between workflows." },
       { text: "Agents composed from instructions and skills, across GPT, LLaMA and Claude." },
-      { text: "The product raised $0.5M angel funding." },
     ],
     tech: ["Qdrant", "RAG", "GPT", "LLaMA", "Claude"],
+    stat: { value: "$0.5M", label: "angel funding raised by the product" },
   },
   {
     id: "eventdesk-revival",
@@ -64,4 +64,4 @@ export const projects: readonly Project[] = [
   },
 ];
 
-export const featuredProjectIds: Content["featuredProjectIds"] = ["wexa-agent-engine", "eventdesk-revival", "this-portfolio"];
+export const featuredProjectIds: Content["featuredProjectIds"] = ["wexa-agent-engine", "eventdesk-revival", "cdc-pipeline"];

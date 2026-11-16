@@ -7,6 +7,7 @@ export const landing: Landing = {
     "Principal Software Engineer · Wexa",
     "Full Stack Engineer · MockTheta",
   ],
+  descriptors: ["Backend systems", "AI agent platforms", "Cloud and DevOps", "API design", "Team leadership"],
   scrollCue: "Scroll to the record",
   skipLabel: "Skip to resume",
   easterEggs: [
@@ -21,12 +22,6 @@ export const landing: Landing = {
       tap: { target: '[data-egg="shield"]' },
       keys: ["s", "h", "i", "e", "l", "d"],
       message: "It always comes back.",
-    },
-    {
-      id: "lake",
-      tap: { target: '[data-egg="lake"]' },
-      keys: ["l", "a", "k", "e"],
-      message: "Still water. Hyderabad is home, and I can't imagine leaving.",
     },
   ],
 };
