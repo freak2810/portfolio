@@ -60,7 +60,7 @@
 
 @media (min-width: 768px) {
   .name {
-    --step-4: clamp(3rem, calc((100vw - 2 * var(--page-pad) - 0.87 * var(--pw) - var(--name-gap)) / 4.75), 13.5rem);
+    --step-4: clamp(3rem, calc((100vw - 2 * var(--page-pad) - 0.874 * var(--pw) - var(--name-gap)) / 4.75), 13.5rem);
   }
 
   .landing {

@@ -6,14 +6,12 @@
 
 .portrait > div {
   width: 100%;
-  -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 86%);
-  mask-image: linear-gradient(to bottom, #000 66%, transparent 86%);
 }
 
 @media (min-width: 768px) {
   .portrait {
     width: var(--pw);
     justify-self: end;
-    margin-bottom: calc(var(--pw) * -0.17);
+    margin-bottom: calc(var(--pw) * -0.185);
   }
 }

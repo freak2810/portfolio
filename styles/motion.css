@@ -75,44 +75,8 @@
     }
   }
 
-  @keyframes art-rim {
-    0% {
-      opacity: 0;
-    }
-
-    40% {
-      opacity: 1;
-    }
-
-    70% {
-      opacity: 0.55;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  html.js [data-art="portrait"] [data-layer] {
-    animation: art-fade 0.7s var(--ease-out) both;
-  }
-
-  html.js [data-art="portrait"] [data-layer="shadow"] {
-    animation-delay: 0.1s;
-  }
-
-  html.js [data-art="portrait"] [data-layer="mid"] {
-    animation-delay: 0.5s;
-  }
-
-  html.js [data-art="portrait"] [data-layer="light"] {
-    animation-delay: 0.9s;
-  }
-
-  html.js [data-art="portrait"] [data-layer="rim"] {
-    animation-name: art-rim;
-    animation-duration: 1s;
-    animation-delay: 1.6s;
+  html.js [data-art="portrait"] > img {
+    animation: art-fade 0.9s var(--ease-out) both;
   }
 
   @supports (animation-timeline: view()) {
