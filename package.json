@@ -1,52 +1,25 @@
 {
-	"name": "portfolio-v1",
-	"version": "1.2.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"lint": "next lint",
-		"build": "next build",
-		"start": "next start",
-		"web:deploy": "vercel build && vercel deploy --prebuilt",
-		"sanity:deploy": "sanity graphql deploy prod",
-		"clean": "pnpx rimraf node-modules .next .vercel",
-		"clean-install": "pnpm run clean && pnpm install",
-		"codegen": "graphql-codegen -c ./graphql/codegen.ts"
-	},
-	"dependencies": {
-		"@icons-pack/react-simple-icons": "^9.1.0",
-		"@portabletext/react": "^3.0.11",
-		"@sanity/image-url": "^1.0.2",
-		"@sanity/vision": "^3.19.0",
-		"@styled-icons/fa-solid": "^10.47.0",
-		"@styled-icons/material-twotone": "^10.47.0",
-		"graphql-request": "^6.1.0",
-		"graphql-tag": "^2.12.6",
-		"next": "^14.0.1",
-		"next-sanity": "^5.5.10",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
-		"react-modal": "^3.16.1",
-		"resend": "^2.0.0",
-		"sanity": "^3.19.0",
-		"sass": "^1.69.5",
-		"styled-components": "^5.3.11"
-	},
-	"devDependencies": {
-		"@graphql-codegen/cli": "^5.0.0",
-		"@graphql-codegen/typescript-graphql-request": "^6.0.1",
-		"@graphql-codegen/typescript-operations": "^4.0.1",
-		"@types/react": "18.2.33",
-		"@types/react-modal": "^3.16.2",
-		"autoprefixer": "^10.4.16",
-		"eslint": "^8.52.0",
-		"eslint-config-next": "^14.0.1",
-		"postcss": "^8.4.31",
-		"tailwind": "^4.0.0",
-		"tailwindcss": "^2.2.19",
-		"typescript": "5.2.2"
-	},
-	"engines": {
-		"node": ">=18.0.0"
-	}
+  "name": "portfolio",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.21.0",
+  "engines": {
+    "node": ">=22.19"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "typecheck": "next typegen && tsc --noEmit",
+    "build": "next build"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "7.0.2"
+  }
 }
