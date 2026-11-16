@@ -12,9 +12,9 @@ Enforced by: `pnpm typecheck` rejects a wrong shape; `node scripts/check-content
 
 The look stays Marvel-inspired: no official logos, artwork, fonts or screenshots, no full movie quotes, and the owner's private phrase about facing loss together is never page copy.
 
-Art is either original or traced from a photo whose licence allows it, and its credit shows on the page. No photo comes from a commercial site. No share-alike licence is used unless the human says yes in writing. The human's own photo appears only as a traced SVG.
+Art is either original or traced from a photo whose licence allows it, and its credit is published in the `README.md` Acknowledgments section. Any art traced from a CC BY-SA photo that returns to the site also needs a footer link to that section. No photo comes from a commercial site. No share-alike licence is used unless the human says yes in writing. The human's own photo appears only as a traced SVG.
 
-Enforced by: the banned-phrase lines of `scripts/banned.txt` and its public file-name rule catch listed phrases and file names; design review judges logos, artwork and fonts; credits are checked by the credits row of the art sourcing note and by the build check named in spec 002, once that check exists.
+Enforced by: the banned-phrase lines of `scripts/banned.txt` and its public file-name rule catch listed phrases and file names; design review judges logos, artwork and fonts; credits are checked by the credits row of the art sourcing note and by the `README.md` Acknowledgments section, which holds one entry per third-party work, and by the build check named in spec 002, once that check exists.
 
 ## 3. Privacy
 

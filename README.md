@@ -40,6 +40,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Hat tip to anyone & everyone whose code and icons was used.
+Third-party works used in this repository, in the site's earlier art or in its git history.
 
-- Feel Free to use this code but just don't forget to star and give me some credit 😁🐣.
+- **Kakatiya torana**: "A torana, gate to sacred precinct, Warangal Fort Park and Museum, Telangana, India - 7.jpg" by Ms Sarah Welch, [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), [file page](https://commons.wikimedia.org/wiki/File:A_torana,_gate_to_sacred_precinct,_Warangal_Fort_Park_and_Museum,_Telangana,_India_-_7.jpg). Changes: cropped, traced to vector and split into layers.
+- **Buddha at Hussain Sagar**: "Monolithic Buddha statue in Hussain Sagar, Hyderabad.jpg" by iMahesh, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), [file page](https://commons.wikimedia.org/wiki/File:Monolithic_Buddha_statue_in_Hussain_Sagar,_Hyderabad.jpg). Changes: cropped, converted to grayscale with red accents, traced to vector and split into layers.
+  The traced files `public/art/buddha-*.svg` (git history only) are a derivative of this photo and are shared under CC BY-SA 4.0: credit the author and the file page, say what you changed, keep the same licence. These files are an exception to this repository's MIT licence.
+- **Simple Icons** 16.38.0, [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), from [simpleicons.org](https://simpleicons.org/). Technology logos are trademarks of their owners and appear only to name the technology.
+
+The torana and Buddha traces are not on the site now (parked for a later phase) and remain in git history.
