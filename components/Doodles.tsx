@@ -2,8 +2,10 @@ import styles from "./Doodles.module.css";
 
 // Line icons on a 24 by 24 box. guitar, headphones and pizza start from Lucide 1.73.0
 // (ISC), elements merged into one path, ellipses and relative starts rewritten. ma is the outline
-// of Noto Sans Telugu (SIL OFL 1.1). The rest are original shapes; Wikimedia Commons CC0 and
-// public domain photos were reference only.
+// of Noto Sans Telugu (SIL OFL 1.1). nios is traced from "Hyundai AI3 Grand i10.jpg" (Bull-Doser, public
+// domain) and pom from "Pomeranian Gerry.jpg" (Zikmund105, CC0), both Wikimedia Commons; the badge,
+// plate and lettering are left out and the lower ruff of pom is extended past the photo edge. The rest are
+// original shapes; Wikimedia Commons CC0 and public domain photos were reference only.
 const n = (v: number) => +v.toFixed(1);
 const ring = (x: number, y: number, rx: number, ry = rx) => `M${n(x - rx)} ${y}a${rx} ${ry} 0 1 0 ${n(2 * rx)} 0a${rx} ${ry} 0 1 0 ${n(-2 * rx)} 0Z`;
 // orbit: ellipse through (12,12) with its long axis turned by deg
@@ -17,6 +19,9 @@ const ticks = (x0: number, y0: number, x1: number, y1: number, k: number, h: num
   return Array.from({ length: k }, (_, i) => { const f = (i + 1) / (k + 1), x = x0 + dx * f, y = y0 + dy * f; return `M${n(x - px)} ${n(y - py)}L${n(x + px)} ${n(y + py)}`; }).join("");
 };
 
+// fluffy edge: one outward arc between each pair of points (sweep 1 for a clockwise walk, 0 for counter-clockwise)
+const tufts = (p: number[][], sweep: 0 | 1) => p.slice(1).map(([x, y], i) => { const r = n(Math.hypot(x - p[i][0], y - p[i][1]) * 0.6); return `A${r} ${r} 0 0 ${sweep} ${n(x)} ${n(y)}`; }).join("");
+const onCircle = (cx: number, cy: number, r: number, deg: number) => [cx + r * Math.cos((deg * Math.PI) / 180), cy + r * Math.sin((deg * Math.PI) / 180)];
 const paths = {
   shield: ring(12, 12, 10.5) + ring(12, 12, 8) + ring(12, 12, 5.4) + "M12 7.8L13.1 10.6L16 10.8L13.8 12.7L14.5 15.5L12 14L9.5 15.5L10.2 12.7L8 10.8L10.9 10.6Z" + "M12 1.5v1.4M12 21.1v1.4M1.5 12h1.4M21.1 12h1.4",
   helmet: "M4.5 14V10a7.5 7.5 0 0 1 15 0v4l-2 5-2.5 2.5h-6L6.5 19ZM12 2.5v4M6.5 9.5c3.5-1.5 7.5-1.5 11 0M7.5 12.2l3.2 1.1M16.5 12.2l-3.2 1.1M12 10.5v6M7 15c.2 1.8 1 3 2 3.8M17 15c-.2 1.8-1 3-2 3.8M10 20.2h4M4.5 11.5H3M19.5 11.5H21M8 22.5c2.5.8 5.5.8 8 0",
@@ -32,7 +37,8 @@ const paths = {
   pizza: "M12 14l-1 1M13.75 18.25l-1.25 1.42M17.775 5.654a15.68 15.68 0 0 0-12.121 12.12M18.8 9.3a1 1 0 0 0 2.1 7.7M21.964 20.732a1 1 0 0 1-1.232 1.232l-18-5a1 1 0 0 1-.695-1.232A19.68 19.68 0 0 1 15.732 2.037a1 1 0 0 1 1.232.695z" + ring(12.5, 9, 1.3) + ring(9, 14, 1.1) + ring(14.5, 14.2, 1.2) + "M10 19.2v1.8a.9.9 0 0 0 1.8 0v-1.4M6 17.5v1.2",
   spaghetti: "M2.5 15.5h19c0 3.6-4.3 6-9.5 6s-9.5-2.4-9.5-6ZM13.5 8.2C13.3 8.4 13 9.2 12.3 9.5C11.6 9.8 10.4 10 9.5 10.1C8.6 10.2 7.4 10 6.7 9.9C6.1 9.7 5.6 9.3 5.6 9C5.6 8.7 6.1 8.3 6.8 8.2C7.4 8 8.6 7.9 9.5 7.9C10.4 8 11.6 8.3 12.2 8.6C12.8 8.9 13.3 9.4 13.3 9.8C13.3 10.2 12.8 10.7 12.1 11C11.5 11.3 10.4 11.5 9.5 11.6C8.6 11.7 7.5 11.6 6.9 11.4C6.3 11.2 5.9 10.9 5.9 10.6C5.9 10.3 6.3 10 6.9 9.8C7.6 9.7 8.7 9.6 9.5 9.6C10.3 9.7 11.4 10 12 10.2C12.6 10.5 13 11 13 11.4C13 11.8 12.6 12.3 12 12.5C11.4 12.8 10.3 13.1 9.5 13.1C8.7 13.2 7.6 13.1 7.1 12.9C6.5 12.8 6.1 12.4 6.1 12.2C6.1 12 6.6 11.6 7.1 11.5C7.7 11.3 8.7 11.3 9.5 11.3C10.3 11.4 11.3 11.6 11.8 11.9C12.4 12.2 12.6 12.8 12.8 13M11 6.2L19.5 1.5M7 12.7c-.5 1.4.5 2.2-.1 2.8M13 12.9c.4 1.2-.4 1.8 0 2.6",
   dosa: "M3 17L17.2 3.8M3 17L20.8 9.2M17.2 3.8A1.4 3.2 -33.3 1 1 20.8 9.2A1.4 3.2 -33.3 1 1 17.2 3.8ZM6.5 14.4C11 14 14.5 11 18 6.8M1 20a8.5 2.6 0 1 0 17 0a8.5 2.6 0 1 0 -17 0ZM18.4 19.6a2.3 2.3 0 1 0 4.6 0a2.3 2.3 0 1 0-4.6 0ZM18.8 18.5h3.8M8 16.6C11.5 16 15 13.5 18.5 9.5",
-  hatch: "M2.5 16.5v-3.2c0-.6.3-1 .9-1.2L5.6 8.4c.4-.6 1-.9 1.7-.9h6.6c.7 0 1.3.3 1.8.8l3.6 3.4 2.5.8c.6.2.9.7.9 1.3v2.7h-1.7a3.2 3.2 0 0 0-6.4 0H9.7a3.2 3.2 0 0 0-6.4 0ZM6.9 9.2h2.8v3.2H5.2ZM10.8 9.2h2.8l2.6 3.2h-5.4ZM10.2 9.2v7.3M15 9.2M12 14h1.4M15.8 11.6l1.2.1M21.8 13.3h1.2M2.8 13.8h.8" + ring(6.5, 16.5, 2.5) + ring(6.5, 16.5, .8) + "M6.5 14v5M4 16.5h5"  + ring(18, 16.5, 2.5) + ring(18, 16.5, .8) + "M18 14v5M15.5 16.5h5",
+  nios: "M4.1 5.3L8.2 5.4L14.1 5.7L18.6 9.1L21.8 10.6Q22.2 11.4 22.3 12.4L22.7 12.8Q22.8 14.3 22.3 15.7L20.8 16.8Q16.6 18.1 14.8 17.8L12.3 17.9L12 17.6M11.4 17.5L8.5 15.1L3.4 13.1L1.4 12.7Q1.2 10.6 1.3 9.1L2.8 7.1L4.1 5.3M9.1 16A1.5 2.4 10 1 0 12 16.5A1.5 2.4 10 1 0 9.1 16ZM9.7 16.2A0.9 1.6 10 1 0 11.5 16.6A0.9 1.6 10 1 0 9.7 16.2ZM9 14.9Q9.3 13.9 10.5 13.7Q11.4 13.8 11.9 14.5M1.6 12.2A0.8 1.7 5 1 0 3.2 12.4A0.8 1.7 5 1 0 1.6 12.2ZM1.9 12.3A0.5 1.1 5 1 0 2.9 12.4A0.5 1.1 5 1 0 1.9 12.3ZM3.6 5.8L5.3 5.6L5.5 8.4L4.6 8.3L2.9 7.1ZM6 5.7L8.1 5.5L8.3 8.4L5.5 8.4ZM8.3 5.5L14.1 5.7L18.6 9.1L14.1 9.5L9.1 9ZM6.1 8.9L6.7 8.5L7.6 8.3L8.3 8.7L8.3 9.3L7.3 9.5L6.1 9.2ZM9.1 9L10.3 9.5L11.4 11M8.5 10.3L8.3 14.9M4.8 9L3.5 12.8M4.8 9.5L5.5 9.8M2.3 8.7L2.8 9M15.4 12.7L21.8 11.8M11.3 11.2Q11.7 11 12.8 11.4L15.6 12.7L16.4 13.1L15.3 13.6L14.1 13.4L12.9 12.9L11.9 12.1ZM15.2 14.5L16.5 13.8L22.6 13L22.5 14.3L21.8 15.1L18.1 16L16.6 16.1ZM14.8 17.3L17.3 16.7L21.8 15.4M13.8 14.8L14.7 15.8L13.2 17L13.1 16.4Z",
+  pom: "M6 5.9Q6 3.6 7.2 1.7Q9.1 2.2 10.3 3.9Q12.8 3.2 14.8 3.7Q15.4 2.3 16.4 1.6Q17.7 3.1 17.8 5.9A1.7 1.7 0 0 1 19.2 8.2A1.3 1.3 0 0 1 20.2 10.1A1.2 1.2 0 0 1 20.5 12A1.2 1.2 0 0 1 20.9 13.8A1.2 1.2 0 0 1 20.5 15.7A1.2 1.2 0 0 1 20.8 17.5A1.2 1.2 0 0 1 20.5 19.5A0.8 0.8 0 0 1 19.8 20.6A1.9 1.9 0 0 1 16.9 21.6A1.6 1.6 0 0 1 14.4 22.1A1.6 1.6 0 0 1 11.9 22.2A1.6 1.6 0 0 1 9.3 22.1A1.6 1.6 0 0 1 6.8 21.6A1.9 1.9 0 0 1 3.9 20.6A0.8 0.8 0 0 1 3.2 19.5A1.2 1.2 0 0 1 3 17.5A1.2 1.2 0 0 1 3.2 15.7A1.2 1.2 0 0 1 2.9 13.8A1.2 1.2 0 0 1 3.2 12A1.2 1.2 0 0 1 3.5 10.1A1.3 1.3 0 0 1 4.5 8.2A1.7 1.7 0 0 1 6 5.9M6.8 4.8Q6.9 3.7 7.5 2.9M16.8 4.8Q16.7 3.7 16.2 2.9M8.6 10.6A0.7 0.6 0 1 0 10 10.6A0.7 0.6 0 1 0 8.6 10.6ZM13.2 10.4A0.7 0.6 0 1 0 14.6 10.4A0.7 0.6 0 1 0 13.2 10.4ZM10.2 12.2Q10.3 11.8 11.3 11.8Q12.4 11.8 12.5 12.2Q12.5 13.1 11.3 13.3Q10.2 13.1 10.2 12.2ZM11.3 13.3L11.3 14M10 14.3Q11.3 15.1 12.7 14.3M8.7 9.4Q9.5 8.9 10.5 9.4M13.1 9.3Q14.2 8.9 15.1 9.3",
   truck: "M1.5 6h8.5v11H1.5ZM10 14.5h1.5M11.5 17V7.5a1 1 0 0 1 1-1h3.2l2 4h3.6c.7 0 1.2.5 1.2 1.2V17ZM13 8.3h2.2l1.4 2.7H13ZM21.3 12.5v4M20 12.5v4M12 6.5v-4M13.8 6.5v-3M1.5 17h20" + ring(6, 18.2, 2.2) + ring(6, 18.2, .7) + ring(17, 18.2, 2.2) + ring(17, 18.2, .7),
   atom: orbit(0) + orbit(60) + orbit(120) + ring(12, 12, 1.5),
   whiteboard: "M2.5 3.5h19v14h-19ZM8 17.5l-2 4M16 17.5l2 4M4 20h16M6.6 7.5H4v5h2.6M4 10h2.2M8.2 9h2.6M8.2 11h2.6M12.4 12.5v-3.5M12.4 9.6c.4-.8 1.6-.8 1.6 0v2.9M14 9.6c.4-.8 1.6-.8 1.6 0v2.9M19 9.5a1.8 1.8 0 1 0 0 2.2M19.6 6.4h1.6l-1.6 1.6h1.6",
@@ -49,12 +55,14 @@ type Tier = "x" | "m" | "l";
 // name, left %, top %, rotation deg, size, layout tier (x under 768px, m to 1279px, l from 1280px). Hand placed, not a grid.
 const spots: readonly (readonly [Name, number, number, number, Size, Tier])[] = [
   ["chai", 18.9, 9.6, 5, "s", "x"],
-  ["headphones", 43.9, 9.6, 7, "s", "x"],
+  ["pom", 43.9, 9.6, -4, "s", "x"],
   ["ma", 68.9, 9.6, 6, "s", "x"],
   ["shield", 68.8, 1.1, -8, "l", "m"],
   ["atom", 85.7, 4.3, 9, "m", "m"],
   ["umbrella", 66.1, 16.1, -7, "m", "m"],
   ["piano", 81.8, 18.2, 6, "m", "m"],
+  ["nios", 61, 66, 3, "m", "m"],
+  ["pom", 82, 74, -4, "m", "m"],
   ["shield", 89.3, 1.7, -8, "l", "l"],
   ["atom", 92.4, 24.8, 9, "m", "l"],
   ["umbrella", 88.6, 38.8, -7, "m", "l"],
@@ -63,7 +71,7 @@ const spots: readonly (readonly [Name, number, number, number, Size, Tier])[] = 
   ["guitar", 1.8, 51.5, 10, "m", "l"],
   ["headphones", 10.8, 55.3, 7, "m", "l"],
   ["helmet", 18.5, 50.3, 7, "l", "l"],
-  ["hatch", 28.2, 54.5, 3, "m", "l"],
+  ["nios", 28.2, 54.5, 3, "m", "l"],
   ["couch", 34.8, 52.5, -5, "m", "l"],
   ["horn", 3.9, 70.6, 4, "m", "l"],
   ["laptop", 13.6, 71.0, -6, "m", "l"],
@@ -74,6 +82,7 @@ const spots: readonly (readonly [Name, number, number, number, Size, Tier])[] = 
   ["pizza", 71.2, 71.8, -9, "s", "l"],
   ["spaghetti", 78.2, 70.1, 6, "m", "l"],
   ["dosa", 86.5, 71.0, -4, "m", "l"],
+  ["pom", 25.5, 71.5, -4, "m", "l"],
   ["frame", 59.4, 88.8, 6, "s", "l"],
   ["house", 69.2, 88.8, 4, "s", "l"],
   ["truck", 78.9, 88.8, -3, "s", "l"],
