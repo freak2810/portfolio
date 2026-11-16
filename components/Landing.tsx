@@ -10,6 +10,8 @@ type LandingProps = {
   contactLabel: string;
   scrollCue: string;
   scrollCueAria: string;
+  pauseLabel: string;
+  playLabel: string;
 };
 
 export function Landing(props: LandingProps) {
@@ -27,7 +29,7 @@ export function Landing(props: LandingProps) {
         </h1>
         <p className={styles.title}>{props.title}</p>
         <div className={styles.descriptor}>
-          <RoleRotator items={props.descriptors} />
+          <RoleRotator items={props.descriptors} pauseLabel={props.pauseLabel} playLabel={props.playLabel} />
         </div>
         <a className={`button ${styles.contact}`} href="#contact">
           {props.contactLabel}

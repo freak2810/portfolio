@@ -28,6 +28,8 @@ export const ui: Ui = {
     resumeLink: "Download the resume as a PDF",
     scrollCue: "Scroll to the projects",
     heroGraphic: "A star inside a shield",
+    rotatorPause: "Pause the rotating list",
+    rotatorPlay: "Play the rotating list",
   },
   footer: "Built in Hyderabad, rooted in Warangal.",
 };

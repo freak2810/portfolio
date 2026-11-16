@@ -36,6 +36,8 @@ const hero = {
   contactLabel: ui.nav.contact,
   scrollCue: landing.scrollCue,
   scrollCueAria: ui.aria.scrollCue,
+  pauseLabel: ui.aria.rotatorPause,
+  playLabel: ui.aria.rotatorPlay,
 };
 
 const eggs = landing.easterEggs.map(({ id, tap, message }) => ({ id, target: tap.target, message }));

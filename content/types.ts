@@ -68,7 +68,7 @@ export type Ui = {
   headings: Record<SectionId, string>;
   resumeLinkLabel: string;
   notFound: { title: string; body: string; homeLabel: string };
-  aria: { nav: string; resumeLink: string; scrollCue: string; heroGraphic: string };
+  aria: { nav: string; resumeLink: string; scrollCue: string; heroGraphic: string; rotatorPause: string; rotatorPlay: string };
   footer: string;
 };
 export type SectionKey = "profile" | "links" | "skills" | "experience" | "education" | "certifications" | "projects" | "landing" | "ui";

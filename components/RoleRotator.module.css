@@ -1,90 +1,75 @@
 .rotator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   color: var(--muted);
   font-size: var(--step-0);
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
-.item:not(:first-child) {
+.item:not(:first-child),
+.toggle {
   display: none;
 }
 
-/* One pass that settles on the first item by 4.0 s after --start (WCAG 2.2.2: no loop). --start defaults to 0 and an ancestor may set it. */
+.toggle {
+  flex: none;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-block: -0.625rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.toggle path {
+  fill: currentColor;
+}
+
+/* Loops forever; WCAG 2.2.2 is met by the pause button. Keyframes are tuned for 9 items (1/9 of the cycle each); any other count stays on the first item. --start defaults to 0 and an ancestor may set it. */
 @media (prefers-reduced-motion: no-preference) {
-  :global(html.js) .items {
+  :global(html.js) .rotator[data-count="9"] {
+    --slot: 1.8s;
+  }
+
+  :global(html.js) .rotator[data-count="9"] .items {
     display: grid;
   }
 
-  :global(html.js) .item {
+  :global(html.js) .rotator[data-count="9"] .toggle {
+    display: grid;
+  }
+
+  :global(html.js) .rotator[data-count="9"] .item {
     display: block;
     grid-area: 1 / 1;
     opacity: 0;
-    animation-timing-function: var(--ease-out);
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
+    animation: cycle calc(9 * var(--slot)) var(--ease-out) infinite backwards;
+    animation-delay: calc(var(--start, 0s) + var(--i) * var(--slot));
   }
 
-  :global(html.js) [data-count="5"] {
-    --stride: 0.45s;
-    --dur: 0.5s;
-    --back: 2.4s;
+  :global(html.js) .rotator[data-paused] .item {
+    animation-play-state: paused;
   }
 
-  :global(html.js) .item:first-child {
-    opacity: 1;
-    animation-name: leave, back;
-    animation-duration: 0.2s, 0.4s;
-    animation-delay: calc(var(--start, 0s) + 0.4s), calc(var(--start, 0s) + var(--back));
-  }
-
-  :global(html.js) .item:not(:first-child) {
-    animation-name: show;
-    animation-duration: var(--dur);
-  }
-
-  :global(html.js) .item:nth-child(2) {
-    animation-delay: calc(var(--start, 0s) + 0.4s);
-  }
-
-  :global(html.js) .item:nth-child(3) {
-    animation-delay: calc(var(--start, 0s) + 0.4s + var(--stride));
-  }
-
-  :global(html.js) .item:nth-child(4) {
-    animation-delay: calc(var(--start, 0s) + 0.4s + 2 * var(--stride));
-  }
-
-  :global(html.js) .item:nth-child(5) {
-    animation-delay: calc(var(--start, 0s) + 0.4s + 3 * var(--stride));
-  }
-
-  :global(html.js) [data-count]:not([data-count="5"]) .item:not(:first-child) {
-    display: none;
-  }
-
-  @keyframes leave {
-    to {
+  @keyframes cycle {
+    0% {
       opacity: 0;
+      transform: translateY(0.35em);
     }
-  }
-
-  @keyframes back {
-    from {
-      opacity: 0;
-    }
-    to {
+    1.5%,
+    9.6% {
       opacity: 1;
+      transform: none;
     }
-  }
-
-  @keyframes show {
-    0%,
+    11.1%,
     100% {
       opacity: 0;
-    }
-    12%,
-    88% {
-      opacity: 1;
+      transform: none;
     }
   }
 }
