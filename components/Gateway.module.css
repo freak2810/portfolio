@@ -1,0 +1,54 @@
+.gateway {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.line {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.25px;
+  vector-effect: non-scaling-stroke;
+}
+
+.pillar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: visible;
+}
+
+.left {
+  left: -12px;
+}
+
+.right {
+  right: -12px;
+}
+
+.arch {
+  position: absolute;
+  top: var(--arch-top, 5rem);
+  left: 50%;
+  width: min(520px, 96vw);
+  aspect-ratio: 520 / 400;
+  height: auto;
+  overflow: visible;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+  .left {
+    left: calc(8% - 20px);
+  }
+
+  .right {
+    right: calc(8% - 20px);
+  }
+
+  .arch {
+    top: var(--arch-top, 180px);
+  }
+}

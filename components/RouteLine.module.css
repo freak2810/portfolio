@@ -1,0 +1,54 @@
+.route {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: var(--step-0);
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.stop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.dot,
+.dotFilled {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border: 1.25px solid var(--blue);
+  border-radius: 50%;
+}
+
+.dotFilled {
+  background: var(--blue);
+}
+
+.link {
+  width: 1.25px;
+  height: var(--space-3);
+  margin-left: 4px;
+  background: var(--line-strong);
+}
+
+.te {
+  font-family: var(--font-telugu), sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .route {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .link {
+    width: var(--space-7);
+    height: 1.25px;
+    margin-left: 0;
+  }
+}
