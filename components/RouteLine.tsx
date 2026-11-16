@@ -1,8 +1,10 @@
+import type { ReactNode } from "react";
+import { BuddhaStatue, Thoranam } from "./PlaceArt";
 import styles from "./RouteLine.module.css";
 
 type Place = { en: string; te?: string };
 
-function Stop({ place, filled }: { place: Place; filled?: boolean }) {
+function Stop({ place, filled, art }: { place: Place; filled?: boolean; art?: ReactNode }) {
   return (
     <span className={styles.stop}>
       <span className={filled ? styles.dotFilled : styles.dot} aria-hidden="true" />
@@ -17,6 +19,7 @@ function Stop({ place, filled }: { place: Place; filled?: boolean }) {
           </>
         )}
       </span>
+      {art}
     </span>
   );
 }
@@ -26,12 +29,12 @@ export function RouteLine({ from, to, large }: { from?: Place; to: Place; large?
     <p className={large ? `${styles.route} ${styles.large}` : styles.route}>
       {from && (
         <>
-          <Stop place={from} />
+          <Stop place={from} art={large && <Thoranam />} />
           <span className="sr-only"> to </span>
           <span className={styles.link} aria-hidden="true" />
         </>
       )}
-      <Stop place={to} filled />
+      <Stop place={to} filled art={large && <BuddhaStatue />} />
     </p>
   );
 }
