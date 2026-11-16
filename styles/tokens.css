@@ -32,3 +32,17 @@
   --nav-h: 4rem;
   --page-pad: clamp(var(--space-5), 7.5vw, 96px);
 }
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: oklch(0.985 0.006 250);
+  --surface: oklch(0.955 0.012 250);
+  --fg: oklch(0.20 0.045 262);
+  --muted: oklch(0.44 0.04 260);
+  --line: oklch(0.86 0.02 255);
+  --line-strong: oklch(0.58 0.05 258);
+  --blue: oklch(0.46 0.17 258);
+  --red: oklch(0.50 0.19 27);
+  --star-glow: oklch(0.62 0.15 245);
+}

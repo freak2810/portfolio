@@ -63,3 +63,12 @@
   fill: var(--star-glow);
   stroke: var(--star-glow);
 }
+
+:global(:root[data-theme="light"]) .star {
+  fill: var(--blue);
+  stroke: var(--blue);
+}
+
+:global(:root[data-theme="light"]) .glowCore {
+  stop-opacity: 0.18;
+}

@@ -4,6 +4,8 @@ import { sectionIds } from "../content/ids";
 import { Contact } from "../components/Contact";
 import { Education } from "../components/Education";
 import { Experience } from "../components/Experience";
+import { Footer } from "../components/Footer";
+import { GatewayDivider } from "../components/GatewayDivider";
 import { Landing } from "../components/Landing";
 import { LintelNav } from "../components/LintelNav";
 import { Projects } from "../components/Projects";
@@ -22,6 +24,7 @@ const nav = {
   items: sectionIds.filter((id) => id !== "home").map((id) => ({ id, label: ui.nav[id] })),
   resumeHref,
   resumeLabel: ui.resumeLinkLabel,
+  themeLabels: ui.themeToggle,
 };
 
 const hero = {
@@ -56,19 +59,24 @@ export default function Home() {
         <Section id="projects" heading={ui.headings.projects}>
           <Projects projects={featured} />
         </Section>
+        <GatewayDivider />
         <Section id="experience" heading={ui.headings.experience}>
           <Experience summary={profile.summary} entries={experience} />
         </Section>
+        <GatewayDivider />
         <Section id="education" heading={ui.headings.education}>
           <Education entries={education.entries} majorProject={education.majorProject} certifications={certifications} />
         </Section>
+        <GatewayDivider />
         <Section id="technology" heading={ui.headings.technology}>
           <Technology groups={skills} languages={profile.languages} />
         </Section>
+        <GatewayDivider />
         <Section id="contact" heading={ui.headings.contact}>
           <Contact {...contact} />
         </Section>
       </main>
+      <Footer line={ui.footer} from={profile.origin} to={profile.base} />
     </>
   );
 }

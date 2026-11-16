@@ -1,10 +1,11 @@
-import Link from "next/link";
+import { withBase } from "../lib/base-path";
+import { content } from "../content";
+import { NotFound } from "../components/NotFound";
 
-export default function NotFound() {
-  return (
-    <main>
-      <h1>Page not found</h1>
-      <Link href="/">Home</Link>
-    </main>
-  );
+const { notFound } = content.ui;
+
+export const metadata = { title: notFound.title };
+
+export default function NotFoundPage() {
+  return <NotFound title={notFound.title} body={notFound.body} homeLabel={notFound.homeLabel} homeHref={withBase("/")} />;
 }
