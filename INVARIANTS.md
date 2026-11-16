@@ -8,11 +8,13 @@ The content files under `content/` share one typed shape (`content/types.ts`, `c
 
 Enforced by: `pnpm typecheck` rejects a wrong shape; `node scripts/check-content.ts` checks the values.
 
-## 2. Original look only
+## 2. Original or licensed art only, no Marvel assets
 
-The look is Marvel-inspired from original assets only: no official logos, artwork, fonts or screenshots, no full movie quotes, and the owner's private phrase about facing loss together is never page copy.
+The look stays Marvel-inspired: no official logos, artwork, fonts or screenshots, no full movie quotes, and the owner's private phrase about facing loss together is never page copy.
 
-Enforced by: the banned-phrase lines of `scripts/banned.txt` and its public file-name rule catch listed phrases and file names; design review judges logos, artwork and fonts.
+Art is either original or traced from a photo whose licence allows it, and its credit shows on the page. No photo comes from a commercial site. No share-alike licence is used unless the human says yes in writing. The human's own photo appears only as a traced SVG.
+
+Enforced by: the banned-phrase lines of `scripts/banned.txt` and its public file-name rule catch listed phrases and file names; design review judges logos, artwork and fonts; credits are checked by the credits row of the art sourcing note and by the build check named in spec 002, once that check exists.
 
 ## 3. Privacy
 
@@ -37,3 +39,9 @@ Enforced by: the host's pull request review; this is a permanent rule.
 Two Innovapptive timing figures from interview prep and the Wexa context-size figure are not published (the context-size figure is omitted, not held). The resume's own figures stay. Any entry with an open flag is resolved or held before launch.
 
 Enforced by: the withheld-figure line of `scripts/banned.txt` for the literal forms; design review for paraphrases; `node scripts/check-content.ts --strict` for open flags and placeholder sections.
+
+## 7. No source photo of the human, no photo metadata
+
+No source photo of the human is in the repo or in `out/`. No EXIF, GPS or camera metadata is in the repo or in `out/` either. Only the traced SVG of the human is published.
+
+Enforced by: planned, the metadata build check named in spec 002 (AC-44), not on disk yet; until then, design review only, because `.gitignore` has no photo rule.
