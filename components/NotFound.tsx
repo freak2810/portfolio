@@ -1,4 +1,4 @@
-import { GatewayDivider } from "./GatewayDivider";
+import { Divider } from "./Divider";
 import styles from "./NotFound.module.css";
 
 type NotFoundProps = { title: string; body: string; homeLabel: string; homeHref: string };
@@ -6,7 +6,7 @@ type NotFoundProps = { title: string; body: string; homeLabel: string; homeHref:
 export function NotFound({ title, body, homeLabel, homeHref }: NotFoundProps) {
   return (
     <main className={styles.page}>
-      <GatewayDivider />
+      <Divider />
       <h1 className={styles.title}>{title}</h1>
       <p>{body}</p>
       <a className="button" href={homeHref}>
