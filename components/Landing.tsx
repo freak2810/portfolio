@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Gateway } from "./Gateway";
+import { Portrait } from "./Portrait";
 import { RoleRotator } from "./RoleRotator";
 import { RouteLine } from "./RouteLine";
 import { Shield } from "./Shield";
@@ -43,6 +44,7 @@ export function Landing(props: LandingProps) {
           <p className={styles.hero}>{props.heroLine}</p>
           <RouteLine from={props.from} to={props.to} />
         </div>
+        <Portrait />
       </div>
       <div className={styles.actions}>
         <a className={styles.cue} href="#projects" aria-label={cueAria}>

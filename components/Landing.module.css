@@ -1,5 +1,5 @@
 .landing {
-  --arch-top: 5rem;
+  --arch-top: 4.25rem;
   position: relative;
   isolation: isolate;
   display: flex;
@@ -13,19 +13,30 @@
   z-index: 1;
   display: flex;
   justify-content: center;
-  margin-top: calc(var(--arch-top) + 40px);
+  margin-top: calc(var(--arch-top) + 32px);
 }
 
 .foot {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: var(--space-2);
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "name name"
+    "role portrait"
+    "side portrait";
+  column-gap: var(--space-3);
+  row-gap: var(--space-2);
   margin-top: auto;
-  padding-top: var(--space-4);
+  padding-top: var(--space-3);
+}
+
+.role {
+  grid-area: role;
 }
 
 .name {
+  grid-area: name;
   font-size: clamp(2.5rem, 12vw, 6rem);
   letter-spacing: 0.01em;
 }
@@ -35,6 +46,7 @@
 }
 
 .side {
+  grid-area: side;
   display: grid;
   gap: var(--space-3);
   margin-top: var(--space-2);
@@ -96,16 +108,16 @@
   }
 
   .foot {
-    grid-template-columns: 1fr auto;
+    padding-top: var(--space-4);
+    grid-template-columns: 1fr auto auto;
     grid-template-areas:
-      "name name"
-      "role side";
+      "name name portrait"
+      "role side portrait";
     column-gap: var(--space-6);
     align-items: end;
   }
 
   .name {
-    grid-area: name;
     font-size: clamp(4rem, 7vw, 6rem);
   }
 
@@ -114,12 +126,10 @@
   }
 
   .role {
-    grid-area: role;
     align-self: start;
   }
 
   .side {
-    grid-area: side;
     justify-items: start;
     margin-top: 0;
   }
@@ -129,9 +139,15 @@
   }
 }
 
+@media (min-width: 900px) {
+  .name {
+    white-space: nowrap;
+  }
+}
+
 @media (min-width: 768px) and (max-height: 820px) {
   .landing {
-    --arch-top: clamp(96px, 18svh, 180px);
+    --arch-top: clamp(96px, 14svh, 180px);
   }
 }
 

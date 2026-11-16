@@ -65,7 +65,7 @@ export default function Home() {
         <Section id="experience" heading={ui.headings.experience}>
           <Experience summary={profile.summary} entries={experience} />
         </Section>
-        <GatewayDivider />
+        <GatewayDivider art />
         <Section id="education" heading={ui.headings.education}>
           <Education entries={education.entries} majorProject={education.majorProject} certifications={certifications} />
         </Section>

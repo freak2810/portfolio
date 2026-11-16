@@ -1,7 +1,13 @@
 .divider {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr;
   height: 96px;
+}
+
+.tall {
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  height: auto;
 }
 
 .rule {
@@ -9,17 +15,12 @@
   height: 96px;
 }
 
-.motif {
-  width: min(360px, calc(100vw - 2 * var(--space-5)));
-  height: 96px;
+.art {
+  width: min(420px, calc(100vw - 2 * var(--space-5)));
 }
 
 .line {
   fill: none;
   stroke: var(--line-strong);
   stroke-width: 1.25;
-}
-
-.motif .line {
-  stroke-width: 1.4;
 }

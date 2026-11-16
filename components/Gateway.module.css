@@ -6,81 +6,16 @@
   pointer-events: none;
 }
 
-.line {
-  fill: none;
-  stroke: var(--line-strong);
-  stroke-width: 1.25;
-}
-
-.arch .line {
-  stroke-width: 1.5;
-}
-
-.pillar {
+.torana {
   position: absolute;
-  top: 0;
-  height: 100%;
-  overflow: visible;
-}
-
-.left {
-  left: -12px;
-}
-
-.right {
-  right: -12px;
-}
-
-.arch {
-  position: absolute;
-  top: var(--arch-top, 5rem);
+  top: var(--arch-top, 4.25rem);
   left: 50%;
-  width: min(520px, 96vw);
-  aspect-ratio: 520 / 400;
-  height: auto;
-  overflow: visible;
+  width: min(478px, 96vw);
   transform: translateX(-50%);
 }
 
 @media (min-width: 768px) {
-  .left {
-    left: calc(8% - 20px);
-  }
-
-  .right {
-    right: calc(8% - 20px);
-  }
-
-  .arch {
+  .torana {
     top: var(--arch-top, 180px);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes draw {
-    from {
-      stroke-dasharray: 1 2;
-      stroke-dashoffset: 1;
-    }
-
-    to {
-      stroke-dasharray: 1 2;
-      stroke-dashoffset: 0;
-    }
-  }
-
-  @keyframes pillar-rise {
-    from {
-      transform: scaleY(0);
-    }
-  }
-
-  :global(html.js) .pillar {
-    transform-origin: bottom;
-    animation: pillar-rise 1s var(--ease-out) backwards;
-  }
-
-  :global(html.js) .arch .line {
-    animation: draw 1.2s var(--ease-out) 0.2s backwards;
   }
 }

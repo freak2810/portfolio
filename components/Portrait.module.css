@@ -1,0 +1,13 @@
+.portrait {
+  grid-area: portrait;
+  align-self: start;
+  width: clamp(84px, 24vw, 120px);
+  aspect-ratio: 660 / 800;
+}
+
+@media (min-width: 768px) {
+  .portrait {
+    align-self: end;
+    width: clamp(120px, 11vw, 160px);
+  }
+}
