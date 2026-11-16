@@ -1,3 +1,4 @@
+import { about } from "./about.ts";
 import { certifications } from "./certifications.ts";
 import { education } from "./education.ts";
 import { experience } from "./experience.ts";
@@ -27,6 +28,7 @@ const dropHeld = (value: unknown): unknown => {
 export const content = dropHeld({
   profile,
   links,
+  about,
   skills,
   experience,
   education,

@@ -15,7 +15,7 @@ export const ui: Ui = {
     experience: "Field record.",
     education: "Where the training happened.",
     technology: "The kit.",
-    contact: "Send word. A real person answers.",
+    contact: "The road so far.",
   },
   resumeLinkLabel: "Resume PDF",
   notFound: {
@@ -29,5 +29,5 @@ export const ui: Ui = {
     scrollCue: "Scroll to the projects",
     heroGraphic: "A star inside a shield",
   },
-  footer: "Built in Hyderabad, rooted in Warangal. Nobody on this team stands alone.",
+  footer: "Built in Hyderabad, rooted in Warangal.",
 };

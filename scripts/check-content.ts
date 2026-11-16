@@ -15,7 +15,6 @@ const textExtensions = new Set([".ts", ".tsx", ".css", ".svg", ".json", ".md", "
 const scannedDirs = ["app", "components", "styles"];
 
 const phonePattern = /(?<!\d)\+?\d(?:[ ().-]{0,2}\d){8,}(?!\d)/;
-const emailPattern = /^[^\s@:]+@[^\s@]+\.[^\s@]+$/;
 const monthPattern = /^\d{4}-(0[1-9]|1[0-2])$/;
 const teluguPattern = /^[ఀ-౿‌‍ ]+$/;
 const pdfCharPattern = /^[ -~ -ÿ–—‘’“”•…€™]$/;
@@ -76,11 +75,7 @@ const openFlags = (c: Content): string[] => flagEntries(c).map(([path, text]) =>
 const checkStrings = (c: Content, add: Add): void =>
   walkStrings(c, "", (text, path) => {
     if (phonePattern.test(text)) add(path, "phone", "holds a phone-number pattern");
-    if (path === "links.email") {
-      if (!emailPattern.test(text)) add(path, "email", "not a bare address");
-    } else if (text.includes("@")) {
-      add(path, "email", "holds an @ outside links.email");
-    }
+    if (text.includes("@")) add(path, "email", "holds an @; no email is published");
     if (text !== text.normalize("NFC")) add(path, "nfc", "not NFC-normalised");
     if (path.endsWith(".te") && !teluguPattern.test(text)) add(path, "te", "holds a character outside the Telugu block");
   });
@@ -261,7 +256,6 @@ const ruleCases: { label: string; rule: string; mutate: (c: DeepMutable<Content>
   { label: "icon key shown nowhere", rule: "icon-orphan", mutate: (c) => { c.techIcons["Nothing Shown"] = "chip"; } },
   { label: "icon value not a slug", rule: "icon-slug", mutate: (c) => { (c.techIcons as Record<string, string>)["Kafka"] = "nope"; } },
   { label: "slug used by no entry", rule: "icon-unused", mutate: (c) => { c.techIcons["Kafka"] = "chip"; } },
-  { label: "mailto in links.email", rule: "email", mutate: (c) => { c.links.email = "mailto:a@b.co"; } },
 ];
 
 const runRuleCases = (): void => {

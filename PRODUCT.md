@@ -12,7 +12,7 @@ Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub 
 Two equal audiences: recruiters and hiring managers (want the resume fast, one click to the PDF) and developer peers (want to see real projects and open each repo from its card).
 
 ## Product Purpose
-A personal resume-style portfolio for Aditya Manikanth Rao, Senior Backend Engineer | Tech Lead, based in Hyderabad, born in Warangal. Success is both equal: a hiring action (PDF download or email within a minute, repo opened from a project card) and the visitor remembering the person and the voice.
+A personal resume-style portfolio for Aditya Manikanth Rao, Senior Backend Engineer | Tech Lead, based in Hyderabad, born in Warangal. Success is both equal: a hiring action (PDF download or a LinkedIn or GitHub visit within a minute, repo opened from a project card) and the visitor remembering the person and the voice.
 
 ## Positioning
 A senior backend and tech-lead record told in a Captain America code ("if we lose, we lose it together"), rooted in Warangal and Hyderabad. No other engineer's portfolio can truthfully copy that voice or those roots. The wording is the owner's own paraphrase of the Captain America idea of facing loss together; site copy stays original and never reproduces a film line.
@@ -22,7 +22,7 @@ Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data.
 
 ## Capabilities and Constraints
 - Sections: landing screen, top three projects after the first scroll, then Experience, Education, Technology, Contact; resume PDF linked in one click.
-- Contact is a mailto link plus social links. No form, no server code. Phone number is never published.
+- Contact is LinkedIn, GitHub and the resume PDF only. No email address and no mailto link. No form, no server code. Phone number is never published.
 - First-load JavaScript at most 200 KB gzipped (measured baseline 138.5 KB). Lighthouse mobile 90 or more, layout shift under 0.1.
 - Static export under /Portfolio/ base path; all asset paths go through a base-path helper.
 - Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is back in the skills list.

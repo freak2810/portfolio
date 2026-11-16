@@ -16,10 +16,15 @@ export type Profile = {
   languages: readonly { name: "English" | "Hindi" | "Telugu"; level?: string }[];
 };
 export type Links = {
-  email: string;
   linkedin: string;
   github: string;
   resumePath: "/resume.pdf";
+};
+export type About = {
+  paragraphs: readonly [string, ...string[]];
+  onRepeatLabel: string;
+  onRepeat: readonly { title: string; artist: string }[];
+  closing: string;
 };
 export type TechIcon = IconSlug | "chip";
 export type SkillGroup = { name: string; items: readonly string[] };
@@ -70,6 +75,7 @@ export type SectionKey = "profile" | "links" | "skills" | "experience" | "educat
 export type Content = {
   profile: Profile;
   links: Links;
+  about: About;
   skills: readonly SkillGroup[];
   experience: readonly Experience[];
   education: { entries: readonly Education[]; majorProject?: MajorProject };

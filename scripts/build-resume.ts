@@ -78,7 +78,6 @@ const buildLines = (c: Content): Line[] => [
     style: "contact",
     parts: withSeparators([
       plain(c.profile.base.en),
-      { text: c.links.email, link: `mailto:${c.links.email}` },
       linked(c.links.linkedin),
       linked(c.links.github),
     ]),
