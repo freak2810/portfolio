@@ -28,4 +28,7 @@
   --space-8: 6rem;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --nav-h: 4rem;
+  --page-pad: clamp(var(--space-5), 7.5vw, 96px);
 }

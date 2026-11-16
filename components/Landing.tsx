@@ -17,8 +17,6 @@ type LandingProps = {
   scrollCue: string;
   scrollCueAria: string;
   heroGraphicAria: string;
-  resumeHref: string;
-  resumeLabel: string;
 };
 
 export function Landing(props: LandingProps) {
@@ -26,9 +24,6 @@ export function Landing(props: LandingProps) {
   return (
     <section id="home" className={styles.landing}>
       <Gateway />
-      <a className="skip" href="#experience">
-        {props.skipLabel}
-      </a>
       <div className={styles.stage}>
         <Shield ariaLabel={props.heroGraphicAria} />
       </div>
@@ -50,9 +45,6 @@ export function Landing(props: LandingProps) {
         </div>
       </div>
       <div className={styles.actions}>
-        <a className={styles.resume} href={props.resumeHref}>
-          {props.resumeLabel}
-        </a>
         <a className={styles.cue} href="#projects" aria-label={cueAria}>
           <span className={styles.tick} aria-hidden="true" />
           {props.scrollCue}

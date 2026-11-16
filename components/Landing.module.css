@@ -48,7 +48,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   column-gap: var(--space-2);
   margin-top: var(--space-2);
@@ -60,16 +60,14 @@
   padding-block: var(--space-1);
 }
 
-.resume {
-  justify-self: start;
-}
-
 .skip {
+  grid-column: 3;
   justify-self: end;
   text-align: right;
 }
 
 .cue {
+  grid-column: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,16 +84,12 @@
 @media (min-width: 768px) {
   .landing {
     --arch-top: clamp(96px, 20svh, 180px);
-    padding-inline: clamp(var(--space-5), 7.5vw, 96px);
+    padding-inline: var(--page-pad);
     padding-bottom: var(--space-4);
   }
 
   .stage {
     margin-top: calc(var(--arch-top) + 50px);
-  }
-
-  .actions {
-    grid-template-columns: 1fr auto 1fr;
   }
 
   .foot {

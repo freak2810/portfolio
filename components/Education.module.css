@@ -1,0 +1,67 @@
+.entries {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.entry {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--line);
+}
+
+.dates {
+  color: var(--muted);
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+}
+
+.school {
+  margin-bottom: var(--space-1);
+  font-size: var(--step-1);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.block {
+  margin-top: var(--space-7);
+}
+
+.tech {
+  margin-top: var(--space-3);
+}
+
+.listHead {
+  margin-bottom: var(--space-3);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--step-1);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.certs {
+  max-width: 70ch;
+  margin: 0;
+  padding-left: var(--space-5);
+}
+
+.certs li::marker {
+  color: var(--line-strong);
+}
+
+.certs li + li {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .entry {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    column-gap: var(--space-6);
+  }
+}
