@@ -14,7 +14,7 @@ import { Section } from "../components/Section";
 import { TechIconSprite } from "../components/TechIcons";
 import { Technology } from "../components/Technology";
 
-const { profile, landing, ui, links, projects, featuredProjectIds, experience, education, certifications, skills, techIcons } = content;
+const { profile, about, landing, ui, links, projects, featuredProjectIds, experience, education, certifications, skills, techIcons } = content;
 
 const resumeHref = withBase(links.resumePath);
 const featured = featuredProjectIds.flatMap((id) => projects.find((project) => project.id === id) ?? []);
@@ -41,7 +41,9 @@ const hero = {
 const eggs = landing.easterEggs.map(({ id, tap, message }) => ({ id, target: tap.target, message }));
 
 const contact = {
-  email: links.email,
+  about,
+  from: profile.origin,
+  to: profile.base,
   linkedin: links.linkedin,
   github: links.github,
   resumeHref,
@@ -78,7 +80,7 @@ export default function Home() {
           <Contact {...contact} />
         </Section>
       </main>
-      <Footer line={ui.footer} from={profile.origin} to={profile.base} starLabel={ui.aria.heroGraphic} />
+      <Footer line={ui.footer} starLabel={ui.aria.heroGraphic} />
       <EasterEggs eggs={eggs} />
     </>
   );

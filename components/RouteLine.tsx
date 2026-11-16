@@ -21,9 +21,9 @@ function Stop({ place, filled }: { place: Place; filled?: boolean }) {
   );
 }
 
-export function RouteLine({ from, to }: { from?: Place; to: Place }) {
+export function RouteLine({ from, to, large }: { from?: Place; to: Place; large?: boolean }) {
   return (
-    <p className={styles.route}>
+    <p className={large ? `${styles.route} ${styles.large}` : styles.route}>
       {from && (
         <>
           <Stop place={from} />
