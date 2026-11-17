@@ -55,9 +55,9 @@ const main = async (): Promise<void> => {
 };
 
 export const baseProblem = (base: string): string | undefined =>
-  /^\/[^/]+$/.test(base)
+  /^(\/[^/]+)?$/.test(base)
     ? undefined
-    : `env: base: NEXT_PUBLIC_BASE_PATH must look like /name with no trailing slash, got "${base}"`;
+    : `env: base: NEXT_PUBLIC_BASE_PATH must be empty or look like /name with no trailing slash, got "${base}"`;
 
 export const serveOut = (options: Options): Promise<Server> => {
   const problem = baseProblem(options.base);

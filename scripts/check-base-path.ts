@@ -38,9 +38,9 @@ const checkOutput = (outDir: string, base: string): string[] => {
 };
 
 const baseProblem = (base: string): string | undefined =>
-  /^\/[^/]/.test(base) && !base.endsWith("/")
+  base === "" || (/^\/[^/]/.test(base) && !base.endsWith("/"))
     ? undefined
-    : `env: base: NEXT_PUBLIC_BASE_PATH must look like /name with no trailing slash, got "${base}"`;
+    : `env: base: NEXT_PUBLIC_BASE_PATH must be empty or look like /name with no trailing slash, got "${base}"`;
 
 const siteProblem = (site: string, base: string): string | undefined =>
   new URL(site).pathname === `${base}/`
@@ -145,14 +145,15 @@ const selfTestClean = (): void => {
 };
 
 const selfTestBase = (): void => {
-  for (const bad of ["", "name", "/name/", "/"]) {
+  for (const bad of ["name", "/name/", "/"]) {
     check(`rejects base "${bad}"`, baseProblem(bad) !== undefined);
   }
-  for (const good of ["/name", "/a.b"]) {
+  for (const good of ["", "/name", "/a.b"]) {
     check(`accepts base "${good}"`, baseProblem(good) === undefined);
   }
-  check("accepts a site under the base", siteProblem("https://x.github.io/name/", "/name") === undefined);
-  for (const bad of ["https://x.github.io/", "https://x.github.io/other/", "https://x.github.io/name"]) {
+  check("accepts a site under the base", siteProblem("https://x.example/name/", "/name") === undefined);
+  check("accepts a root site with an empty base", siteProblem("https://x.vercel.app/", "") === undefined);
+  for (const bad of ["https://x.example/", "https://x.example/other/", "https://x.example/name"]) {
     check(`rejects site "${bad}"`, siteProblem(bad, "/name") !== undefined);
   }
 };

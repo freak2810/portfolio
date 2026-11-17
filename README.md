@@ -1,8 +1,8 @@
 # Aditya Manikanth Rao - Portfolio
 
-A static portfolio site for Aditya Manikanth Rao, a senior backend engineer and tech lead. Live at <https://freak2810.github.io/portfolio/>.
+A static portfolio site for Aditya Manikanth Rao, a senior backend engineer and tech lead. Live at <https://aditya2810.vercel.app/>.
 
-It is a Next.js App Router site exported to plain files (`output: "export"`), with typed content in `content/`, one black theme and no tracking. The base path is `/portfolio/`.
+It is a Next.js App Router site exported to plain files (`output: "export"`), with typed content in `content/`, one black theme and no tracking. It is served at the domain root; `withBase` still wraps every asset path, so a `/name` base path works too.
 
 ## Run it
 
@@ -11,10 +11,10 @@ Install [Node](https://nodejs.org) 22.19 or newer and [pnpm](https://pnpm.io), t
 ```
 pnpm install
 pnpm dev
-NEXT_PUBLIC_BASE_PATH=/portfolio pnpm build
+pnpm build
 ```
 
-The last line makes the static build in `out/` the way GitHub Pages serves it.
+The last line writes the static build to `out/`.
 
 ## Scripts
 
@@ -22,11 +22,11 @@ The last line makes the static build in `out/` the way GitHub Pages serves it.
 - `pnpm typecheck`: generate route types, then `tsc --noEmit`.
 - `pnpm build`: `scripts/check-content.ts`, then `scripts/build-resume.ts`, then `next build`.
 - `pnpm measure`: first-load JavaScript size of `out/` (fails over 200 KB gzip).
-- `NEXT_PUBLIC_BASE_PATH=/portfolio pnpm serve`: serve `out/` on `127.0.0.1:4173` under the base path, with the host's 404 and gzip behaviour. It exits 1 without the variable.
-- `NEXT_PUBLIC_BASE_PATH=/portfolio pnpm lighthouse`: after a build with the base path, run Lighthouse (3 runs, median) on the served page and an accessibility run on the 404 page. It needs Chrome at the default macOS path or `CHROME_PATH`, and exits 1 without the variable. `node scripts/lighthouse-check.ts --url <https-url>` audits a live page instead, with no server and no variable.
+- `pnpm serve`: serve `out/` on `127.0.0.1:4173` at the root, with the host's 404 and gzip behaviour. Set `NEXT_PUBLIC_BASE_PATH=/name` for both the build and the serve to test a sub-path.
+- `pnpm lighthouse`: after a build, run Lighthouse (3 runs, median) on the served page and an accessibility run on the 404 page. It needs Chrome at the default macOS path or `CHROME_PATH`. `node scripts/lighthouse-check.ts --url <https-url>` audits a live page instead, with no server and no variable.
 - `node scripts/check-content.ts [--self-test]`: content rules.
 - `node scripts/build-resume.ts [--self-test]`: build `public/resume.pdf` from the content files.
-- `NEXT_PUBLIC_BASE_PATH=/portfolio node scripts/check-base-path.ts [--self-test]`: every root-relative asset path in `out/` carries the base path.
+- `node scripts/check-base-path.ts [--self-test]`: every root-relative asset path in `out/` carries the base path (at the root, with an empty base, it only checks the site URL and that `/_next/` assets exist). It runs locally only; no CI runs it.
 
 ## Content
 
@@ -34,7 +34,7 @@ Copy lives in `content/*.ts`.
 
 ## Deploy
 
-A push to `main` runs the GitHub Actions workflow in `.github/workflows/pages.yml`, which runs `pnpm typecheck`, `pnpm build` and the base-path check, then publishes `out/`. A pull request runs the same checks but publishes nothing. Set Settings > Pages > Source to GitHub Actions once. A person merges; nothing deploys from a topic branch.
+Vercel builds each push with `pnpm build` and serves `out/`; production is `main`. A person merges; nothing deploys from a topic branch.
 
 ## Project rules
 

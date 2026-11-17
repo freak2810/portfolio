@@ -3,7 +3,7 @@ export type SectionId = (typeof sectionIds)[number];
 export const iconSlugs = [
   "typescript", "javascript", "python", "nodedotjs", "express", "fastapi", "graphql",
   "react", "nextdotjs", "tailwindcss", "sass",
-  "apachekafka", "rabbitmq", "docker", "githubactions", "sentry", "github",
+  "apachekafka", "rabbitmq", "docker", "githubactions", "sentry", "github", "vercel",
   "postgresql", "mongodb", "elasticsearch", "redis", "qdrant", "firebase", "stripe",
   "solidity", "langchain", "langgraph", "meta", "claude",
   "openai", "layers", "network", "webhook", "gauge", "activity",
