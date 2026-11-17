@@ -20,6 +20,7 @@ export const techIcons: Readonly<Record<string, TechIcon>> = {
   "GPT": "openai",
   "LLaMA": "meta",
   "Claude": "claude",
+  "Claude Code": "claude",
   "AWS (Lambda, S3, CloudFront)": "cloud",
   "Docker": "docker",
   "GitHub Actions": "githubactions",

@@ -54,7 +54,7 @@ export default function Home() {
       <main>
         <Landing {...hero} />
         <Section id="projects" heading={ui.headings.projects}>
-          <Projects projects={plates} />
+          <Projects projects={plates} icons={techIcons} />
         </Section>
         <Divider />
         <Section id="experience" heading={ui.headings.experience}>

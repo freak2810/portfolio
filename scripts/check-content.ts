@@ -150,7 +150,7 @@ const checkIds = (c: Content, add: Add): void => {
 };
 
 const checkIcons = (c: Content, add: Add): void => {
-  const shown = new Set([...c.skills.flatMap((group) => group.items), ...c.experience.flatMap((job) => job.tech)]);
+  const shown = new Set([...c.skills.flatMap((group) => group.items), ...c.experience.flatMap((job) => job.tech), ...c.projects.flatMap((project) => project.tech)]);
   const keys = Object.keys(c.techIcons);
   const slugs: readonly string[] = iconSlugs;
   for (const name of shown) {

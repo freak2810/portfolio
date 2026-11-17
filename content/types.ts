@@ -72,7 +72,7 @@ export type Content = {
   education: { entries: readonly Education[]; majorProject?: MajorProject };
   certifications: readonly Certification[];
   projects: readonly Project[];
-  featuredProjectIds: readonly [string, string, string];
+  featuredProjectIds: readonly [string, string];
   landing: Landing;
   ui: Ui;
   techIcons: Readonly<Record<string, TechIcon>>;
