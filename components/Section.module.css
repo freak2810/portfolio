@@ -1,0 +1,17 @@
+.section {
+  padding: var(--space-8) var(--space-5) var(--space-7);
+}
+
+.inner {
+  max-width: 80rem;
+}
+
+.heading {
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-inline: var(--page-pad);
+  }
+}

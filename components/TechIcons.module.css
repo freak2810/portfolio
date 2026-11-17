@@ -1,0 +1,184 @@
+.list {
+  --band: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--band) var(--space-3);
+  margin: 0;
+  padding: 0 0 var(--band);
+  list-style: none;
+}
+
+.list li:nth-child(n + 2) {
+  --i: 1;
+}
+
+.list li:nth-child(n + 3) {
+  --i: 2;
+}
+
+.list li:nth-child(n + 4) {
+  --i: 3;
+}
+
+.list li:nth-child(n + 5) {
+  --i: 4;
+}
+
+.list li:nth-child(n + 6) {
+  --i: 5;
+}
+
+.list li:nth-child(n + 7) {
+  --i: 6;
+}
+
+.list li:nth-child(n + 8) {
+  --i: 7;
+}
+
+.list li:nth-child(n + 9) {
+  --i: 8;
+}
+
+.lg {
+  --glyph: 2.5rem;
+  --target: 3.25rem;
+}
+
+.sm {
+  --glyph: 1.5rem;
+  --target: 2rem;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--target);
+  height: var(--target);
+  color: var(--fg);
+}
+
+.logo svg {
+  width: var(--glyph);
+  height: var(--glyph);
+  fill: currentColor;
+}
+
+.name {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% 0;
+  padding-top: var(--space-1);
+  font-size: var(--step--1);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+}
+
+.logo:hover {
+  color: var(--accent);
+}
+
+.logo:hover .name {
+  overflow: visible;
+  inline-size: auto;
+  block-size: auto;
+  clip-path: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.2;
+}
+
+/* The large list always shows its labels. */
+.lg {
+  align-items: flex-start;
+  row-gap: var(--space-3);
+  padding-bottom: 0;
+}
+
+.lg .logo {
+  flex-direction: column;
+  width: min-content;
+  min-width: 5.5rem;
+  height: auto;
+  gap: var(--space-1);
+  padding-block: var(--space-1);
+}
+
+.lg .chip {
+  align-self: flex-start;
+}
+
+.lg .name {
+  position: static;
+  translate: none;
+  padding-top: 0;
+  color: var(--muted);
+  text-align: center;
+  white-space: normal;
+  overflow: visible;
+  inline-size: auto;
+  block-size: auto;
+  clip-path: none;
+}
+
+.lg .logo:hover .name {
+  color: var(--accent);
+}
+
+/* The small list shows its labels on touch only; elsewhere a label appears on hover. */
+@media (hover: none) {
+  .sm {
+    align-items: flex-start;
+    row-gap: var(--space-3);
+    padding-bottom: 0;
+  }
+
+  .sm .logo {
+    flex-direction: column;
+    width: min-content;
+    min-width: 5.5rem;
+    height: auto;
+    gap: var(--space-1);
+    padding-block: var(--space-1);
+  }
+
+  .sm .chip {
+    align-self: flex-start;
+  }
+
+  .sm .name {
+    position: static;
+    translate: none;
+    padding-top: 0;
+    color: var(--muted);
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
+    inline-size: auto;
+    block-size: auto;
+    clip-path: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    transition: color 150ms var(--ease-out);
+  }
+}

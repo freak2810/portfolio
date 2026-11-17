@@ -1,0 +1,52 @@
+.list {
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.row {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.term {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--step-1);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.items {
+  max-width: 70ch;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    column-gap: var(--space-6);
+  }
+}
+
+.glyph {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.level {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-align: center;
+}

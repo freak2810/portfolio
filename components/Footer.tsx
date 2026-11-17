@@ -1,7 +1,11 @@
-export default function Footer() {
-	return (
-		<footer className='py-2 text-center border-t'>
-			<p>Developed with 💘 in Hyderabad (🇮🇳)</p>
-		</footer>
-	);
+import { Doodles } from "./Doodles";
+import styles from "./Footer.module.css";
+
+export function Footer({ line }: { line: string }) {
+  return (
+    <footer className={styles.footer}>
+      <Doodles variant="footer" />
+      <p className={styles.line}>{line}</p>
+    </footer>
+  );
 }

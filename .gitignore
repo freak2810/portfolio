@@ -37,3 +37,6 @@ yarn-error.log*
 dist/*
 
 DS_Store
+public/resume.pdf
+next-env.d.ts
+*.tsbuildinfo
