@@ -47,12 +47,13 @@ export const projects: readonly Project[] = [
   {
     id: "this-portfolio",
     title: "This portfolio",
-    headline: "Static site on GitHub Pages",
+    headline: "Static Next.js site on GitHub Pages, built with an AI agent team",
     points: [
-      { text: "Typed content files feed both the site and the PDF." },
-      { text: "A content check runs on every build." },
+      { text: "Built with my own multi-agent Claude Code setup: a planner, a pair of coding agents and reviewers, gated by scripted checks." },
+      { text: "Lighthouse 100 for performance and accessibility, guarded by a budget script that fails when first and largest paint diverge." },
+      { text: "Typed content files feed both the site and the resume PDF, with a content check on every build." },
     ],
-    tech: ["Next.js", "TypeScript", "GitHub Actions"],
+    tech: ["Next.js", "TypeScript", "GitHub Actions", "Claude Code"],
     repoUrl: "https://github.com/freak2810/Portfolio",
     liveUrl: "https://freak2810.github.io/Portfolio/",
   },
