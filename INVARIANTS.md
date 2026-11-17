@@ -4,7 +4,7 @@ Rules that hold for this site. A change that conflicts with one is stopped and d
 
 ## 1. The content shape is the contract
 
-The content files under `content/` share one typed shape (`content/types.ts`, `content/ids.ts`, `content/index.ts`). The web pages and the PDF read it only through `content`. The shape changes only by a logged contract drop.
+The content files under `content/` share one typed shape (`content/types.ts`, `content/ids.ts`, `content/index.ts`). The web pages and the PDF read it only through `content`. The shape changes only by a logged contract drop. Note: `Profile.origin` was removed in commit f120f7f (the closing chapter dropped the route line).
 
 Enforced by: `pnpm typecheck` rejects a wrong shape; `node scripts/check-content.ts` checks the values.
 
@@ -12,7 +12,7 @@ Enforced by: `pnpm typecheck` rejects a wrong shape; `node scripts/check-content
 
 The look stays Marvel-inspired: no official logos, artwork, fonts or screenshots, no full movie quotes (one exception: the landing role line may carry the five quotes listed in `content/landing.ts` items 8, 9, 11, 12 and 13 (item 10 is the owner's own line) by the owner's decision of 2026-11-17; the ban stays in force everywhere else, including all other copy and the PDF), and the owner's private phrase about facing loss together is never page copy.
 
-Art is either original or traced from a photo whose licence allows it, and its credit is published in the `README.md` Acknowledgments section. Any art traced from a CC BY-SA photo that returns to the site also needs a footer link to that section. No photo comes from a commercial site. No share-alike licence is used unless the human says yes in writing. The human's own photo appears only as a traced SVG.
+Art is either original or traced from a photo whose licence allows it, and its credit is published in the `README.md` Acknowledgments section. No photo comes from a commercial site. No share-alike licence is used unless the human says yes in writing. The human's own photo appears only as a traced SVG.
 
 Enforced by: the banned-phrase lines of `scripts/banned.txt` (its "I can do this all day" line was removed for the landing role line exception) and its public file-name rule catch listed phrases and file names; design review judges logos, artwork and fonts; credits are checked by the credits row of the art sourcing note and by the `README.md` Acknowledgments section, which holds one entry per third-party work, and by the build check named in spec 002, once that check exists.
 
