@@ -21,12 +21,12 @@ A senior backend and tech-lead record told in a Captain America code ("if we los
 Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data. The site is also the source of a build-time PDF resume made from the same content files.
 
 ## Capabilities and Constraints
-- Sections: landing screen, top three projects after the first scroll, then Experience, Education, Technology, About; resume PDF linked in one click.
+- Sections: landing screen, top three projects (and this portfolio as a fourth card) after the first scroll, then Experience, Education, Technology, About; resume PDF linked in one click.
 - Contact is LinkedIn, GitHub and the resume PDF only, as icon links on the landing. No email address and no mailto link. No form, no server code. Phone number is never published.
 - First-load JavaScript at most 200 KB gzipped (measured baseline 138.5 KB). Lighthouse mobile 90 or more, layout shift under 0.1.
 - Static export under /Portfolio/ base path; all asset paths go through a base-path helper.
 - Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is back in the skills list.
-- Telugu touch is minimal: only the place names (Warangal, Hyderabad) in Telugu script on the web page; no Telugu tagline (owner decision). The PDF carries no Telugu.
+- Telugu touch is minimal: no Telugu tagline (owner decision). The PDF carries no Telugu.
 - Undecided: the top three projects are provisional (Wexa engine, EventDesk revival, this portfolio); old project names will come from the owner later. EventDesk framing and team size, a 2019 to 2020 intern role, certification issuers and years are unconfirmed and held back.
 
 ## Brand Commitments
@@ -43,4 +43,4 @@ Resume and LinkedIn facts in the feature notes (identity, summary, skills, five 
 5. The voice is brave and team-first; it never mocks or boasts.
 
 ## Accessibility & Inclusion
-WCAG AA as the floor on the single black theme, with AAA text contrast on body copy where it is cheap. Full keyboard path, a still fallback for prefers-reduced-motion, content readable with JavaScript off, a skip option for the landing screen, Telugu text must render correctly.
+WCAG AA as the floor on the single black theme, with AAA text contrast on body copy where it is cheap. Full keyboard path, a still fallback for prefers-reduced-motion, content readable with JavaScript off, a skip option for the landing screen.
