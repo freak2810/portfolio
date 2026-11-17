@@ -27,7 +27,7 @@ Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data.
 - Static export under /Portfolio/ base path; all asset paths go through a base-path helper.
 - Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is back in the skills list.
 - Telugu touch is minimal: no Telugu tagline (owner decision). The PDF carries no Telugu.
-- Undecided: the top three projects are provisional (Wexa engine, EventDesk revival, this portfolio); old project names will come from the owner later. EventDesk framing and team size, a 2019 to 2020 intern role, certification issuers and years are unconfirmed and held back.
+- Undecided: the top three projects are provisional (Wexa engine, EventDesk, this portfolio); old project names will come from the owner later. A 2019 to 2020 intern role, certification issuers and years are unconfirmed and held back.
 
 ## Brand Commitments
 Original or licensed art only: no official Marvel logos, artwork or fonts. Captain America voice in the copy, restrained but visible. Photo-traced vector art of local landmarks (the Kakatiya gateway for Warangal) shows only on the not-found page; its credit lives in the README Acknowledgments (a respectful landmark image, never played for a joke). The portrait in the closing chapter is the owner's own photograph in an arch frame, not art; the crown-and-sparkles line overlay drawn on it is original (aria-hidden), with no official Marvel art, Autobot insignia, Hyundai badge or show logos. These commit to existence, not to a look.

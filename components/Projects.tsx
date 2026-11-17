@@ -29,7 +29,7 @@ export function Projects({ projects }: { projects: readonly Plate[] }) {
             )}
             {project.points.length > 0 && (
               <ul className={styles.points}>
-                {project.points.slice(0, 2).map((point) => (
+                {project.points.slice(0, 3).map((point) => (
                   <li key={point.text}>{point.text}</li>
                 ))}
               </ul>

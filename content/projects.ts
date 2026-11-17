@@ -13,23 +13,15 @@ export const projects: readonly Project[] = [
     stat: { value: "$0.5M", label: "angel funding the company raised" },
   },
   {
-    id: "eventdesk-revival",
-    title: "EventDesk revival",
-    headline: "Venue booking marketplace shipped as lockdowns eased",
+    id: "eventdesk",
+    title: "EventDesk",
+    headline: "Venue discovery and direct booking marketplace",
     points: [
-      { text: "Shared TypeScript across web and mobile." },
-      {
-        text: "Led a team of 5 developers.",
-        flag: "Team size: resume and LinkedIn say 5, interview prep says 4",
-        hold: true,
-      },
-      {
-        text: "Kept the client business alive.",
-        flag: "Interview prep only, not on the resume",
-        hold: true,
-      },
+      { text: "Led a team of 5 developers and mentored interns, owning delivery across Android, iOS and web." },
+      { text: "Built the customer venue booking marketplace and carried its heavy traffic through the September to January peak season." },
+      { text: "Architected Stripe payments: charges, refunds and platform fees." },
     ],
-    tech: ["TypeScript", "Next.js", "React Native"],
+    tech: ["TypeScript", "Next.js", "React Native", "Stripe"],
   },
   {
     id: "anu-ui",
@@ -63,4 +55,4 @@ export const projects: readonly Project[] = [
   },
 ];
 
-export const featuredProjectIds: Content["featuredProjectIds"] = ["wexa-agent-engine", "eventdesk-revival", "cdc-pipeline"];
+export const featuredProjectIds: Content["featuredProjectIds"] = ["wexa-agent-engine", "eventdesk", "cdc-pipeline"];
