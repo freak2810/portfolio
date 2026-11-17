@@ -1,3 +1,22 @@
 .portrait {
-  aspect-ratio: 660 / 800;
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.portrait::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 2px solid var(--accent);
+  border-radius: 52% 48% 0 0 / 38% 41% 0 0;
+  pointer-events: none;
+}
+
+.portrait[data-art] > img {
+  inset: 14px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  object-fit: cover;
+  border-radius: 999px 999px 0 0;
+  mask-image: linear-gradient(to bottom, black 80%, transparent);
 }

@@ -148,7 +148,7 @@ const fieldClass = { closing: styles.field, footer: `${styles.field} ${styles.fl
 
 export function Doodles({ variant = "closing" }: { variant?: "closing" | "footer" | "portrait" }) {
   return (
-    <div className={fieldClass[variant]} aria-hidden="true">
+    <div className={fieldClass[variant]} aria-hidden="true" data-reveal={variant === "footer" ? undefined : "fade"}>
       {variant === "closing" && (
         <svg width="0" height="0" style={{ position: "absolute" }}>
           {Object.entries(paths).map(([name, d]) => (

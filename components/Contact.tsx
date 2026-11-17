@@ -12,17 +12,19 @@ export function Contact({ about }: { about: About }) {
     <div className={styles.root}>
       <Doodles />
       <div className={styles.story}>
-        <div className={styles.figure} data-reveal>
+        <div className={styles.figure}>
           <Portrait />
           <Doodles variant="portrait" />
         </div>
-        <div className={styles.text} data-reveal>
+        <div className={styles.text}>
           {about.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph} data-reveal="rise">
+              {paragraph}
+            </p>
           ))}
         </div>
       </div>
-      <p className={styles.closing} data-reveal>
+      <p className={styles.closing} data-reveal="rise">
         {about.closing.before}
         <a className={styles.closingLink} href="#home">
           {about.closing.link}
