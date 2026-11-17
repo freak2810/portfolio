@@ -9,6 +9,38 @@
   list-style: none;
 }
 
+.list li:nth-child(n + 2) {
+  --i: 1;
+}
+
+.list li:nth-child(n + 3) {
+  --i: 2;
+}
+
+.list li:nth-child(n + 4) {
+  --i: 3;
+}
+
+.list li:nth-child(n + 5) {
+  --i: 4;
+}
+
+.list li:nth-child(n + 6) {
+  --i: 5;
+}
+
+.list li:nth-child(n + 7) {
+  --i: 6;
+}
+
+.list li:nth-child(n + 8) {
+  --i: 7;
+}
+
+.list li:nth-child(n + 9) {
+  --i: 8;
+}
+
 .lg {
   --glyph: 2.5rem;
   --target: 3.25rem;

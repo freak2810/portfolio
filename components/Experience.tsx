@@ -20,33 +20,35 @@ export function Experience({ summary, entries, icons }: ExperienceProps) {
   return (
     <>
       <p className={styles.lede}>{summary}</p>
-      {entries.map((entry) => (
-        <article key={entry.id} className={styles.entry} data-reveal>
-          <div className={styles.meta}>
-            <h3 className={styles.company}>{entry.company}</h3>
-            {entry.about && <p className={styles.about}>{entry.about}</p>}
-            <p className={styles.about}>{entry.location}</p>
-            {entry.roles.map((role) => (
-              <p key={role.start} className={styles.role}>
-                {role.title}
-                <span className={styles.dates}>{monthRange(role.start, role.end)}</span>
-              </p>
-            ))}
-          </div>
-          <div className={styles.body}>
-            <ul className={styles.bullets}>
-              {entry.bullets.map((bullet) => (
-                <li key={bullet.text}>{bullet.text}</li>
+      <div className={styles.timeline}>
+        {entries.map((entry) => (
+          <article key={entry.id} className={styles.entry}>
+            <div className={styles.meta}>
+              <h3 className={styles.company}>{entry.company}</h3>
+              {entry.about && <p className={styles.about}>{entry.about}</p>}
+              <p className={styles.about}>{entry.location}</p>
+              {entry.roles.map((role) => (
+                <p key={role.start} className={styles.role}>
+                  {role.title}
+                  <span className={styles.dates}>{monthRange(role.start, role.end)}</span>
+                </p>
               ))}
-            </ul>
-            {entry.tech.length > 0 && (
-              <div className={styles.tech}>
-                <TechList names={entry.tech} icons={icons} size="sm" label={TECH_LABEL} />
-              </div>
-            )}
-          </div>
-        </article>
-      ))}
+            </div>
+            <div className={styles.body}>
+              <ul className={styles.bullets}>
+                {entry.bullets.map((bullet) => (
+                  <li key={bullet.text}>{bullet.text}</li>
+                ))}
+              </ul>
+              {entry.tech.length > 0 && (
+                <div className={styles.tech}>
+                  <TechList names={entry.tech} icons={icons} size="sm" label={TECH_LABEL} />
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
     </>
   );
 }

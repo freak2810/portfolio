@@ -5,13 +5,59 @@
   line-height: 1.5;
 }
 
+.timeline {
+  position: relative;
+  padding-left: var(--space-5);
+}
+
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.timeline::before {
+  left: 0.5px;
+  width: 1px;
+  background: var(--line);
+}
+
+.timeline::after {
+  left: 0;
+  width: 2px;
+  background: var(--accent);
+  transform-origin: top;
+}
+
 .entry {
   border-top: 1px solid var(--line);
 }
 
 .company {
+  position: relative;
   margin: var(--space-6) 0 var(--space-2);
   font-size: var(--step-1);
+}
+
+.company::before,
+.company::after {
+  content: "";
+  position: absolute;
+  top: 0.35em;
+  left: calc(-1 * var(--space-5) - 3px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.company::before {
+  background: var(--line-strong);
+}
+
+.company::after {
+  background: var(--accent);
 }
 
 .about {
@@ -70,5 +116,34 @@
 
   .bullets {
     margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes fill {
+      from {
+        transform: scaleY(0);
+      }
+    }
+
+    @keyframes dot-pop {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+
+    :global(html.js) .timeline::after {
+      animation: fill both linear;
+      animation-timeline: view();
+      animation-range: cover 10% cover 70%;
+    }
+
+    :global(html.js) .company::after {
+      animation: dot-pop both var(--ease-out);
+      animation-timeline: view();
+      animation-range: cover 40% cover 60%;
+    }
   }
 }

@@ -26,7 +26,7 @@ export function Education({ entries, majorProject, certifications }: EducationPr
     <>
       <ul className={styles.entries}>
         {entries.map((entry) => (
-          <li key={entry.id} className={styles.entry} data-reveal>
+          <li key={entry.id} className={styles.entry}>
             <p className={styles.dates}>{yearRange(entry.start, entry.end)}</p>
             <div>
               <h3 className={styles.school}>{entry.school}</h3>
@@ -37,7 +37,7 @@ export function Education({ entries, majorProject, certifications }: EducationPr
         ))}
       </ul>
       {majorProject && (
-        <div className={styles.block} data-reveal>
+        <div className={styles.block}>
           <h3 className={styles.school}>
             {MAJOR_LABEL}: {majorProject.title}
           </h3>
@@ -45,7 +45,7 @@ export function Education({ entries, majorProject, certifications }: EducationPr
           <p className={`${styles.muted} ${styles.tech}`}>{majorProject.tech.join(" · ")}</p>
         </div>
       )}
-      <div className={styles.block} data-reveal>
+      <div className={styles.block}>
         <p id="education-certifications" className={styles.listHead}>
           {CERT_LABEL}
         </p>

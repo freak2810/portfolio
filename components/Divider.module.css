@@ -2,4 +2,5 @@
   height: 1px;
   margin-block: var(--space-6);
   background: var(--line-strong);
+  transform-origin: left;
 }
