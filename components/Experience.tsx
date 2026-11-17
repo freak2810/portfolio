@@ -25,14 +25,14 @@ export function Experience({ summary, entries, icons }: ExperienceProps) {
           <article key={entry.id} className={styles.entry}>
             <div className={styles.meta}>
               <h3 className={styles.company}>{entry.company}</h3>
-              {entry.about && <p className={styles.about}>{entry.about}</p>}
-              <p className={styles.about}>{entry.location}</p>
               {entry.roles.map((role) => (
                 <p key={role.start} className={styles.role}>
                   {role.title}
                   <span className={styles.dates}>{monthRange(role.start, role.end)}</span>
                 </p>
               ))}
+              {entry.about && <p className={styles.about}>{entry.about}</p>}
+              <p className={styles.about}>{entry.location}</p>
             </div>
             <div className={styles.body}>
               <ul className={styles.bullets}>
