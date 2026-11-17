@@ -1,5 +1,5 @@
 import { Divider } from "./Divider";
-import { TracedArt } from "./TracedArt";
+import { withBase } from "../lib/base-path";
 import styles from "./NotFound.module.css";
 
 type NotFoundProps = { title: string; body: string; homeLabel: string; homeHref: string };
@@ -9,7 +9,9 @@ export function NotFound({ title, body, homeLabel, homeHref }: NotFoundProps) {
     <main className={styles.page}>
       <Divider />
       <div className={styles.art}>
-        <TracedArt name="torana" width={720} height={601} />
+        <span data-art="torana" style={{ display: "block", aspectRatio: "720 / 601" }}>
+          <img src={withBase("/art/torana.svg")} width={720} height={601} alt="" loading="lazy" decoding="async" />
+        </span>
       </div>
       <h1 className={styles.title}>{title}</h1>
       <p>{body}</p>

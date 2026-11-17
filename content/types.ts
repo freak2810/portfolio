@@ -3,8 +3,7 @@ import type { IconSlug, SectionId } from "./ids.ts";
 export type Bilingual = { en: string; te?: string };
 export type YearMonth = `${number}-${number}`;
 export type End = YearMonth | "present";
-export type Flagged = { flag?: string; hold?: true };
-export type Bullet = { text: string } & Flagged;
+export type Bullet = { text: string };
 
 export type Profile = {
   name: string;
@@ -35,10 +34,10 @@ export type Experience = {
   roles: readonly [Role, ...Role[]];
   bullets: readonly Bullet[];
   tech: readonly string[];
-} & Flagged;
+};
 export type Education = { id: string; school: string; degree: string; start: number; end: number | "present"; detail?: string };
 export type MajorProject = { title: string; summary: string; tech: readonly string[] };
-export type Certification = { id: string; name: string; issuer?: string; year?: number; url?: string } & Flagged;
+export type Certification = { id: string; name: string; issuer?: string; year?: number; url?: string };
 export type Project = {
   id: string;
   title: string;
@@ -48,7 +47,7 @@ export type Project = {
   repoUrl?: string;
   liveUrl?: string;
   stat?: { value: string; label: string };
-} & Flagged;
+};
 export type Landing = {
   descriptors: readonly [string, ...string[]];
   skipLabel: string;

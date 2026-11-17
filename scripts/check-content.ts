@@ -27,17 +27,14 @@ const main = (): void => {
     selfTest();
     return;
   }
-  const strict = args.includes("--strict");
-  const flags = openFlags(content);
-  if (!strict) flags.forEach((line) => console.log(`check-content: ${line}`));
-  const problems = [...findProblems(content, strict), ...scanBanned(repoRoot)];
+  const problems = [...findProblems(content), ...scanBanned(repoRoot)];
   if (problems.length > 0) {
     problems.forEach((problem) => console.log(`check-content: ${problem}`));
     console.log(`check-content: ${problems.length} problem(s)`);
     process.exitCode = 1;
     return;
   }
-  console.log(`check-content: ok (${flags.length} open flag(s))`);
+  console.log("check-content: ok");
 };
 
 const walkNodes = (value: unknown, path: string, visit: (node: unknown, path: string) => void): void => {
@@ -54,24 +51,20 @@ const walkStrings = (value: unknown, path: string, visit: (text: string, path: s
     if (typeof node === "string") visit(node, nodePath);
   });
 
-const findProblems = (c: Content, strict: boolean): string[] => {
+const findProblems = (c: Content): string[] => {
   const found: string[] = [];
   const add: Add = (path, rule, detail) => {
     found.push(`${path}: ${rule}: ${detail}`);
   };
   checkStrings(c, add);
-  checkHold(c, add);
   checkCharset(c, add);
   checkMonths(c, add);
   checkYears(c, add);
   checkIds(c, add);
   checkIcons(c, add);
   checkFeatured(c, add);
-  if (strict) checkStrict(c, add);
   return found;
 };
-
-const openFlags = (c: Content): string[] => flagEntries(c).map(([path, text]) => `open flag: ${path}: ${text}`);
 
 const checkStrings = (c: Content, add: Add): void =>
   walkStrings(c, "", (text, path) => {
@@ -79,13 +72,6 @@ const checkStrings = (c: Content, add: Add): void =>
     if (text.includes("@")) add(path, "email", "holds an @; no email is published");
     if (text !== text.normalize("NFC")) add(path, "nfc", "not NFC-normalised");
     if (path.endsWith(".te") && !teluguPattern.test(text)) add(path, "te", "holds a character outside the Telugu block");
-  });
-
-const checkHold = (c: Content, add: Add): void =>
-  walkNodes(c, "", (node, path) => {
-    if (typeof node === "object" && node !== null && (node as { hold?: unknown }).hold === true) {
-      add(path, "hold", "held item left in published content");
-    }
   });
 
 const pdfSections = (c: Content): [string, unknown][] => [
@@ -172,20 +158,6 @@ const checkFeatured = (c: Content, add: Add): void =>
     if (!c.projects.some((project) => project.id === id)) add(`featuredProjectIds[${index}]`, "featured", "no project has this id");
   });
 
-const checkStrict = (c: Content, add: Add): void => {
-  flagEntries(c).forEach(([path, text]) => add(path, "flag", text));
-};
-
-const flagEntries = (c: Content): [string, string][] => {
-  const entries: [string, string][] = [];
-  walkNodes(c, "", (node, path) => {
-    if (typeof node !== "object" || node === null || Array.isArray(node)) return;
-    const { flag, hold } = node as { flag?: unknown; hold?: unknown };
-    if (typeof flag === "string" && hold !== true) entries.push([path, flag]);
-  });
-  return entries;
-};
-
 const scanBanned = (root: string): string[] => {
   const listPath = join(root, bannedFile);
   const lines = existsSync(listPath) ? readFileSync(listPath, "utf8").split(/\r?\n/) : [];
@@ -222,7 +194,7 @@ const bannedPublicNames = (root: string): string[] =>
 
 const selfTest = (): void => {
   runRuleCases();
-  runModeCases();
+  runCleanCase();
   runBannedCases();
   console.log("self-test: ok");
 };
@@ -245,7 +217,6 @@ const ruleCases: { label: string; rule: string; mutate: (c: DeepMutable<Content>
   { label: "duplicate id", rule: "dup-id", mutate: (c) => { c.experience.push(structuredClone(c.experience[0])); } },
   { label: "missing featured id", rule: "featured", mutate: (c) => { c.featuredProjectIds[0] = "nope"; } },
   { label: "non-NFC string", rule: "nfc", mutate: (c) => { c.profile.name = "é"; } },
-  { label: "hold left in content", rule: "hold", mutate: (c) => { c.experience[0].hold = true; } },
   { label: "arrow outside the PDF font", rule: "charset", mutate: (c) => { c.skills[0].items[0] += "→"; } },
   { label: "Telugu outside te", rule: "charset", mutate: (c) => { c.profile.title += "క"; } },
   { label: "te holds Latin", rule: "te", mutate: (c) => { c.profile.base.te = "abc"; } },
@@ -261,19 +232,14 @@ const runRuleCases = (): void => {
   for (const { label, rule, mutate } of ruleCases) {
     const c = freshContent();
     mutate(c);
-    assert.ok(findProblems(c, false).some((problem) => problem.includes(`: ${rule}: `)), `${label}: expected a ${rule} problem`);
+    assert.ok(findProblems(c).some((problem) => problem.includes(`: ${rule}: `)), `${label}: expected a ${rule} problem`);
     console.log(`self-test: ${label}: ok`);
   }
 };
 
-const runModeCases = (): void => {
-  assert.deepStrictEqual(findProblems(freshContent(), false), [], "untouched content must have no problem");
-  const flagged = freshContent();
-  flagged.experience[0].bullets[0].flag = "planted";
-  const strict = findProblems(flagged, true);
-  assert.ok(strict.some((problem) => problem.includes(": flag: ")), "strict must flag an open flag");
-  assert.ok(openFlags(flagged).length > 0, "default mode must list the open flags");
-  console.log("self-test: default and strict modes: ok");
+const runCleanCase = (): void => {
+  assert.deepStrictEqual(findProblems(freshContent()), [], "untouched content must have no problem");
+  console.log("self-test: untouched content: ok");
 };
 
 const plant = (root: string, relPath: string, text: string): void => {

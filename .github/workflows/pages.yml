@@ -26,8 +26,6 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
-      - if: github.event_name == 'push'
-        run: node scripts/check-content.ts --strict
       - run: pnpm build
       - run: node scripts/check-base-path.ts
       - if: github.event_name == 'push'

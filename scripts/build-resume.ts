@@ -217,12 +217,6 @@ const selfTest = (): void => {
   assert.deepStrictEqual(problems(content, lines, 2), [], "untouched content must have no problem");
   console.log("self-test: untouched content: ok");
 
-  const flagged = structuredClone(content) as DeepMutable<Content>;
-  flagged.experience[0].bullets[0].flag = "SECRET-FLAG-TEXT";
-  flagged.projects[0].points[0].flag = "SECRET-FLAG-TEXT";
-  assert.ok(!buildLines(flagged).some((line) => lineText(line).includes("SECRET-FLAG-TEXT")), "flag text must not be drawn");
-  console.log("self-test: flag text never drawn: ok");
-
   const dropped = structuredClone(content) as DeepMutable<Content>;
   dropped.experience.pop();
   const reversed = structuredClone(content) as DeepMutable<Content>;

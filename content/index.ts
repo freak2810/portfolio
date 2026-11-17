@@ -12,22 +12,9 @@ import { byKitOrder } from "./techOrder.ts";
 import { ui } from "./ui.ts";
 import type { Content } from "./types.ts";
 
-const isHeld = (item: unknown): boolean =>
-  typeof item === "object" && item !== null && (item as { hold?: unknown }).hold === true;
-
-const dropHeld = (value: unknown): unknown => {
-  if (Array.isArray(value)) {
-    return value.filter((item) => !isHeld(item)).map(dropHeld);
-  }
-  if (typeof value === "object" && value !== null) {
-    return Object.fromEntries(Object.entries(value).map(([key, inner]) => [key, dropHeld(inner)]));
-  }
-  return value;
-};
-
 const sortTech = <T extends { tech: readonly string[] }>(item: T): T => ({ ...item, tech: byKitOrder(item.tech) });
 
-const composed: Content = {
+export const content: Content = {
   profile,
   links,
   about,
@@ -42,7 +29,5 @@ const composed: Content = {
   techIcons,
 };
 
-export const content = dropHeld(composed) as Content;
 export { sectionIds } from "./ids.ts";
-export type { SectionId } from "./ids.ts";
 export type { Content } from "./types.ts";
