@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "black" };
 
-const display = Big_Shoulders({ weight: ["700", "800"], subsets: ["latin"], variable: "--font-display" });
+const display = Big_Shoulders({ weight: ["700", "800"], subsets: ["latin"], variable: "--font-display", display: "optional" });
 const body = Hanken_Grotesk({ weight: ["400", "600"], subsets: ["latin"], variable: "--font-body" });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
