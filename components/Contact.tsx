@@ -7,7 +7,7 @@ type About = {
   closing: { before: string; link: string; after: string };
 };
 
-export function Contact({ about }: { about: About }) {
+export function Contact({ about, linkedinHref }: { about: About; linkedinHref: string }) {
   return (
     <div className={styles.root}>
       <Doodles />
@@ -26,7 +26,7 @@ export function Contact({ about }: { about: About }) {
       </div>
       <p className={styles.closing} data-reveal="rise">
         {about.closing.before}
-        <a className={styles.closingLink} href="#home">
+        <a className={styles.closingLink} href={linkedinHref}>
           {about.closing.link}
         </a>
         {about.closing.after}

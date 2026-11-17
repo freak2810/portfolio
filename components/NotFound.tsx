@@ -16,6 +16,7 @@ export function NotFound({ title, body, homeLabel, homeHref }: NotFoundProps) {
       <a className="button" href={homeHref}>
         {homeLabel}
       </a>
+      <p className={styles.credit}>Art traced from a Wikimedia Commons photo: Kakatiya thoranam by Ms Sarah Welch (CC0).</p>
     </main>
   );
 }

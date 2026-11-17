@@ -17,3 +17,9 @@
   width: clamp(160px, 25vw, 240px);
   height: auto;
 }
+
+.credit {
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: var(--step--1);
+}

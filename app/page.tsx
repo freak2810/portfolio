@@ -18,6 +18,7 @@ const { profile, about, landing, ui, links, projects, featuredProjectIds, experi
 const resumeHref = withBase(links.resumePath);
 const featured = featuredProjectIds.flatMap((id) => projects.find((project) => project.id === id) ?? []);
 const portfolio = projects.find((project) => project.id === "this-portfolio");
+const plates = portfolio ? [...featured, portfolio] : featured;
 
 const nav = {
   name: profile.name,
@@ -55,7 +56,7 @@ export default function Home() {
       <main>
         <Landing {...hero} />
         <Section id="projects" heading={ui.headings.projects}>
-          <Projects projects={featured} portfolio={portfolio} />
+          <Projects projects={plates} />
         </Section>
         <Divider />
         <Section id="experience" heading={ui.headings.experience}>
@@ -71,7 +72,7 @@ export default function Home() {
         </Section>
         <Divider />
         <Section id="contact" heading={ui.headings.contact}>
-          <Contact about={about} />
+          <Contact about={about} linkedinHref={links.linkedin} />
         </Section>
       </main>
       <Footer line={ui.footer} />
