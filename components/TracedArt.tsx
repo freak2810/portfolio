@@ -1,7 +1,7 @@
 import { withBase } from "../lib/base-path";
 
 type TracedArtProps = {
-  name: "portrait" | "torana" | "buddha";
+  name: "portrait" | "torana";
   width: number;
   height: number;
 };
