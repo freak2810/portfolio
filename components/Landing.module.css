@@ -70,6 +70,32 @@
   transform-origin: top;
 }
 
+.muggu {
+  display: block;
+  width: clamp(9.375rem, 50%, 10.625rem);
+  aspect-ratio: 240 / 112;
+  contain: paint;
+}
+
+.muggu svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dots {
+  fill: var(--fg);
+  opacity: 0.16;
+}
+
+.line {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 @media (min-width: 1024px) {
   .text {
     grid-template-columns: max-content minmax(0, 1fr);
@@ -79,6 +105,10 @@
 
   .title {
     margin-top: 0;
+  }
+
+  .muggu {
+    width: clamp(11rem, 19vw, 18rem);
   }
 }
 
@@ -126,5 +156,31 @@
 
   :global(html.js) .tick {
     animation: tick-nudge 1.4s var(--ease-out) 2s 2;
+  }
+
+  /* Draw 2.5 s, rest 4 s, sweep 1 s, then draw again. The dash gap is longer than the path, so a round cap leaves no dot at rest. */
+  @keyframes muggu-draw {
+    0% {
+      stroke-dashoffset: 1.02;
+      animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+    }
+
+    33.33%,
+    86.67% {
+      stroke-dashoffset: 0;
+    }
+
+    100% {
+      stroke-dashoffset: -1.02;
+    }
+  }
+
+  :global(html.js) .line {
+    stroke-dasharray: 1 2;
+    animation: muggu-draw 7.5s linear 0.6s infinite backwards;
+  }
+
+  :global(html.js) .muggu[data-paused] .line {
+    animation-play-state: paused;
   }
 }

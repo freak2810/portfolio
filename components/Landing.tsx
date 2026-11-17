@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Muggu } from "./Muggu";
 import { RoleRotator } from "./RoleRotator";
 import { SocialLinks, type SocialLinksProps } from "./SocialIcons";
 import styles from "./Landing.module.css";
@@ -26,6 +27,7 @@ export function Landing(props: LandingProps) {
           ))}
         </h1>
         <div className={styles.details}>
+          <Muggu />
           <p className={styles.title}>{props.title}</p>
           <div className={styles.descriptor}>
             <RoleRotator items={props.descriptors} />
