@@ -1,21 +1,12 @@
 .footer {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-4);
-  padding: var(--space-7) var(--space-5) var(--space-6);
+  padding: calc(var(--space-6) + 3.5rem) var(--space-5) var(--space-6);
   text-align: center;
-}
-
-.mark {
-  position: relative;
-}
-
-.shieldHit {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .line {
@@ -31,6 +22,6 @@
 
 @media (min-width: 768px) {
   .footer {
-    padding-inline: var(--page-pad);
+    padding: var(--space-7) var(--page-pad) var(--space-6);
   }
 }

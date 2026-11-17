@@ -2,7 +2,6 @@ import { withBase } from "../lib/base-path";
 import { content } from "../content";
 import { sectionIds } from "../content/ids";
 import { Contact } from "../components/Contact";
-import { EasterEggs } from "../components/EasterEggs";
 import { Education } from "../components/Education";
 import { Experience } from "../components/Experience";
 import { Footer } from "../components/Footer";
@@ -45,8 +44,6 @@ const hero = {
   },
 };
 
-const eggs = landing.easterEggs.map(({ id, tap, message }) => ({ id, target: tap.target, message }));
-
 const contact = {
   about,
   from: profile.origin,
@@ -83,8 +80,7 @@ export default function Home() {
           <Contact {...contact} />
         </Section>
       </main>
-      <Footer line={ui.footer} starLabel={ui.aria.heroGraphic} />
-      <EasterEggs eggs={eggs} />
+      <Footer line={ui.footer} />
     </>
   );
 }

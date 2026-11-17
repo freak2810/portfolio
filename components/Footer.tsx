@@ -1,13 +1,10 @@
-import { Shield } from "./Shield";
+import { Doodles } from "./Doodles";
 import styles from "./Footer.module.css";
 
-export function Footer({ line, starLabel }: { line: string; starLabel: string }) {
+export function Footer({ line }: { line: string }) {
   return (
     <footer className={styles.footer}>
-      <div className={styles.mark}>
-        <span className={styles.shieldHit} data-egg="shield" />
-        <Shield ariaLabel={starLabel} />
-      </div>
+      <Doodles variant="footer" />
       <p className={styles.line}>{line}</p>
       <p className={styles.attribution}>
         Art traced from Wikimedia Commons photos: Kakatiya thoranam by Ms Sarah Welch (CC0); Buddha statue by iMahesh (CC

@@ -51,9 +51,10 @@ const paths = {
 type Name = keyof typeof paths;
 type Size = "s" | "m" | "l";
 type Tier = "x" | "m" | "l";
+type Spot = readonly [Name, number, number, number, Size, Tier];
 
 // name, left %, top %, rotation deg, size, layout tier (x under 768px, m to 1279px, l from 1280px). Hand placed, not a grid.
-const spots: readonly (readonly [Name, number, number, number, Size, Tier])[] = [
+const closingSpots: readonly Spot[] = [
   ["chai", 18.9, 9.6, 5, "s", "x"],
   ["pom", 43.9, 9.6, -4, "s", "x"],
   ["ma", 68.9, 9.6, 6, "s", "x"],
@@ -88,17 +89,40 @@ const spots: readonly (readonly [Name, number, number, number, Size, Tier])[] = 
   ["truck", 78.9, 88.8, -3, "s", "l"],
 ];
 
-export function Doodles() {
+// Footer band: same icons, free side bands of the centred footer text (a row above the text on phones).
+const footerSpots: readonly Spot[] = [
+  ["veena", 12, 8, -6, "s", "x"],
+  ["umbrella", 44, 8, 5, "s", "x"],
+  ["atom", 76, 8, -8, "s", "x"],
+  ["umbrella", 3, 12, -7, "s", "m"],
+  ["whiteboard", 10, 50, 4, "s", "m"],
+  ["atom", 87, 12, 8, "s", "m"],
+  ["couch", 85, 50, -5, "s", "m"],
+  ["veena", 5, 12, -6, "m", "l"],
+  ["whiteboard", 12.5, 50, 4, "m", "l"],
+  ["umbrella", 21.5, 12, -7, "m", "l"],
+  ["tabla", 22.5, 52, -5, "s", "l"],
+  ["atom", 70, 12, 8, "s", "l"],
+  ["couch", 76, 50, -5, "m", "l"],
+  ["guitar", 85, 12, -6, "m", "l"],
+  ["headphones", 91, 52, 6, "s", "l"],
+];
+
+// The footer variant reuses the symbols the closing chapter defines, so it renders no second copy of them.
+export function Doodles({ variant = "closing" }: { variant?: "closing" | "footer" }) {
+  const footer = variant === "footer";
   return (
-    <div className={styles.field} aria-hidden="true">
-      <svg width="0" height="0" style={{ position: "absolute" }}>
-        {Object.entries(paths).map(([name, d]) => (
-          <symbol key={name} id={`dd-${name}`} viewBox="0 0 24 24">
-            <path d={d} vectorEffect="non-scaling-stroke" />
-          </symbol>
-        ))}
-      </svg>
-      {spots.map(([name, x, y, turn, size, tier], i) => (
+    <div className={`${styles.field} ${footer ? styles.flush : ""}`} aria-hidden="true">
+      {!footer && (
+        <svg width="0" height="0" style={{ position: "absolute" }}>
+          {Object.entries(paths).map(([name, d]) => (
+            <symbol key={name} id={`dd-${name}`} viewBox="0 0 24 24">
+              <path d={d} vectorEffect="non-scaling-stroke" />
+            </symbol>
+          ))}
+        </svg>
+      )}
+      {(footer ? footerSpots : closingSpots).map(([name, x, y, turn, size, tier], i) => (
         <svg
           key={i}
           className={`${styles.icon} ${styles[size]} ${styles[`t${tier}`]}`}

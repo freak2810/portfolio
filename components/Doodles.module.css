@@ -11,6 +11,10 @@
   mask-composite: intersect;
 }
 
+.field.flush {
+  inset: 0;
+}
+
 .icon {
   display: none;
   position: absolute;

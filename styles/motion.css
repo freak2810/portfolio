@@ -27,48 +27,6 @@
     }
   }
 
-  @keyframes flare {
-    50% {
-      transform: scale(1.25);
-    }
-  }
-
-  @keyframes throw {
-    0% {
-      opacity: 1;
-      transform: translate(var(--x0), var(--y0)) rotate(0deg);
-    }
-
-    35% {
-      transform: translate(88vw, 30vh) rotate(360deg);
-    }
-
-    70% {
-      transform: translate(10vw, 55vh) rotate(720deg);
-    }
-
-    92% {
-      opacity: 1;
-      transform: translate(var(--x0), var(--y0)) rotate(1080deg);
-    }
-
-    100% {
-      opacity: 0;
-      transform: translate(var(--x0), var(--y0)) rotate(1080deg);
-    }
-  }
-
-  html[data-egg-play="star"] [data-flare] {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: flare 0.9s var(--ease-out);
-  }
-
-  html[data-egg-play="shield"] [data-flyer] {
-    display: block;
-    animation: throw 1.6s var(--ease-out) both;
-  }
-
   @keyframes art-fade {
     from {
       opacity: 0;
