@@ -25,8 +25,8 @@ Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data.
 - Contact is LinkedIn, GitHub and the resume PDF only, as icon links on the landing. No email address and no mailto link. No form, no server code. Phone number is never published.
 - First-load JavaScript at most 200 KB gzipped (measured baseline 138.5 KB). Lighthouse mobile 90 or more, layout shift under 0.1.
 - Static export under /Portfolio/ base path; all asset paths go through a base-path helper.
-- Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is back in the skills list.
-- Telugu touch is minimal: no Telugu tagline (owner decision). The PDF carries no Telugu.
+- Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is out of the kit, by owner decision on 2026-11-17.
+- Telugu touch stays small: no Telugu tagline (owner decision). The landing muggu alternates the Telugu line with a Hindi companion, both drawn as paths with no font file shipped. The PDF carries no Telugu and no Hindi.
 - Undecided: the top three projects are provisional (Wexa engine, EventDesk, this portfolio); old project names will come from the owner later. A 2019 to 2020 intern role, certification issuers and years are unconfirmed and held back.
 
 ## Brand Commitments
