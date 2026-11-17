@@ -25,7 +25,8 @@ The last line makes the static build in `out/` the way GitHub Pages serves it.
 - `NEXT_PUBLIC_BASE_PATH=/Portfolio pnpm serve`: serve `out/` on `127.0.0.1:4173` under the base path, with the host's 404 and gzip behaviour. It exits 1 without the variable.
 - `NEXT_PUBLIC_BASE_PATH=/Portfolio pnpm lighthouse`: after a build with the base path, run Lighthouse (3 runs, median) on the served page and an accessibility run on the 404 page. It needs Chrome at the default macOS path or `CHROME_PATH`, and exits 1 without the variable. `node scripts/lighthouse-check.ts --url <https-url>` audits a live page instead, with no server and no variable.
 - `node scripts/check-content.ts [--self-test]`: content rules.
-- `node scripts/check-base-path.ts`: every root-relative asset path in `out/` carries the base path.
+- `node scripts/build-resume.ts [--self-test]`: build `public/resume.pdf` from the content files.
+- `NEXT_PUBLIC_BASE_PATH=/Portfolio node scripts/check-base-path.ts [--self-test]`: every root-relative asset path in `out/` carries the base path.
 
 ## Content
 
@@ -33,7 +34,7 @@ Copy lives in `content/*.ts`.
 
 ## Deploy
 
-A push to `main` runs the GitHub Actions workflow in `.github/workflows/pages.yml`, which builds the site and publishes it. Set Settings > Pages > Source to GitHub Actions once. A person merges; nothing deploys from a topic branch.
+A push to `main` runs the GitHub Actions workflow in `.github/workflows/pages.yml`, which runs `pnpm typecheck`, `pnpm build` and the base-path check, then publishes `out/`. A pull request runs the same checks but publishes nothing. Set Settings > Pages > Source to GitHub Actions once. A person merges; nothing deploys from a topic branch.
 
 ## Project rules
 

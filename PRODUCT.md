@@ -6,7 +6,7 @@
 web
 
 ## Stack
-Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub Actions to GitHub Pages project page freak2810.github.io/Portfolio. Plain CSS with CSS-only motion and no motion library (owner decision, 2026-11-16); one black theme on every visit, with no light theme and no toggle. No CMS, no ESLint in this cut. Exception (owner, 2026-11-17): one small pause and resume script, `MugguPause`, that only toggles `animation-play-state` and never animates; and `NavSpy`, which only sets `aria-current` on the nav link of the section in view; and `MotionToggle`, a pause-motion button (WCAG 2.2.2) that only toggles a data attribute on `<html>` so CSS pauses the looping animations (owner, 2026-11-17).
+Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub Actions to GitHub Pages project page freak2810.github.io/Portfolio. Plain CSS with CSS-only motion and no motion library (owner decision, 2026-11-16); one black theme on every visit, with no light theme and no theme toggle. No CMS, no ESLint in this cut. Exception (owner, 2026-11-17): one small pause and resume script, `MugguPause`, that only toggles `animation-play-state` and never animates; and `NavSpy`, which only sets `aria-current` on the nav link of the section in view; and `MotionToggle`, a pause-motion button (WCAG 2.2.2) that only toggles a data attribute on `<html>` so CSS pauses the looping animations (owner, 2026-11-17).
 
 ## Users
 Two equal audiences: recruiters and hiring managers (want the resume fast, one click to the PDF) and developer peers (want to see real projects and open each repo from its card).

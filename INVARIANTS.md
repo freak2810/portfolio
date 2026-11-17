@@ -14,7 +14,7 @@ The look stays Marvel-inspired: no official logos, artwork, fonts or screenshots
 
 Art is either original or traced from a photo or a font outline whose licence allows it, and its credit is published in the `README.md` Acknowledgments section. The Telugu letter in the closing section is traced from the Noto Sans Telugu outline (SIL OFL 1.1); no font file is shipped. No photo comes from a commercial site. No share-alike licence is used unless the human says yes in writing. The portrait in the closing chapter is the owner's own photograph, not third-party art, so it needs no credit.
 
-Enforced by: the banned-phrase lines of `scripts/banned.txt` (its "I can do this all day" line was removed for the landing role line exception) and its public file-name rule catch listed phrases and file names; design review judges logos, artwork and fonts; credits are checked by the credits row of the art sourcing note and by the `README.md` Acknowledgments section, which holds one entry per third-party work, and by the build check named in spec 002, once that check exists.
+Enforced by: the banned-phrase lines of `scripts/banned.txt` (its "I can do this all day" line was removed for the landing role line exception) and its public file-name rule catch listed phrases and file names; design review judges logos, artwork and fonts; credits are checked by the credits row of the art sourcing note and by the `README.md` Acknowledgments section, which holds one entry per third-party work. No automated credit check exists.
 
 ## 3. Privacy
 
@@ -26,7 +26,7 @@ Enforced by: the phone-pattern and no-`@` rules in `scripts/check-content.ts`, w
 
 Every raw asset path in the pages goes through `withBase` from `lib/base-path.ts`, so the site works under the repository path on GitHub Pages.
 
-Enforced by: design review now; the post-build path check in the deploy workflow once that workflow lands.
+Enforced by: `node scripts/check-base-path.ts`, run over `out/` by `.github/workflows/pages.yml` on every push and pull request; design review for new paths.
 
 ## 5. Main changes only through a human-merged pull request
 
