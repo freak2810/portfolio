@@ -7,7 +7,6 @@ import { links } from "./links.ts";
 import { featuredProjectIds, projects } from "./projects.ts";
 import { profile } from "./profile.ts";
 import { skills } from "./skills.ts";
-import { status } from "./status.ts";
 import { techIcons } from "./techIcons.ts";
 import { byKitOrder } from "./techOrder.ts";
 import { ui } from "./ui.ts";
@@ -41,7 +40,6 @@ const composed: Content = {
   landing,
   ui,
   techIcons,
-  status,
 };
 
 export const content = dropHeld(composed) as Content;

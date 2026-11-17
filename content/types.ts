@@ -3,7 +3,6 @@ import type { IconSlug, SectionId } from "./ids.ts";
 export type Bilingual = { en: string; te?: string };
 export type YearMonth = `${number}-${number}`;
 export type End = YearMonth | "present";
-export type Confirmation = "placeholder" | "confirmed";
 export type Flagged = { flag?: string; hold?: true };
 export type Bullet = { text: string } & Flagged;
 
@@ -73,7 +72,6 @@ export type Ui = {
   motion: { pause: string };
   footer: string;
 };
-export type SectionKey = "profile" | "links" | "about" | "skills" | "experience" | "education" | "certifications" | "projects" | "landing" | "ui";
 export type Content = {
   profile: Profile;
   links: Links;
@@ -87,5 +85,4 @@ export type Content = {
   landing: Landing;
   ui: Ui;
   techIcons: Readonly<Record<string, TechIcon>>;
-  status: Record<SectionKey, Confirmation>;
 };

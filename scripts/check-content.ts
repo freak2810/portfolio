@@ -174,9 +174,6 @@ const checkFeatured = (c: Content, add: Add): void =>
 
 const checkStrict = (c: Content, add: Add): void => {
   flagEntries(c).forEach(([path, text]) => add(path, "flag", text));
-  Object.entries(c.status).forEach(([key, value]) => {
-    if (value === "placeholder") add(`status.${key}`, "status", "section is still a placeholder");
-  });
 };
 
 const flagEntries = (c: Content): [string, string][] => {
@@ -274,7 +271,6 @@ const runModeCases = (): void => {
   const flagged = freshContent();
   flagged.experience[0].bullets[0].flag = "planted";
   const strict = findProblems(flagged, true);
-  assert.ok(strict.some((problem) => problem.includes(": status: ")), "strict must flag a placeholder status");
   assert.ok(strict.some((problem) => problem.includes(": flag: ")), "strict must flag an open flag");
   assert.ok(openFlags(flagged).length > 0, "default mode must list the open flags");
   console.log("self-test: default and strict modes: ok");

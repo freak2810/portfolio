@@ -24,12 +24,12 @@ The last line makes the static build in `out/` the way GitHub Pages serves it.
 - `pnpm measure`: first-load JavaScript size of `out/` (fails over 200 KB gzip).
 - `NEXT_PUBLIC_BASE_PATH=/Portfolio pnpm serve`: serve `out/` on `127.0.0.1:4173` under the base path, with the host's 404 and gzip behaviour. It exits 1 without the variable.
 - `NEXT_PUBLIC_BASE_PATH=/Portfolio pnpm lighthouse`: after a build with the base path, run Lighthouse (3 runs, median) on the served page and an accessibility run on the 404 page. It needs Chrome at the default macOS path or `CHROME_PATH`, and exits 1 without the variable. `node scripts/lighthouse-check.ts --url <https-url>` audits a live page instead, with no server and no variable.
-- `node scripts/check-content.ts [--strict|--self-test]`: content rules; `--strict` also blocks open flags and placeholder sections.
+- `node scripts/check-content.ts [--strict|--self-test]`: content rules; `--strict` also blocks open flags.
 - `node scripts/check-base-path.ts`: every root-relative asset path in `out/` carries the base path.
 
 ## Content
 
-Copy lives in `content/*.ts`. A `flag` marks a value that needs the owner's answer, and `hold: true` keeps an entry off the page and out of the PDF. `content/status.ts` marks each section `placeholder` or `confirmed`. The deploy workflow runs `--strict` before it builds, so a push to `main` fails while a flag or a placeholder is open.
+Copy lives in `content/*.ts`. A `flag` marks a value that needs the owner's answer, and `hold: true` keeps an entry off the page and out of the PDF. The deploy workflow runs `--strict` before it builds, so a push to `main` fails while a flag is open.
 
 ## Deploy
 

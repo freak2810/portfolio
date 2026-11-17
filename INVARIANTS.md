@@ -38,7 +38,7 @@ Enforced by: the host's pull request review; this is a permanent rule.
 
 Two Innovapptive timing figures from interview prep and the Wexa context-size figure are not published (the context-size figure is omitted, not held). The resume's own figures stay. Any entry with an open flag is resolved or held before launch.
 
-Enforced by: the withheld-figure line of `scripts/banned.txt` for the literal forms; design review for paraphrases; `node scripts/check-content.ts --strict` for open flags and placeholder sections.
+Enforced by: the withheld-figure line of `scripts/banned.txt` for the literal forms; design review for paraphrases; `node scripts/check-content.ts --strict` for open flags, plus the owner's sign-off of all sections on 2026-11-17.
 
 ## 7. One photo of the owner, no photo metadata
 
