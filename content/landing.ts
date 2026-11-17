@@ -18,5 +18,4 @@ export const landing: Landing = {
   ],
   scrollCue: "Scroll to the record",
   skipLabel: "Skip to resume",
-  easterEggs: [],
 };

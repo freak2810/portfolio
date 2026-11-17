@@ -51,24 +51,17 @@ export type Project = {
   liveUrl?: string;
   stat?: { value: string; label: string };
 } & Flagged;
-export type EasterEgg = {
-  id: string;
-  tap: { target: string };
-  keys?: readonly string[];
-  message: string;
-};
 export type Landing = {
   descriptors: readonly [string, ...string[]];
   scrollCue: string;
   skipLabel: string;
-  easterEggs: readonly EasterEgg[];
 };
 export type Ui = {
   nav: Record<SectionId, string>;
   headings: Record<SectionId, string>;
   resumeLinkLabel: string;
   notFound: { title: string; body: string; homeLabel: string };
-  aria: { nav: string; resumeLink: string; scrollCue: string; heroGraphic: string; rotatorPause: string; rotatorPlay: string };
+  aria: { nav: string; resumeLink: string; scrollCue: string; rotatorPause: string; rotatorPlay: string };
   social: { github: string; linkedin: string; resume: string };
   footer: string;
 };

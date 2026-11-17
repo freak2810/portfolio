@@ -139,7 +139,6 @@ const checkIds = (c: Content, add: Add): void => {
     ["education.entries", c.education.entries],
     ["certifications", c.certifications],
     ["projects", c.projects],
-    ["landing.easterEggs", c.landing.easterEggs],
   ];
   for (const [name, items] of collections) {
     const seen = new Set<string>();

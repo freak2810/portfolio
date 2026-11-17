@@ -10,7 +10,7 @@ Enforced by: `pnpm typecheck` rejects a wrong shape; `node scripts/check-content
 
 ## 2. Original or licensed art only, no Marvel assets
 
-The look stays Marvel-inspired: no official logos, artwork, fonts or screenshots, no full movie quotes (one exception: the landing role line may carry the five quotes listed in `content/landing.ts` items 8, 9, 11, 12 and 13 (item 10 is the owner's own line) by the owner's decision of 2026-11-17; the ban stays in force everywhere else, including easter eggs, all other copy and the PDF), and the owner's private phrase about facing loss together is never page copy.
+The look stays Marvel-inspired: no official logos, artwork, fonts or screenshots, no full movie quotes (one exception: the landing role line may carry the five quotes listed in `content/landing.ts` items 8, 9, 11, 12 and 13 (item 10 is the owner's own line) by the owner's decision of 2026-11-17; the ban stays in force everywhere else, including all other copy and the PDF), and the owner's private phrase about facing loss together is never page copy.
 
 Art is either original or traced from a photo whose licence allows it, and its credit is published in the `README.md` Acknowledgments section. Any art traced from a CC BY-SA photo that returns to the site also needs a footer link to that section. No photo comes from a commercial site. No share-alike licence is used unless the human says yes in writing. The human's own photo appears only as a traced SVG.
 
