@@ -146,6 +146,61 @@
     animation: intro-wipe 0.6s var(--ease-out) backwards;
   }
 
+  /* Morning light: one pale band crosses the name at 3.1 s, after the muggu's first draw, and again on a mouse hover.
+     The text clip lives only in the keyframes, so before and after the sweep the name is plain text. A hover appends
+     name-replay to the list: leaving drops it, and the finished intro-wipe and name-sweep are never restarted. */
+  @media (forced-colors: none) {
+    @keyframes name-sweep {
+      0%,
+      100% {
+        color: transparent;
+        background-color: var(--fg);
+        background-image: linear-gradient(100deg, transparent 44%, color-mix(in oklch, var(--accent) 60%, var(--fg)) 50%, transparent 56%);
+        background-size: 250% 100%;
+        background-repeat: no-repeat;
+        background-clip: text;
+      }
+
+      0% {
+        background-position: 100% 0;
+      }
+
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    @keyframes name-replay {
+      0%,
+      100% {
+        color: transparent;
+        background-color: var(--fg);
+        background-image: linear-gradient(100deg, transparent 44%, color-mix(in oklch, var(--accent) 60%, var(--fg)) 50%, transparent 56%);
+        background-size: 250% 100%;
+        background-repeat: no-repeat;
+        background-clip: text;
+      }
+
+      0% {
+        background-position: 100% 0;
+      }
+
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    :global(html.js) .name {
+      animation: intro-wipe 0.6s var(--ease-out) backwards, name-sweep 1.2s ease-in-out 3.1s;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      :global(html.js) .name:hover {
+        animation: intro-wipe 0.6s var(--ease-out) backwards, name-sweep 1.2s ease-in-out 3.1s, name-replay 1.2s ease-in-out;
+      }
+    }
+  }
+
   :global(html.js) .title {
     animation: intro-rise 0.3s var(--ease-out) 0.2s backwards;
   }
