@@ -6,7 +6,7 @@
 web
 
 ## Stack
-Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub Actions to GitHub Pages project page freak2810.github.io/Portfolio. Plain CSS with CSS-only motion and no motion library (owner decision, 2026-11-16); one black theme on every visit, with no light theme and no theme toggle. No CMS, no ESLint in this cut. Exception (owner, 2026-11-17): one small pause and resume script, `MugguPause`, that only toggles `animation-play-state` and never animates; and `NavSpy`, which only sets `aria-current` on the nav link of the section in view; and `MotionToggle`, a pause-motion button (WCAG 2.2.2) that only toggles a data attribute on `<html>` so CSS pauses the looping animations (owner, 2026-11-17).
+Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub Actions to GitHub Pages project page freak2810.github.io/portfolio. Plain CSS with CSS-only motion and no motion library (owner decision, 2026-11-16); one black theme on every visit, with no light theme and no theme toggle. No CMS, no ESLint in this cut. Exception (owner, 2026-11-17): one small pause and resume script, `MugguPause`, that only toggles `animation-play-state` and never animates; and `NavSpy`, which only sets `aria-current` on the nav link of the section in view; and `MotionToggle`, a pause-motion button (WCAG 2.2.2) that only toggles a data attribute on `<html>` so CSS pauses the looping animations (owner, 2026-11-17).
 
 ## Users
 Two equal audiences: recruiters and hiring managers (want the resume fast, one click to the PDF) and developer peers (want to see real projects and open each repo from its card).
@@ -24,7 +24,7 @@ Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data.
 - Sections: landing screen, top two projects plus this portfolio as a third card after the first scroll, then Experience, Education, Skills, About; resume PDF linked in one click.
 - Contact is LinkedIn, GitHub and the resume PDF only, as icon links on the landing. No email address and no mailto link. No form, no server code. Phone number is never published.
 - First-load JavaScript at most 200 KB gzipped (measured baseline 138.5 KB). Lighthouse mobile 90 or more, layout shift under 0.1.
-- Static export under /Portfolio/ base path; all asset paths go through a base-path helper.
+- Static export under /portfolio/ base path; all asset paths go through a base-path helper.
 - Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is out of the kit, by owner decision on 2026-11-17.
 - Telugu touch stays small: no Telugu tagline (owner decision). The landing muggu alternates the Telugu line with a Hindi companion, both drawn as paths with no font file shipped. The PDF carries no Telugu and no Hindi.
 - Undecided: the top three projects are provisional (Wexa engine, EventDesk, this portfolio); old project names will come from the owner later. A 2019 to 2020 intern role is unconfirmed and held back.

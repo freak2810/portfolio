@@ -44,8 +44,8 @@ export const projects: readonly Project[] = [
       { text: "Typed content files feed both the site and the resume PDF, with a content check on every build." },
     ],
     tech: ["Next.js", "TypeScript", "GitHub Actions", "Claude Code"],
-    repoUrl: "https://github.com/freak2810/Portfolio",
-    liveUrl: "https://freak2810.github.io/Portfolio/",
+    repoUrl: "https://github.com/freak2810/portfolio",
+    liveUrl: "https://freak2810.github.io/portfolio/",
   },
 ];
 
