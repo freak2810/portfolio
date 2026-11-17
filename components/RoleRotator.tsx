@@ -5,6 +5,8 @@ type Props = { items: readonly string[] };
 
 // Long quotes get a longer slot so they can be read. The slot seconds here and the keyframe percentages in the CSS move together.
 const SLOT_SECONDS = { short: 3, mid: 5, long: 8 } as const;
+// Must match data-cycle and animation-duration in RoleRotator.module.css.
+const CYCLE_SECONDS = 57;
 type Length = keyof typeof SLOT_SECONDS;
 
 const lengthOf = (item: string): Length => {
@@ -20,6 +22,9 @@ export function RoleRotator({ items }: Props) {
     offset += SLOT_SECONDS[length];
     return slot;
   });
+  if (offset !== CYCLE_SECONDS) {
+    throw new Error(`RoleRotator slots sum to ${offset} s but the CSS is tuned for ${CYCLE_SECONDS} s: retune RoleRotator.module.css (data-cycle, animation-duration, keyframes) and CYCLE_SECONDS.`);
+  }
   return (
     <div className={styles.rotator} data-count={items.length} data-cycle={offset}>
       <ul className={styles.list}>
