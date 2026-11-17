@@ -1,43 +1,25 @@
 import { Doodles } from "./Doodles";
-import { RouteLine } from "./RouteLine";
+import { Portrait } from "./Portrait";
 import styles from "./Contact.module.css";
-
-type Place = { en: string; te?: string };
 
 type About = {
   paragraphs: readonly string[];
-  onRepeatLabel: string;
-  onRepeat: readonly { title: string; artist: string }[];
   closing: { before: string; link: string; after: string };
 };
 
-type ContactProps = {
-  about: About;
-  from?: Place;
-  to: Place;
-};
-
-export function Contact({ about, from, to }: ContactProps) {
+export function Contact({ about }: { about: About }) {
   return (
     <div className={styles.root}>
       <Doodles />
       <div className={styles.story}>
-        <div className={styles.route} data-reveal>
-          <RouteLine from={from} to={to} large />
+        <div className={styles.figure} data-reveal>
+          <Portrait />
+          <Doodles variant="portrait" />
         </div>
         <div className={styles.text} data-reveal>
           {about.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <h3 className={styles.label}>{about.onRepeatLabel}</h3>
-          <ul className={styles.songs}>
-            {about.onRepeat.map((song) => (
-              <li key={song.title}>
-                {song.title}
-                <span className={styles.artist}>, {song.artist}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
       <p className={styles.closing} data-reveal>

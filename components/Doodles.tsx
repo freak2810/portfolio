@@ -45,48 +45,82 @@ const paths = {
   umbrella: "M2 12a10 9 0 0 1 20 0c-1.8 1.5-3.3 1.5-5 0-1.6 1.5-3.4 1.5-5 0-1.6 1.5-3.4 1.5-5 0-1.7 1.5-3.2 1.5-5 0ZM12 3v9M12 3C8 5 5.5 8 5.2 12M12 3c4 2 6.5 5 6.8 9M12 1.2V3M12 12v7a2.5 2.5 0 1 1-5 0",
   couch: "M4 11V8.5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3V11M1.5 13a2 2 0 0 1 4 0v1.5h13V13a2 2 0 0 1 4 0v4a1 1 0 0 1-1 1h-19a1 1 0 0 1-1-1ZM12 5.5V11M5.5 14.5V18M18.5 14.5V18M4 18v2.5M20 18v2.5",
   frame: "M3.5 2.5h17a1.5 1.5 0 0 1 1.5 1.5v16a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 20V4a1.5 1.5 0 0 1 1.5-1.5ZM5 5h14v14H5Z" + ring(12, 12, 3.2) + ring(12, 12, 1.2) + "M10.5 10.5l.8-.5",
+  sparkle: "M12 2C12.7 7.8 16.2 11.3 22 12C16.2 12.7 12.7 16.2 12 22C11.3 16.2 7.8 12.7 2 12C7.8 11.3 11.3 7.8 12 2ZM19.5 2.5v3M18 4h3",
+  star: "M12 2.6L14.6 9L21.3 9.4L16.2 13.7L17.9 20.4L12.1 16.7L6.3 20.4L8.1 13.7L2.8 9.5L9.4 9.1Z",
+  loop: "M2 18C7 18.5 11 15.5 11 11.5C11 7.8 7.4 7.2 6.9 9.8C6.4 12.8 11 14.2 15 11.6C18 9.6 19 6.6 22 6.2",
+  squiggle: "M1.5 13C3 8.2 5 8.2 6.5 12.2S9.5 16.2 11 12.2S14 8.2 15.5 12.2S18.5 16.2 20 12.2S22 10.2 22.6 11",
+  arrowr: "M2 7C7 4.8 14 6 19.5 11.5M19.5 11.5L14.2 11.2M19.5 11.5L18 6.4",
+  arrowl: "M22 7C17 4.8 10 6 4.5 11.5M4.5 11.5L9.8 11.2M4.5 11.5L6 6.4",
+  bubble: "M5.2 3.4C9 3 15 3.2 18.8 3.5A2.6 2.6 0 0 1 21.4 6.1V13.7A2.6 2.6 0 0 1 18.8 16.3H13L8.2 21V16.3H5.2A2.6 2.6 0 0 1 2.6 13.7V6A2.6 2.6 0 0 1 5.2 3.4ZM8 10h.01M12 10h.01M16 10h.01",
   house: "M3 11.5L12 3l9 8.5M5 10v11h14V10M16.5 6V3h2v4.5M7.5 12.5H11V16H7.5ZM13 12.5h3.5V16H13ZM10.5 21v-3.5h3V21" + ring(12, 7.6, 1.4),
 } as const;
 
 type Name = keyof typeof paths;
-type Size = "s" | "m" | "l";
-type Tier = "x" | "m" | "l";
+type Size = "xs" | "s" | "m" | "l";
+type Tier = "x" | "m" | "ml" | "l";
 type Spot = readonly [Name, number, number, number, Size, Tier];
 
-// name, left %, top %, rotation deg, size, layout tier (x under 768px, m to 1279px, l from 1280px). Hand placed, not a grid.
+// name, left %, top %, rotation deg, size, layout tier (x under 768px, m to 1279px, ml from 768px, l from 1280px). Hand placed, not a grid.
+// The portrait frame holds the page's left on wide screens and the top when stacked, so the backdrop keeps to the free bands beside and below it.
 const closingSpots: readonly Spot[] = [
-  ["chai", 18.9, 9.6, 5, "s", "x"],
-  ["pom", 43.9, 9.6, -4, "s", "x"],
-  ["ma", 68.9, 9.6, 6, "s", "x"],
-  ["shield", 68.8, 1.1, -8, "l", "m"],
-  ["atom", 85.7, 4.3, 9, "m", "m"],
-  ["umbrella", 66.1, 16.1, -7, "m", "m"],
-  ["piano", 81.8, 18.2, 6, "m", "m"],
-  ["nios", 61, 66, 3, "m", "m"],
-  ["pom", 82, 74, -4, "m", "m"],
+  ["shield", 1.2, 3, -8, "l", "m"],
+  ["atom", 87.5, 3, 9, "m", "m"],
+  ["umbrella", 88.5, 17, -7, "m", "m"],
+  ["piano", 88, 31, 6, "m", "m"],
+  ["veena", 87.5, 45, -4, "m", "m"],
+  ["dosa", 88.5, 63, -4, "m", "m"],
+  ["pizza", 91, 77, -9, "s", "m"],
   ["shield", 89.3, 1.7, -8, "l", "l"],
   ["atom", 92.4, 24.8, 9, "m", "l"],
-  ["umbrella", 88.6, 38.8, -7, "m", "l"],
-  ["chai", 1.1, 5.0, 5, "s", "l"],
-  ["ma", 1.4, 26.4, 6, "s", "l"],
-  ["guitar", 1.8, 51.5, 10, "m", "l"],
-  ["headphones", 10.8, 55.3, 7, "m", "l"],
-  ["helmet", 18.5, 50.3, 7, "l", "l"],
-  ["nios", 28.2, 54.5, 3, "m", "l"],
-  ["couch", 34.8, 52.5, -5, "m", "l"],
-  ["horn", 3.9, 70.6, 4, "m", "l"],
-  ["laptop", 13.6, 71.0, -6, "m", "l"],
-  ["piano", 70.6, 53.6, 6, "m", "l"],
-  ["tabla", 78.2, 56.9, -6, "m", "l"],
-  ["veena", 85.8, 56.9, -4, "m", "l"],
-  ["whiteboard", 93.5, 54.5, -4, "m", "l"],
-  ["pizza", 71.2, 71.8, -9, "s", "l"],
-  ["spaghetti", 78.2, 70.1, 6, "m", "l"],
-  ["dosa", 86.5, 71.0, -4, "m", "l"],
-  ["pom", 25.5, 71.5, -4, "m", "l"],
+  ["umbrella", 90.2, 38.8, -7, "m", "l"],
+  ["helmet", 55, 3, 7, "l", "l"],
+  ["nios", 73.5, 3, 3, "m", "l"],
+  ["couch", 66, 12, -5, "m", "l"],
+  ["piano", 70.6, 62, 6, "m", "l"],
+  ["tabla", 78.2, 62.5, -6, "m", "l"],
+  ["veena", 85.8, 62.5, -4, "m", "l"],
+  ["whiteboard", 93.5, 62, -4, "m", "l"],
+  ["pizza", 71.2, 77.5, -9, "s", "l"],
+  ["spaghetti", 78.2, 76.5, 6, "m", "l"],
+  ["dosa", 86.5, 77, -4, "m", "l"],
   ["frame", 59.4, 88.8, 6, "s", "l"],
   ["house", 69.2, 88.8, 4, "s", "l"],
   ["truck", 78.9, 88.8, -3, "s", "l"],
+];
+
+// Around the portrait: one ring of scribbles and icons, % of the portrait frame (the frame pads the ring, so nothing leaves it).
+const portraitSpots: readonly Spot[] = [
+  ["chai", 4.5, 2.2, 6, "s", "ml"],
+  ["sparkle", 26, 2.2, 10, "s", "ml"],
+  ["star", 46, 4.4, -12, "xs", "ml"],
+  ["bubble", 72, 2.2, 4, "s", "ml"],
+  ["arrowl", 86, 19, 8, "s", "ml"],
+  ["pom", 86, 37, -6, "s", "ml"],
+  ["sparkle", 86, 54, -10, "s", "ml"],
+  ["headphones", 86, 66.5, 8, "s", "ml"],
+  ["laptop", 13, 88.2, -6, "s", "ml"],
+  ["squiggle", 37, 88.2, -3, "s", "ml"],
+  ["loop", 57, 88.2, 4, "s", "ml"],
+  ["star", 80, 90.4, 12, "xs", "ml"],
+  ["arrowr", 2.5, 19, -12, "s", "ml"],
+  ["guitar", 2.5, 38, 10, "s", "ml"],
+  ["star", 4.7, 60, -8, "xs", "ml"],
+  ["sparkle", 4.7, 74, 6, "xs", "ml"],
+  ["chai", 2, 1.4, 5, "s", "x"],
+  ["sparkle", 27, 4.8, 10, "xs", "x"],
+  ["bubble", 42, 1.4, 4, "s", "x"],
+  ["star", 66, 4.8, -12, "xs", "x"],
+  ["pom", 78, 1.4, -6, "s", "x"],
+  ["arrowr", 1.9, 22, -12, "xs", "x"],
+  ["star", 1.9, 55, -8, "xs", "x"],
+  ["sparkle", 1.9, 74, 6, "xs", "x"],
+  ["arrowl", 87.8, 22, 8, "xs", "x"],
+  ["sparkle", 87.8, 50, -10, "xs", "x"],
+  ["star", 87.8, 72, 12, "xs", "x"],
+  ["laptop", 2, 84.2, -6, "s", "x"],
+  ["headphones", 26, 84.2, 7, "s", "x"],
+  ["guitar", 51, 84.2, 8, "s", "x"],
+  ["squiggle", 77, 84.2, -3, "s", "x"],
 ];
 
 // Footer band: same icons, free side bands of the centred footer text (a row above the text on phones).
@@ -108,12 +142,14 @@ const footerSpots: readonly Spot[] = [
   ["headphones", 91, 52, 6, "s", "l"],
 ];
 
-// The footer variant reuses the symbols the closing chapter defines, so it renders no second copy of them.
-export function Doodles({ variant = "closing" }: { variant?: "closing" | "footer" }) {
-  const footer = variant === "footer";
+// The footer and portrait variants reuse the symbols the closing chapter defines, so they render no second copy of them.
+const spots = { closing: closingSpots, footer: footerSpots, portrait: portraitSpots };
+const fieldClass = { closing: styles.field, footer: `${styles.field} ${styles.flush}`, portrait: `${styles.field} ${styles.cluster}` };
+
+export function Doodles({ variant = "closing" }: { variant?: "closing" | "footer" | "portrait" }) {
   return (
-    <div className={`${styles.field} ${footer ? styles.flush : ""}`} aria-hidden="true">
-      {!footer && (
+    <div className={fieldClass[variant]} aria-hidden="true">
+      {variant === "closing" && (
         <svg width="0" height="0" style={{ position: "absolute" }}>
           {Object.entries(paths).map(([name, d]) => (
             <symbol key={name} id={`dd-${name}`} viewBox="0 0 24 24">
@@ -122,7 +158,7 @@ export function Doodles({ variant = "closing" }: { variant?: "closing" | "footer
           ))}
         </svg>
       )}
-      {(footer ? footerSpots : closingSpots).map(([name, x, y, turn, size, tier], i) => (
+      {spots[variant].map(([name, x, y, turn, size, tier], i) => (
         <svg
           key={i}
           className={`${styles.icon} ${styles[size]} ${styles[`t${tier}`]}`}

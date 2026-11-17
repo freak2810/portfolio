@@ -15,6 +15,12 @@
   inset: 0;
 }
 
+.field.cluster {
+  inset: 0;
+  overflow: visible;
+  mask-image: none;
+}
+
 .icon {
   display: none;
   position: absolute;
@@ -23,6 +29,11 @@
   stroke-width: 1.5px;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.xs {
+  width: 2rem;
+  height: 2rem;
 }
 
 .s {
@@ -54,7 +65,8 @@
     display: none;
   }
 
-  .tm {
+  .tm,
+  .tml {
     display: block;
   }
 }

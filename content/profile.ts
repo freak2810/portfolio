@@ -9,10 +9,6 @@ export const profile: Profile = {
     en: "Hyderabad",
     te: "హైదరాబాద్",
   },
-  origin: {
-    en: "Warangal",
-    te: "వరంగల్",
-  },
   languages: [
     {
       name: "English",

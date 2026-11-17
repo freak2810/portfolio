@@ -12,7 +12,6 @@ export type Profile = {
   title: string;
   summary: string;
   base: Bilingual;
-  origin?: Bilingual;
   languages: readonly { name: "English" | "Hindi" | "Telugu"; level?: string }[];
 };
 export type Links = {
@@ -22,8 +21,6 @@ export type Links = {
 };
 export type About = {
   paragraphs: readonly [string, ...string[]];
-  onRepeatLabel: string;
-  onRepeat: readonly { title: string; artist: string }[];
   closing: { before: string; link: string; after: string };
 };
 export type TechIcon = IconSlug | "chip";

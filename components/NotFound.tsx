@@ -9,7 +9,7 @@ export function NotFound({ title, body, homeLabel, homeHref }: NotFoundProps) {
     <main className={styles.page}>
       <Divider />
       <div className={styles.art}>
-        <TracedArt name="torana" width={720} height={601} lazy />
+        <TracedArt name="torana" width={720} height={601} />
       </div>
       <h1 className={styles.title}>{title}</h1>
       <p>{body}</p>

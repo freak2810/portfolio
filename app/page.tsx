@@ -44,12 +44,6 @@ const hero = {
   },
 };
 
-const contact = {
-  about,
-  from: profile.origin,
-  to: profile.base,
-};
-
 export default function Home() {
   return (
     <>
@@ -77,7 +71,7 @@ export default function Home() {
         </Section>
         <Divider />
         <Section id="contact" heading={ui.headings.contact}>
-          <Contact {...contact} />
+          <Contact about={about} />
         </Section>
       </main>
       <Footer line={ui.footer} />
