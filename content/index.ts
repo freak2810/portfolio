@@ -9,6 +9,7 @@ import { profile } from "./profile.ts";
 import { skills } from "./skills.ts";
 import { status } from "./status.ts";
 import { techIcons } from "./techIcons.ts";
+import { byKitOrder } from "./techOrder.ts";
 import { ui } from "./ui.ts";
 import type { Content } from "./types.ts";
 
@@ -25,15 +26,17 @@ const dropHeld = (value: unknown): unknown => {
   return value;
 };
 
+const sortTech = <T extends { tech: readonly string[] }>(item: T): T => ({ ...item, tech: byKitOrder(item.tech) });
+
 export const content = dropHeld({
   profile,
   links,
   about,
   skills,
-  experience,
-  education,
+  experience: experience.map(sortTech),
+  education: { ...education, majorProject: education.majorProject && sortTech(education.majorProject) },
   certifications,
-  projects,
+  projects: projects.map(sortTech),
   featuredProjectIds,
   landing,
   ui,

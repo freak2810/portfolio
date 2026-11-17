@@ -6,7 +6,7 @@
 web
 
 ## Stack
-Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub Actions to GitHub Pages project page freak2810.github.io/Portfolio. Plain CSS with CSS-only motion and no motion library (owner decision, 2026-11-16); one black theme on every visit, with no light theme and no toggle. No CMS, no ESLint in this cut. Exception (owner, 2026-11-17): one small pause and resume script, `MugguPause`, that only toggles `animation-play-state` and never animates.
+Next.js 16.4.6 static export, React 19.3.1, TypeScript only, deployed by GitHub Actions to GitHub Pages project page freak2810.github.io/Portfolio. Plain CSS with CSS-only motion and no motion library (owner decision, 2026-11-16); one black theme on every visit, with no light theme and no toggle. No CMS, no ESLint in this cut. Exception (owner, 2026-11-17): one small pause and resume script, `MugguPause`, that only toggles `animation-play-state` and never animates; and `NavSpy`, which only sets `aria-current` on the nav link of the section in view.
 
 ## Users
 Two equal audiences: recruiters and hiring managers (want the resume fast, one click to the PDF) and developer peers (want to see real projects and open each repo from its card).
@@ -21,19 +21,19 @@ A senior backend and tech-lead record told in a Captain America code ("if we los
 Visitors arrive from a resume, LinkedIn or a link; many on phones and slow data. The site is also the source of a build-time PDF resume made from the same content files.
 
 ## Capabilities and Constraints
-- Sections: landing screen, top two projects plus this portfolio as a third card after the first scroll, then Experience, Education, Technology, About; resume PDF linked in one click.
+- Sections: landing screen, top two projects plus this portfolio as a third card after the first scroll, then Experience, Education, Skills, About; resume PDF linked in one click.
 - Contact is LinkedIn, GitHub and the resume PDF only, as icon links on the landing. No email address and no mailto link. No form, no server code. Phone number is never published.
 - First-load JavaScript at most 200 KB gzipped (measured baseline 138.5 KB). Lighthouse mobile 90 or more, layout shift under 0.1.
 - Static export under /Portfolio/ base path; all asset paths go through a base-path helper.
 - Display name "Aditya Manikanth Rao". Title "Senior Backend Engineer | Tech Lead". Innovapptive figures are not published. Angular is out of the kit, by owner decision on 2026-11-17.
 - Telugu touch stays small: no Telugu tagline (owner decision). The landing muggu alternates the Telugu line with a Hindi companion, both drawn as paths with no font file shipped. The PDF carries no Telugu and no Hindi.
-- Undecided: the top three projects are provisional (Wexa engine, EventDesk, this portfolio); old project names will come from the owner later. A 2019 to 2020 intern role, certification issuers and years are unconfirmed and held back.
+- Undecided: the top three projects are provisional (Wexa engine, EventDesk, this portfolio); old project names will come from the owner later. A 2019 to 2020 intern role is unconfirmed and held back.
 
 ## Brand Commitments
 Original or licensed art only: no official Marvel logos, artwork or fonts. Captain America voice in the copy, restrained but visible. Photo-traced vector art of local landmarks (the Kakatiya gateway for Warangal) shows only on the not-found page; its credit lives in the README Acknowledgments (a respectful landmark image, never played for a joke). The portrait in the closing chapter is the owner's own photograph in an arch frame, not art; the crown-and-sparkles line overlay drawn on it is original (aria-hidden), with no official Marvel art, Autobot insignia, Hyundai badge or show logos. These commit to existence, not to a look.
 
 ## Evidence on Hand
-Resume and LinkedIn facts in the feature notes (identity, summary, skills, five experience entries, education, five certifications, languages). No testimonials, metrics from Innovapptive, or customer logos exist; do not fabricate them. Old code is archived on branch chore/archive-old-portfolio.
+Resume and LinkedIn facts in the feature notes (identity, summary, skills, five experience entries, education, three certifications, languages). No testimonials, metrics from Innovapptive, or customer logos exist; do not fabricate them. Old code is archived on branch chore/archive-old-portfolio.
 
 ## Product Principles
 1. Hiring action first, personality second, never one at the cost of the other.

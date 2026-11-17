@@ -1,4 +1,5 @@
 import { yearRange } from "./dateRange";
+import { TechList } from "./TechIcons";
 import styles from "./Education.module.css";
 
 type Entry = {
@@ -16,12 +17,14 @@ type EducationProps = {
   entries: readonly Entry[];
   majorProject?: { title: string; summary: string; tech: readonly string[] };
   certifications: readonly Certification[];
+  icons: Readonly<Record<string, string>>;
 };
 
 const CERT_LABEL = "Certifications";
 const MAJOR_LABEL = "Major project";
+const TECH_LABEL = "Technologies";
 
-export function Education({ entries, majorProject, certifications }: EducationProps) {
+export function Education({ entries, majorProject, certifications, icons }: EducationProps) {
   return (
     <>
       <ul className={styles.entries}>
@@ -42,7 +45,9 @@ export function Education({ entries, majorProject, certifications }: EducationPr
             {MAJOR_LABEL}: {majorProject.title}
           </h3>
           <p>{majorProject.summary}</p>
-          <p className={`${styles.muted} ${styles.tech}`}>{majorProject.tech.join(" · ")}</p>
+          <div className={styles.tech}>
+            <TechList names={majorProject.tech} icons={icons} size="sm" label={TECH_LABEL} />
+          </div>
         </div>
       )}
       <div className={styles.block}>
@@ -54,7 +59,14 @@ export function Education({ entries, majorProject, certifications }: EducationPr
             const detail = [cert.issuer, cert.year].filter(Boolean).join(", ");
             return (
               <li key={cert.id}>
-                {cert.url ? <a href={cert.url}>{cert.name}</a> : cert.name}
+                {cert.url ? (
+                  <a href={cert.url} target="_blank" rel="noopener noreferrer">
+                    {cert.name}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ) : (
+                  cert.name
+                )}
                 {detail && <span className={styles.muted}>{` (${detail})`}</span>}
               </li>
             );

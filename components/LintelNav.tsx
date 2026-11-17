@@ -1,4 +1,6 @@
 import { NavMenu } from "./NavMenu";
+import { NavSpy } from "./NavSpy";
+import { teluguAPath, teluguAViewBox } from "./teluguA";
 import styles from "./LintelNav.module.css";
 
 type NavItem = { id: string; label: string };
@@ -8,8 +10,6 @@ type LintelNavProps = {
   homeLabel: string;
   navLabel: string;
   items: readonly NavItem[];
-  resumeHref: string;
-  resumeLabel: string;
 };
 
 const MENU_LABEL = "Menu";
@@ -29,15 +29,13 @@ function NavLinks({ items }: { items: readonly NavItem[] }) {
 }
 
 export function LintelNav(props: LintelNavProps) {
-  const initials = props.name
-    .split(" ")
-    .map((word) => word[0])
-    .join("");
   return (
     <header className={`lintel ${styles.bar}`}>
       <nav className={styles.nav} aria-label={props.navLabel}>
         <a className={styles.mark} href="#home">
-          {initials}
+          <svg className={styles.glyph} viewBox={teluguAViewBox} aria-hidden="true" focusable="false">
+            <path d={teluguAPath} />
+          </svg>
           <span className="sr-only">
             {" "}
             {props.name} {props.homeLabel}
@@ -51,10 +49,8 @@ export function LintelNav(props: LintelNavProps) {
             <NavLinks items={props.items} />
           </NavMenu>
         </div>
-        <a className="button" href={props.resumeHref}>
-          {props.resumeLabel}
-        </a>
       </nav>
+      <NavSpy />
     </header>
   );
 }

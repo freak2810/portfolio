@@ -138,6 +138,10 @@
   clip-path: none;
 }
 
+.lg .logo:hover .name {
+  color: var(--accent);
+}
+
 /* The small list shows its labels on touch only; elsewhere a label appears on hover. */
 @media (hover: none) {
   .sm {

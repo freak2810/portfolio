@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, extname, join } from "node:path";
 import { content } from "../content/index.ts";
 import { iconSlugs } from "../content/ids.ts";
+import { hasRank } from "../content/techOrder.ts";
 import type { Content } from "../content/types.ts";
 
 type Add = (path: string, rule: string, detail: string) => void;
@@ -150,13 +151,14 @@ const checkIds = (c: Content, add: Add): void => {
 };
 
 const checkIcons = (c: Content, add: Add): void => {
-  const shown = new Set([...c.skills.flatMap((group) => group.items), ...c.experience.flatMap((job) => job.tech), ...c.projects.flatMap((project) => project.tech)]);
+  const shown = new Set([...c.skills.flatMap((group) => group.items), ...c.experience.flatMap((job) => job.tech), ...c.projects.flatMap((project) => project.tech), ...(c.education.majorProject?.tech ?? [])]);
   const keys = Object.keys(c.techIcons);
   const slugs: readonly string[] = iconSlugs;
   for (const name of shown) {
     if (!keys.includes(name)) add(`techIcons.${name}`, "icon-missing", "name is shown but has no table entry");
+    if (!hasRank(name)) add(`techOrder.${name}`, "tech-rank", "name is in neither skills nor the techOrder extras");
   }
-  for (const key of keys) if (!shown.has(key)) add(`techIcons.${key}`, "icon-orphan", "key is not shown in skills or experience tech");
+  for (const key of keys) if (!shown.has(key)) add(`techIcons.${key}`, "icon-orphan", "key is not shown in skills, experience, project or education tech");
   const used = new Set<string>(Object.values(c.techIcons));
   for (const [key, value] of Object.entries(c.techIcons)) {
     if (value !== "chip" && !slugs.includes(value)) add(`techIcons.${key}`, "icon-slug", `${value} is neither chip nor a slug in iconSlugs`);
@@ -252,6 +254,7 @@ const ruleCases: { label: string; rule: string; mutate: (c: DeepMutable<Content>
   { label: "te holds Latin", rule: "te", mutate: (c) => { c.profile.base.te = "abc"; } },
   { label: "stray email", rule: "email", mutate: (c) => { c.profile.summary += " a@b.co"; } },
   { label: "icon name with no table entry", rule: "icon-missing", mutate: (c) => { delete c.techIcons["Kafka"]; } },
+  { label: "tech name with no rank", rule: "tech-rank", mutate: (c) => { c.education.majorProject?.tech.push("Unranked Thing"); } },
   { label: "icon key shown nowhere", rule: "icon-orphan", mutate: (c) => { c.techIcons["Nothing Shown"] = "chip"; } },
   { label: "icon value not a slug", rule: "icon-slug", mutate: (c) => { (c.techIcons as Record<string, string>)["Kafka"] = "nope"; } },
   { label: "slug used by no entry", rule: "icon-unused", mutate: (c) => { c.techIcons["Elasticsearch"] = "chip"; } },
@@ -268,10 +271,12 @@ const runRuleCases = (): void => {
 
 const runModeCases = (): void => {
   assert.deepStrictEqual(findProblems(freshContent(), false), [], "untouched content must have no problem");
-  const strict = findProblems(freshContent(), true);
+  const flagged = freshContent();
+  flagged.experience[0].bullets[0].flag = "planted";
+  const strict = findProblems(flagged, true);
   assert.ok(strict.some((problem) => problem.includes(": status: ")), "strict must flag a placeholder status");
   assert.ok(strict.some((problem) => problem.includes(": flag: ")), "strict must flag an open flag");
-  assert.ok(openFlags(freshContent()).length > 0, "default mode must list the open flags");
+  assert.ok(openFlags(flagged).length > 0, "default mode must list the open flags");
   console.log("self-test: default and strict modes: ok");
 };
 

@@ -12,6 +12,7 @@ type DeepMutable<T> = { -readonly [K in keyof T]: DeepMutable<T[K]> };
 
 const repoRoot = join(import.meta.dirname, "..");
 const maxPages = 2;
+const resumeTitle = `${content.profile.name} - Resume`;
 const dash = "–";
 const separator = "  |  ";
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -68,6 +69,10 @@ const withSeparators = (parts: readonly Part[]): Part[] =>
   parts.flatMap((part, index) => (index === 0 ? [part] : [plain(separator), part]));
 const techLine = (tech: readonly string[]): Line[] =>
   tech.length > 0 ? [{ style: "small", parts: [plain(`Tech: ${tech.join(", ")}`)] }] : [];
+const certText = (cert: Content["certifications"][number]): string => {
+  const detail = [cert.issuer, cert.year].filter(Boolean).join(", ");
+  return detail ? `${cert.name} (${detail})` : cert.name;
+};
 const bulletLines = (bullets: readonly { text: string }[]): Line[] =>
   bullets.map((bullet) => ({ style: "body", parts: [plain(bullet.text)], bullet: true }));
 
@@ -93,7 +98,7 @@ const buildLines = (c: Content): Line[] => [
   { style: "heading", parts: [plain("Education")] },
   ...educationLines(c),
   { style: "heading", parts: [plain("Certifications")] },
-  ...bulletLines(c.certifications.map((cert) => ({ text: cert.name }))),
+  ...bulletLines(c.certifications.map((cert) => ({ text: certText(cert) }))),
   { style: "heading", parts: [plain("Languages")] },
   { style: "body", parts: [plain(c.profile.languages.map((l) => (l.level ? `${l.name} (${l.level})` : l.name)).join(", "))] },
 ];
@@ -165,7 +170,7 @@ const render = (lines: readonly Line[]): Promise<{ bytes: Buffer; pages: number 
       size: "A4",
       margins: { top: 40, bottom: 40, left: 46, right: 46 },
       bufferPages: true,
-      info: { Title: `${content.profile.name} Resume`, Author: content.profile.name },
+      info: { Title: resumeTitle, Author: content.profile.name },
     });
     const chunks: Buffer[] = [];
     let pages = 0;

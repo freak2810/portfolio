@@ -1,6 +1,5 @@
 import "../styles/tokens.css";
 import "../styles/base.css";
-import "../styles/nav-target.css";
 import "../styles/motion.css";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";

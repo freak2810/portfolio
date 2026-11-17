@@ -8,13 +8,10 @@ type LandingProps = {
   name: string;
   title: string;
   descriptors: readonly string[];
-  scrollCue: string;
-  scrollCueAria: string;
   social: SocialLinksProps;
 };
 
 export function Landing(props: LandingProps) {
-  const cueAria = props.scrollCueAria.includes(props.scrollCue) ? props.scrollCueAria : undefined;
   return (
     <section id="home" className={styles.landing}>
       <div className={styles.text}>
@@ -35,10 +32,6 @@ export function Landing(props: LandingProps) {
           <div className={styles.actions}>
             <SocialLinks {...props.social} />
           </div>
-          <a className={styles.cue} href="#projects" aria-label={cueAria}>
-            <span className={styles.tick} aria-hidden="true" />
-            {props.scrollCue}
-          </a>
         </div>
       </div>
     </section>

@@ -3,21 +3,20 @@ import type { Ui } from "./types.ts";
 export const ui: Ui = {
   nav: {
     home: "Home",
-    projects: "Projects",
+    projects: "Work",
     experience: "Experience",
     education: "Education",
-    technology: "Technology",
-    contact: "The road so far",
+    technology: "Skills",
+    contact: "About",
   },
   headings: {
     home: "Home",
     projects: "Selected work.",
-    experience: "Field record.",
-    education: "Where the training happened.",
-    technology: "The kit.",
-    contact: "The road so far.",
+    experience: "Experience.",
+    education: "Education.",
+    technology: "Skills.",
+    contact: "About me.",
   },
-  resumeLinkLabel: "Resume PDF",
   notFound: {
     title: "Off the map.",
     body: "No such position here. Fall back to the start.",
@@ -25,8 +24,6 @@ export const ui: Ui = {
   },
   aria: {
     nav: "Primary",
-    resumeLink: "Download the resume as a PDF",
-    scrollCue: "Scroll to the projects",
   },
   social: {
     github: "GitHub",

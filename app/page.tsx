@@ -25,16 +25,12 @@ const nav = {
   homeLabel: ui.nav.home,
   navLabel: ui.aria.nav,
   items: sectionIds.filter((id) => id !== "home").map((id) => ({ id, label: ui.nav[id] })),
-  resumeHref,
-  resumeLabel: ui.resumeLinkLabel,
 };
 
 const hero = {
   name: profile.name,
   title: profile.title,
   descriptors: landing.descriptors,
-  scrollCue: landing.scrollCue,
-  scrollCueAria: ui.aria.scrollCue,
   social: {
     github: links.github,
     linkedin: links.linkedin,
@@ -62,7 +58,7 @@ export default function Home() {
         </Section>
         <Divider />
         <Section id="education" heading={ui.headings.education}>
-          <Education entries={education.entries} majorProject={education.majorProject} certifications={certifications} />
+          <Education entries={education.entries} majorProject={education.majorProject} certifications={certifications} icons={techIcons} />
         </Section>
         <Divider />
         <Section id="technology" heading={ui.headings.technology}>

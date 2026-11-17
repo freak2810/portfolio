@@ -2,28 +2,24 @@ import type { Certification } from "./types.ts";
 
 export const certifications: readonly Certification[] = [
   {
-    id: "nodejs-express-mongodb",
-    name: "Server-side Development with NodeJS, Express and MongoDB",
-    flag: "Issuer and year not given",
+    id: "software-architecture-large-scale-systems",
+    name: "Software Architecture & Technology of Large-Scale Systems",
+    issuer: "Udemy",
+    year: 2023,
+    url: "https://www.udemy.com/certificate/UC-e445a212-2edf-4dc5-ab28-558ff056776e/",
   },
   {
-    id: "react-full-stack-specialization",
-    name: "Full-Stack Web Development with React Specialization",
-    flag: "Issuer and year not given",
+    id: "junior-to-senior-web-developer-roadmap",
+    name: "The Complete Junior to Senior Web Developer Roadmap",
+    issuer: "Udemy",
+    year: 2022,
+    url: "https://www.udemy.com/certificate/UC-e6764fa7-54f1-4d7b-8357-d2801c8ac0b8/",
   },
   {
-    id: "bootstrap-4-ui-frameworks",
-    name: "Front-End Web UI Frameworks and Tools: Bootstrap 4",
-    flag: "Issuer and year not given",
-  },
-  {
-    id: "react-native-multiplatform-mobile",
-    name: "Multiplatform Mobile App Development with React Native",
-    flag: "Issuer and year not given",
-  },
-  {
-    id: "intro-big-data",
-    name: "Introduction to Big Data",
-    flag: "Issuer and year not given",
+    id: "nodejs-complete-guide",
+    name: "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
+    issuer: "Udemy",
+    year: 2021,
+    url: "https://www.udemy.com/certificate/UC-6a95790f-59ed-495e-babd-1f307799d6db/",
   },
 ];

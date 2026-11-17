@@ -8,6 +8,7 @@ const linkedinPath =
 const resumePath =
   "M13 9H18.5L13 3.5V9M6 2H14L20 8V20A2 2 0 0 1 18 22H6C4.89 22 4 21.1 4 20V4C4 2.89 4.89 2 6 2M15 18V16H6V18H15M18 14V12H6V14H18Z";
 const cropped = "2 2 20 20";
+const RESUME_FILENAME = "Aditya Manikanth Rao - Resume.pdf";
 
 export type SocialLinksProps = {
   github: string;
@@ -33,7 +34,7 @@ export function SocialLinks({ github, linkedin, resumeHref, labels }: SocialLink
       <a className={styles.link} href={github} aria-label={labels.github} title={labels.github}>
         <Icon d={techIconPaths.github} />
       </a>
-      <a className={styles.link} href={resumeHref} download aria-label={labels.resume} title={labels.resume}>
+      <a className={styles.link} href={resumeHref} download={RESUME_FILENAME} aria-label={labels.resume} title={labels.resume}>
         <Icon d={resumePath} viewBox={cropped} />
       </a>
     </>

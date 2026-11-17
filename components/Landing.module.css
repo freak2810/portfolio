@@ -52,24 +52,6 @@
   margin-left: -8px;
 }
 
-.cue {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: 44px;
-  margin-top: var(--space-4);
-  color: var(--muted);
-  font-size: var(--step--1);
-  font-weight: 600;
-}
-
-.tick {
-  width: 1px;
-  height: 24px;
-  background: var(--accent);
-  transform-origin: top;
-}
-
 .muggu {
   display: block;
   width: clamp(9.375rem, 50%, 10.625rem);
@@ -118,12 +100,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes tick-nudge {
-    50% {
-      transform: scaleY(0.4);
-    }
-  }
-
   @keyframes intro-wipe {
     from {
       clip-path: inset(100% 0 0 0);
@@ -212,10 +188,6 @@
 
   :global(html.js) .actions {
     animation: intro-fade 0.4s var(--ease-out) 1.4s backwards;
-  }
-
-  :global(html.js) .tick {
-    animation: tick-nudge 1.4s var(--ease-out) 2s 2;
   }
 
   /* One 15 s cycle: draw 2.5 s, rest 4 s, sweep 1 s, then 7.5 s unseen while the other line draws. The dash gap is longer than the path, so a round cap leaves no dot at rest. */

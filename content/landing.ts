@@ -16,6 +16,5 @@ export const landing: Landing = {
     "“With great power comes great responsibility.” - Uncle Ben",
     "“You get hurt, hurt ’em back. You get killed... walk it off.” - Captain America",
   ],
-  scrollCue: "Scroll to the record",
   skipLabel: "Skip to experience",
 };

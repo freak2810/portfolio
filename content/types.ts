@@ -50,15 +50,13 @@ export type Project = {
 } & Flagged;
 export type Landing = {
   descriptors: readonly [string, ...string[]];
-  scrollCue: string;
   skipLabel: string;
 };
 export type Ui = {
   nav: Record<SectionId, string>;
   headings: Record<SectionId, string>;
-  resumeLinkLabel: string;
   notFound: { title: string; body: string; homeLabel: string };
-  aria: { nav: string; resumeLink: string; scrollCue: string };
+  aria: { nav: string };
   social: { github: string; linkedin: string; resume: string };
   footer: string;
 };
