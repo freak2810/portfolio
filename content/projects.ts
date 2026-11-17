@@ -34,13 +34,15 @@ export const projects: readonly Project[] = [
     tech: ["React Native"],
   },
   {
-    id: "cdc-pipeline",
-    title: "CDC master-data pipeline",
-    headline: "One store across DynamoDB and MongoDB",
+    id: "innovapptive-admin-layer",
+    title: "Connected Worker Platform admin layer",
+    headline: "Tech lead of the 3-member platform team, owning performance and reliability",
     points: [
-      { text: "Plant-ID partitioning and dedup, built for millions of records." },
+      { text: "Built a CDC pipeline for the platform's v1-to-v2 merge, streaming master data from DynamoDB and MongoDB into one database." },
+      { text: "Eliminated the major slow APIs through query optimization, caching and async aggregation pipelines." },
+      { text: "Set up Sentry end to end: P95/P99 latency, Sev-1/Sev-2 alerts and uptime checks, keeping services within SLO." },
     ],
-    tech: ["DynamoDB", "MongoDB"],
+    tech: ["DynamoDB", "MongoDB", "Sentry"],
   },
   {
     id: "this-portfolio",
@@ -56,4 +58,4 @@ export const projects: readonly Project[] = [
   },
 ];
 
-export const featuredProjectIds: Content["featuredProjectIds"] = ["wexa-agent-engine", "eventdesk", "cdc-pipeline"];
+export const featuredProjectIds: Content["featuredProjectIds"] = ["wexa-agent-engine", "eventdesk", "innovapptive-admin-layer"];
