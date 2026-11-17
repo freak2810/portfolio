@@ -9,8 +9,6 @@ type LandingProps = {
   descriptors: readonly string[];
   scrollCue: string;
   scrollCueAria: string;
-  pauseLabel: string;
-  playLabel: string;
   social: SocialLinksProps;
 };
 
@@ -30,7 +28,7 @@ export function Landing(props: LandingProps) {
         <div className={styles.details}>
           <p className={styles.title}>{props.title}</p>
           <div className={styles.descriptor}>
-            <RoleRotator items={props.descriptors} pauseLabel={props.pauseLabel} playLabel={props.playLabel} />
+            <RoleRotator items={props.descriptors} />
           </div>
           <div className={styles.actions}>
             <SocialLinks {...props.social} />

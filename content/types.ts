@@ -58,7 +58,7 @@ export type Ui = {
   headings: Record<SectionId, string>;
   resumeLinkLabel: string;
   notFound: { title: string; body: string; homeLabel: string };
-  aria: { nav: string; resumeLink: string; scrollCue: string; rotatorPause: string; rotatorPlay: string };
+  aria: { nav: string; resumeLink: string; scrollCue: string };
   social: { github: string; linkedin: string; resume: string };
   footer: string;
 };

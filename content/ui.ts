@@ -27,8 +27,6 @@ export const ui: Ui = {
     nav: "Primary",
     resumeLink: "Download the resume as a PDF",
     scrollCue: "Scroll to the projects",
-    rotatorPause: "Pause the rotating list",
-    rotatorPlay: "Play the rotating list",
   },
   social: {
     github: "GitHub",

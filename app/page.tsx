@@ -35,8 +35,6 @@ const hero = {
   descriptors: landing.descriptors,
   scrollCue: landing.scrollCue,
   scrollCueAria: ui.aria.scrollCue,
-  pauseLabel: ui.aria.rotatorPause,
-  playLabel: ui.aria.rotatorPlay,
   social: {
     github: links.github,
     linkedin: links.linkedin,
