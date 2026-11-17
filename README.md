@@ -1,42 +1,43 @@
-# [Aditya Manikanth Rao - Portfolio](https://aditya2810.me)
+# Aditya Manikanth Rao - Portfolio
 
-A Minimal Design Portfolio.
+A static portfolio site for Aditya Manikanth Rao, a senior backend engineer and tech lead. Live at <https://freak2810.github.io/Portfolio/>.
 
-## Getting Started
+It is a Next.js App Router site exported to plain files (`output: "export"`), with typed content in `content/`, one black theme and no tracking. The base path is `/Portfolio/`.
 
-Make sure that you have [Node](https://nodejs.org) and [PNPM](https://pnpm.io) installed in your system before you start the application.
+## Run it
 
-### Installing
-
-Run the following command
+Install [Node](https://nodejs.org) 22.19 or newer and [pnpm](https://pnpm.io), then:
 
 ```
 pnpm install
-```
-
-And after the dependencies are installed
-
-```
 pnpm dev
+NEXT_PUBLIC_BASE_PATH=/Portfolio pnpm build
 ```
 
-## Built With
+The last line makes the static build in `out/` the way GitHub Pages serves it.
 
-- [TypeScript](https://www.typescriptlang.org/) - Programming Language
-- [React/ NextJS](https://nextjs.org/docs) - Framework Used
-- [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Styling
-- [GraphQL Request + Code generation](https://www.apollographql.com/docs/) - Queries
-- [Sanity CMS](https://www.sanity.io) - Headless CMS
-- [Simple Icons](https://simpleicons.org/) - Social & Technology Icons
+## Scripts
 
-## Authors
+- `pnpm dev`: the Next.js dev server.
+- `pnpm typecheck`: generate route types, then `tsc --noEmit`.
+- `pnpm build`: `scripts/check-content.ts`, then `scripts/build-resume.ts`, then `next build`.
+- `pnpm measure`: first-load JavaScript size of `out/` (fails over 200 KB gzip).
+- `NEXT_PUBLIC_BASE_PATH=/Portfolio pnpm serve`: serve `out/` on `127.0.0.1:4173` under the base path, with the host's 404 and gzip behaviour. It exits 1 without the variable.
+- `NEXT_PUBLIC_BASE_PATH=/Portfolio pnpm lighthouse`: after a build with the base path, run Lighthouse (3 runs, median) on the served page and an accessibility run on the 404 page. It needs Chrome at the default macOS path or `CHROME_PATH`, and exits 1 without the variable. `node scripts/lighthouse-check.ts --url <https-url>` audits a live page instead, with no server and no variable.
+- `node scripts/check-content.ts [--strict|--self-test]`: content rules; `--strict` also blocks open flags and placeholder sections.
+- `node scripts/check-base-path.ts`: every root-relative asset path in `out/` carries the base path.
 
-- [**Aditya Manikanth Rao**](https://github.com/freak2810)
+## Content
 
-## License
+Copy lives in `content/*.ts`. A `flag` marks a value that needs the owner's answer, and `hold: true` keeps an entry off the page and out of the PDF. `content/status.ts` marks each section `placeholder` or `confirmed`. The deploy workflow runs `--strict` before it builds, so a push to `main` fails while a flag or a placeholder is open.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+## Deploy
+
+A push to `main` runs the GitHub Actions workflow in `.github/workflows/pages.yml`, which builds the site and publishes it. Set Settings > Pages > Source to GitHub Actions once. A person merges; nothing deploys from a topic branch.
+
+## Project rules
+
+See `INVARIANTS.md` for the rules a change must keep, `PRODUCT.md` for what the site is for, and `AGENTS.md` for the Next.js notes agents read first.
 
 ## Acknowledgments
 
@@ -52,3 +53,4 @@ Third-party works used in this repository.
 - **LinkedIn mark**: Material Design Icons 7.4.47 (`@mdi/svg`), [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0), from [pictogrammers.com](https://pictogrammers.com/library/mdi/). Used for the LinkedIn mark in the landing icon row.
 
 Some icons are trademarks of their owners and are shown only to name the technology. A used mark is not an endorsement. AWS, MetaMask and LlamaIndex show generic glyphs because their marks are not freely licensed.
+
