@@ -7,7 +7,7 @@ import { join } from "node:path";
 import { promisify } from "node:util";
 import { baseProblem, serveOut } from "./serve-out.ts";
 
-type Run = { perf: number; a11y: number; cls: number; fcp: number; lcp: number; contrast: boolean; failing: string[] };
+type Run = { perf: number; a11y: number; cls: number; fcp: number; lcp: number; contrast: boolean; fcpEqLcp: boolean; failing: string[] };
 type Tools = { chrome: string; bin: string; dir: string };
 
 const repoRoot = join(import.meta.dirname, "..");
@@ -175,6 +175,7 @@ const parseReport = (raw: string, file: string, withPerf: boolean): Run => {
     if (typeof value !== "number") throw new Error(`report: ${file}: ${path.join(".")} missing`);
     return value;
   };
+  const timing = ["audits", "metrics", "details", "items", "0"];
   const metric = (path: string[]): number => (withPerf ? num(path) : 0);
   const expected = { formFactor: "mobile", throttlingMethod: "simulate" };
   for (const [key, want] of Object.entries(expected)) {
@@ -188,6 +189,7 @@ const parseReport = (raw: string, file: string, withPerf: boolean): Run => {
     fcp: metric(["audits", "first-contentful-paint", "numericValue"]),
     lcp: metric(["audits", "largest-contentful-paint", "numericValue"]),
     contrast: pick(data, ["audits", "color-contrast", "score"]) === 1,
+    fcpEqLcp: withPerf ? num([...timing, "observedFirstContentfulPaint"]) === num([...timing, "observedLargestContentfulPaint"]) : true,
     failing: failingIds(data, file),
   };
 };
@@ -213,6 +215,7 @@ const medianRun = (runs: Run[]): Run => ({
   fcp: median(runs.map((run) => run.fcp)),
   lcp: median(runs.map((run) => run.lcp)),
   contrast: runs.every((run) => run.contrast),
+  fcpEqLcp: runs.every((run) => run.fcpEqLcp),
   failing: runs.flatMap((run) => run.failing),
 });
 
@@ -222,7 +225,7 @@ const printRuns = (runs: Run[]): void => {
 };
 
 const summarize = (run: Run): string =>
-  `perf ${run.perf} a11y ${run.a11y} cls ${Number(run.cls.toFixed(3))} fcp ${Math.round(run.fcp)} lcp ${Math.round(run.lcp)} contrast ${run.contrast ? "pass" : "FAIL"}`;
+  `perf ${run.perf} a11y ${run.a11y} cls ${Number(run.cls.toFixed(3))} fcp ${Math.round(run.fcp)} lcp ${Math.round(run.lcp)} contrast ${run.contrast ? "pass" : "FAIL"} fcp=lcp ${run.fcpEqLcp ? "yes" : "no"}`;
 
 const judgeA11y = (label: string, runs: Run[]): string[] => {
   const problems: string[] = [];
@@ -240,6 +243,7 @@ const judgePage = (label: string, runs: Run[]): string[] => {
   if (!(med.cls < limits.cls)) problems.push(`${label}: cls ${med.cls} vs ${limits.cls}`);
   if (!(med.fcp < limits.fcp)) problems.push(`${label}: fcp ${Math.round(med.fcp)} vs ${limits.fcp}`);
   if (!(med.lcp < limits.lcp)) problems.push(`${label}: lcp ${Math.round(med.lcp)} vs ${limits.lcp}`);
+  if (runs.some((run) => !run.fcpEqLcp)) problems.push(`${label}: observed fcp and lcp differ in at least one run`);
   return [...problems, ...judgeA11y(label, runs)];
 };
 
@@ -261,7 +265,7 @@ const preflightSelfTest = (): void => {
 const selfTest = (): void => {
   assert.strictEqual(median([3, 1, 2]), 2);
   assert.strictEqual(median([4, 1, 3, 2]), 2.5);
-  const good: Run = { perf: 90, a11y: 90, cls: 0.099, fcp: 1999, lcp: 2499, contrast: true, failing: [] };
+  const good: Run = { perf: 90, a11y: 90, cls: 0.099, fcp: 1999, lcp: 2499, contrast: true, fcpEqLcp: true, failing: [] };
   const withBad = (bad: Partial<Run>, count: number): Run[] =>
     Array.from({ length: 3 }, (_, index) => (index < count ? { ...good, ...bad } : good));
   assert.deepStrictEqual(judgePage("page", withBad({}, 0)), []);
@@ -272,6 +276,7 @@ const selfTest = (): void => {
     [{ fcp: 2000 }, 2, "fcp"],
     [{ lcp: 2500 }, 2, "lcp"],
     [{ contrast: false }, 1, "color-contrast"],
+    [{ fcpEqLcp: false }, 1, "observed"],
     [{ failing: ["aria-allowed-attr"] }, 1, "aria-allowed-attr"],
   ];
   for (const [bad, count, metric] of cases) {
