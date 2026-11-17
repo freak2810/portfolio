@@ -254,7 +254,7 @@ const ruleCases: { label: string; rule: string; mutate: (c: DeepMutable<Content>
   { label: "icon name with no table entry", rule: "icon-missing", mutate: (c) => { delete c.techIcons["Kafka"]; } },
   { label: "icon key shown nowhere", rule: "icon-orphan", mutate: (c) => { c.techIcons["Nothing Shown"] = "chip"; } },
   { label: "icon value not a slug", rule: "icon-slug", mutate: (c) => { (c.techIcons as Record<string, string>)["Kafka"] = "nope"; } },
-  { label: "slug used by no entry", rule: "icon-unused", mutate: (c) => { c.techIcons["Kafka"] = "chip"; } },
+  { label: "slug used by no entry", rule: "icon-unused", mutate: (c) => { c.techIcons["Elasticsearch"] = "chip"; } },
 ];
 
 const runRuleCases = (): void => {
