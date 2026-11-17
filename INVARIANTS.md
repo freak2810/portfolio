@@ -24,9 +24,9 @@ Enforced by: the phone-pattern and no-`@` rules in `scripts/check-content.ts`, w
 
 ## 4. Asset paths go through the base-path helper
 
-Every raw asset path in the pages goes through `withBase` from `lib/base-path.ts`, so the site works under the repository path on GitHub Pages.
+Every raw asset path in the pages goes through `withBase` from `lib/base-path.ts`, so the site works at the domain root on Vercel and under a sub-path if one is ever set.
 
-Enforced by: `node scripts/check-base-path.ts`, run over `out/` by `.github/workflows/pages.yml` on every push and pull request; design review for new paths.
+Enforced by: `node scripts/check-base-path.ts`, run over `out/` locally only (no CI runs it); design review for new paths.
 
 ## 5. Main changes only through a human-merged pull request
 

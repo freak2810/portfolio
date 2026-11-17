@@ -5,6 +5,7 @@ const extras: Readonly<Record<string, readonly string[]>> = {
   "Programming Languages": ["Solidity"],
   Databases: ["Firestore"],
   "Messaging & Streaming": ["Apache Kafka"],
+  "Cloud & DevOps": ["Vercel"],
   AI: ["GPT", "LLaMA", "Claude", "OpenAI", "Claude Code"],
 };
 

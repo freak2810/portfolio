@@ -25,6 +25,7 @@ export const techIcons: Readonly<Record<string, TechIcon>> = {
   "GitHub Actions": "githubactions",
   "Sentry": "sentry",
   "GitHub": "github",
+  "Vercel": "vercel",
   "React.js": "react",
   "Next.js": "nextdotjs",
   "Tailwind CSS": "tailwindcss",
