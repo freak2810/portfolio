@@ -1,5 +1,5 @@
 import { MugguPause } from "./MugguPause";
-import { mugguDots, mugguPath, mugguViewBox } from "./mugguPath";
+import { mugguDots, mugguPath, mugguPathHindi, mugguViewBox } from "./mugguPath";
 import styles from "./Landing.module.css";
 
 // Decorative only: the h1 stays the accessible name of the landing.
@@ -14,6 +14,7 @@ export function Muggu() {
         </pattern>
         <rect width={w} height={h} fill="url(#muggu-dots)" />
         <path className={styles.line} d={mugguPath} pathLength={1} />
+        <path className={`${styles.line} ${styles.lineHindi}`} d={mugguPathHindi} pathLength={1} />
       </svg>
     </MugguPause>
   );
