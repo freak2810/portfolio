@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { MotionToggle, type MotionToggleProps } from "./MotionToggle";
 import { Muggu } from "./Muggu";
 import { RoleRotator } from "./RoleRotator";
 import { SocialLinks, type SocialLinksProps } from "./SocialIcons";
@@ -9,6 +10,7 @@ type LandingProps = {
   title: string;
   descriptors: readonly string[];
   social: SocialLinksProps;
+  motion: MotionToggleProps["labels"];
 };
 
 export function Landing(props: LandingProps) {
@@ -31,6 +33,7 @@ export function Landing(props: LandingProps) {
           </div>
           <div className={styles.actions}>
             <SocialLinks {...props.social} />
+            <MotionToggle labels={props.motion} />
           </div>
         </div>
       </div>

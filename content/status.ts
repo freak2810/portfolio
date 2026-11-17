@@ -3,6 +3,7 @@ import type { Content } from "./types.ts";
 export const status: Content["status"] = {
   profile: "placeholder",
   links: "placeholder",
+  about: "placeholder",
   skills: "placeholder",
   experience: "placeholder",
   education: "placeholder",

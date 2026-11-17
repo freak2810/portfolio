@@ -28,7 +28,7 @@ const dropHeld = (value: unknown): unknown => {
 
 const sortTech = <T extends { tech: readonly string[] }>(item: T): T => ({ ...item, tech: byKitOrder(item.tech) });
 
-export const content = dropHeld({
+const composed: Content = {
   profile,
   links,
   about,
@@ -42,4 +42,9 @@ export const content = dropHeld({
   ui,
   techIcons,
   status,
-}) as Content;
+};
+
+export const content = dropHeld(composed) as Content;
+export { sectionIds } from "./ids.ts";
+export type { SectionId } from "./ids.ts";
+export type { Content } from "./types.ts";

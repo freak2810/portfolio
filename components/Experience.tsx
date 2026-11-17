@@ -12,11 +12,14 @@ type Entry = {
   tech: readonly string[];
 };
 
-type ExperienceProps = { summary: string; entries: readonly Entry[]; icons: Readonly<Record<string, string>> };
+type ExperienceProps = {
+  summary: string;
+  entries: readonly Entry[];
+  icons: Readonly<Record<string, string>>;
+  labels: { technologies: string };
+};
 
-const TECH_LABEL = "Technologies";
-
-export function Experience({ summary, entries, icons }: ExperienceProps) {
+export function Experience({ summary, entries, icons, labels }: ExperienceProps) {
   return (
     <>
       <p className={styles.lede}>{summary}</p>
@@ -42,7 +45,7 @@ export function Experience({ summary, entries, icons }: ExperienceProps) {
               </ul>
               {entry.tech.length > 0 && (
                 <div className={styles.tech}>
-                  <TechList names={entry.tech} icons={icons} size="sm" label={TECH_LABEL} />
+                  <TechList names={entry.tech} icons={icons} size="sm" label={labels.technologies} />
                 </div>
               )}
             </div>

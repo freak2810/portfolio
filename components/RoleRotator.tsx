@@ -26,7 +26,7 @@ export function RoleRotator({ items }: Props) {
     throw new Error(`RoleRotator slots sum to ${offset} s but the CSS is tuned for ${CYCLE_SECONDS} s: retune RoleRotator.module.css (data-cycle, animation-duration, keyframes) and CYCLE_SECONDS.`);
   }
   return (
-    <div className={styles.rotator} data-count={items.length} data-cycle={offset}>
+    <div className={styles.rotator} data-cycle={offset}>
       <ul className={styles.list}>
         {items.map((item) => (
           <li key={item}>{item}</li>

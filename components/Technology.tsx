@@ -1,5 +1,4 @@
-import { TechList } from "./TechIcons";
-import tech from "./TechIcons.module.css";
+import { TechList, TechTile, TechTiles } from "./TechIcons";
 import styles from "./Technology.module.css";
 import type { Profile } from "../content/types";
 
@@ -7,16 +6,16 @@ type TechnologyProps = {
   groups: readonly { name: string; items: readonly string[] }[];
   languages: Profile["languages"];
   icons: Readonly<Record<string, string>>;
+  labels: { spokenLanguages: string };
 };
 
-const LANGUAGES_LABEL = "Spoken languages";
 const LANGUAGE_TILES: Record<Profile["languages"][number]["name"], { glyph: string; lang: string }> = {
   English: { glyph: "A", lang: "en" },
   Hindi: { glyph: "अ", lang: "hi" },
   Telugu: { glyph: "అ", lang: "te" },
 };
 
-export function Technology({ groups, languages, icons }: TechnologyProps) {
+export function Technology({ groups, languages, icons, labels }: TechnologyProps) {
   return (
     <dl className={styles.list}>
       {groups.map((group) => (
@@ -28,21 +27,22 @@ export function Technology({ groups, languages, icons }: TechnologyProps) {
         </div>
       ))}
       <div className={styles.row}>
-        <dt className={styles.term}>{LANGUAGES_LABEL}</dt>
+        <dt className={styles.term}>{labels.spokenLanguages}</dt>
         <dd className={styles.items}>
-          <ul className={`${tech.list} ${tech.lg}`} role="list" aria-label={LANGUAGES_LABEL}>
+          <TechTiles size="lg" label={labels.spokenLanguages}>
             {languages.map((lang) => (
-              <li key={lang.name}>
-                <span className={tech.logo} data-reveal="pop">
+              <TechTile
+                key={lang.name}
+                name={lang.name}
+                mark={
                   <span className={styles.glyph} lang={LANGUAGE_TILES[lang.name].lang} aria-hidden="true">
                     {LANGUAGE_TILES[lang.name].glyph}
                   </span>
-                  <span className={tech.name}>{lang.name}</span>
-                  {lang.level && <span className={styles.level}>{lang.level}</span>}
-                </span>
-              </li>
+                }
+                note={lang.level && <span className={styles.level}>{lang.level}</span>}
+              />
             ))}
-          </ul>
+          </TechTiles>
         </dd>
       </div>
     </dl>

@@ -3,7 +3,8 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import PDFDocument from "pdfkit";
 import { content } from "../content/index.ts";
-import type { Content, YearMonth } from "../content/types.ts";
+import type { Content } from "../content/types.ts";
+import { formatMonth as month, formatYear as year } from "../lib/dates.ts";
 
 type Style = "name" | "title" | "contact" | "heading" | "employer" | "item" | "role" | "body" | "small";
 type Part = { text: string; link?: string };
@@ -15,7 +16,6 @@ const maxPages = 2;
 const resumeTitle = `${content.profile.name} - Resume`;
 const dash = "–";
 const separator = "  |  ";
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 // Copy of the allowance in check-content.ts (pdfCharPattern); check-content cannot be imported.
 const winAnsi = /^[ -~ -ÿ–—‘’“”•…€™]*$/;
@@ -53,14 +53,6 @@ const main = async (): Promise<void> => {
   writeFileSync(join(repoRoot, "public", "resume.pdf"), bytes);
   console.log(`build-resume: ok (${pages} page(s), ${bytes.length} B, public/resume.pdf)`);
 };
-
-const month = (value: YearMonth | "present"): string => {
-  if (value === "present") return "Present";
-  const [year, number] = value.split("-");
-  return `${months[Number(number) - 1]} ${year}`;
-};
-
-const year = (value: number | "present"): string => (value === "present" ? "Present" : String(value));
 
 const plain = (text: string): Part => ({ text });
 const shown = (url: string): string => url.replace(/^https:\/\//, "");

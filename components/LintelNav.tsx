@@ -9,10 +9,11 @@ type LintelNavProps = {
   name: string;
   homeLabel: string;
   navLabel: string;
+  menuLabel: string;
   items: readonly NavItem[];
 };
 
-const MENU_LABEL = "Menu";
+const HOME_ID = "home";
 
 function NavLinks({ items }: { items: readonly NavItem[] }) {
   return (
@@ -32,7 +33,7 @@ export function LintelNav(props: LintelNavProps) {
   return (
     <header className={`lintel ${styles.bar}`}>
       <nav className={styles.nav} aria-label={props.navLabel}>
-        <a className={styles.mark} href="#home">
+        <a className={styles.mark} href={`#${HOME_ID}`}>
           <svg className={styles.glyph} viewBox={teluguAViewBox} aria-hidden="true" focusable="false">
             <path d={teluguAPath} />
           </svg>
@@ -45,12 +46,12 @@ export function LintelNav(props: LintelNavProps) {
           <NavLinks items={props.items} />
         </div>
         <div className={styles.menu}>
-          <NavMenu label={MENU_LABEL}>
+          <NavMenu label={props.menuLabel}>
             <NavLinks items={props.items} />
           </NavMenu>
         </div>
       </nav>
-      <NavSpy />
+      <NavSpy ids={[HOME_ID, ...props.items.map((item) => item.id)]} />
     </header>
   );
 }

@@ -61,6 +61,10 @@
     animation-duration: 3s;
     animation-delay: -1.7s;
   }
+
+  :global(html[data-motion-paused]) :is(.crown, .tick) {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes crown-float {

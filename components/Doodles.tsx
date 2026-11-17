@@ -116,7 +116,7 @@ const portraitSpots: readonly Spot[] = [
   ["star", 1.9, 55, -8, "xs", "x"],
   ["sparkle", 1.9, 74, 6, "xs", "x"],
   ["arrowl", 87.8, 22, 8, "xs", "x"],
-  ["ma", 86, 36, -6, "s", "x"],
+  ["ma", 83.5, 36, -6, "s", "x"],
   ["sparkle", 87.8, 50, -10, "xs", "x"],
   ["star", 87.8, 72, 12, "xs", "x"],
   ["laptop", 2, 84.2, -6, "s", "x"],

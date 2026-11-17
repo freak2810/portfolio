@@ -11,12 +11,14 @@ export type Profile = {
   name: string;
   title: string;
   summary: string;
+  description: string;
   base: Bilingual;
   languages: readonly { name: "English" | "Hindi" | "Telugu"; level?: string }[];
 };
 export type Links = {
   linkedin: string;
   github: string;
+  site: string;
   resumePath: "/resume.pdf";
 };
 export type About = {
@@ -58,9 +60,20 @@ export type Ui = {
   notFound: { title: string; body: string; homeLabel: string };
   aria: { nav: string };
   social: { github: string; linkedin: string; resume: string };
+  labels: {
+    technologies: string;
+    newTab: string;
+    certifications: string;
+    majorProject: string;
+    spokenLanguages: string;
+    menu: string;
+    website: string;
+    onGitHub: string;
+  };
+  motion: { pause: string };
   footer: string;
 };
-export type SectionKey = "profile" | "links" | "skills" | "experience" | "education" | "certifications" | "projects" | "landing" | "ui";
+export type SectionKey = "profile" | "links" | "about" | "skills" | "experience" | "education" | "certifications" | "projects" | "landing" | "ui";
 export type Content = {
   profile: Profile;
   links: Links;

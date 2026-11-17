@@ -24,7 +24,7 @@ export function MugguPause({ className, children }: MugguPauseProps) {
     };
   }, []);
   return (
-    <div ref={box} className={className} data-muggu>
+    <div ref={box} className={className}>
       {children}
     </div>
   );

@@ -1,6 +1,7 @@
 import assert from "node:assert";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { content } from "../content/index.ts";
 
 type Page = { path: string; text: string };
 type Reference = { where: string; value: string };
@@ -29,7 +30,7 @@ const main = (): void => {
 };
 
 const checkOutput = (outDir: string, base: string): string[] => {
-  const envProblem = baseProblem(base);
+  const envProblem = baseProblem(base) ?? siteProblem(content.links.site, base);
   if (envProblem) return [envProblem];
   const missing = requiredFiles.filter((name) => !existsSync(join(outDir, name)));
   if (missing.length > 0) return missing.map((name) => `out: missing-file: ${name}`);
@@ -40,6 +41,11 @@ const baseProblem = (base: string): string | undefined =>
   /^\/[^/]/.test(base) && !base.endsWith("/")
     ? undefined
     : `env: base: NEXT_PUBLIC_BASE_PATH must look like /name with no trailing slash, got "${base}"`;
+
+const siteProblem = (site: string, base: string): string | undefined =>
+  new URL(site).pathname === `${base}/`
+    ? undefined
+    : `site: path: content.links.site must end in "${base}/", got "${new URL(site).pathname}"`;
 
 const readPages = (outDir: string): Page[] =>
   readdirSync(outDir, { recursive: true, encoding: "utf8" })
@@ -144,6 +150,10 @@ const selfTestBase = (): void => {
   }
   for (const good of ["/name", "/a.b"]) {
     check(`accepts base "${good}"`, baseProblem(good) === undefined);
+  }
+  check("accepts a site under the base", siteProblem("https://x.github.io/name/", "/name") === undefined);
+  for (const bad of ["https://x.github.io/", "https://x.github.io/other/", "https://x.github.io/name"]) {
+    check(`rejects site "${bad}"`, siteProblem(bad, "/name") !== undefined);
   }
 };
 

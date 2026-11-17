@@ -1,6 +1,5 @@
 import { withBase } from "../lib/base-path";
-import { content } from "../content";
-import { sectionIds } from "../content/ids";
+import { content, sectionIds } from "../content";
 import { Contact } from "../components/Contact";
 import { Education } from "../components/Education";
 import { Experience } from "../components/Experience";
@@ -24,6 +23,7 @@ const nav = {
   name: profile.name,
   homeLabel: ui.nav.home,
   navLabel: ui.aria.nav,
+  menuLabel: ui.labels.menu,
   items: sectionIds.filter((id) => id !== "home").map((id) => ({ id, label: ui.nav[id] })),
 };
 
@@ -35,34 +35,36 @@ const hero = {
     github: links.github,
     linkedin: links.linkedin,
     resumeHref,
+    resumeFilename: `${profile.name} - Resume.pdf`,
     labels: ui.social,
   },
+  motion: ui.motion,
 };
 
 export default function Home() {
   return (
     <>
-      <a className="skip" href="#experience">
+      <a className="skip" href="#main">
         {landing.skipLabel}
       </a>
       <TechIconSprite />
       <LintelNav {...nav} />
-      <main>
+      <main id="main">
         <Landing {...hero} />
         <Section id="projects" heading={ui.headings.projects}>
-          <Projects projects={plates} icons={techIcons} />
+          <Projects projects={plates} icons={techIcons} labels={ui.labels} />
         </Section>
         <Divider />
         <Section id="experience" heading={ui.headings.experience}>
-          <Experience summary={profile.summary} entries={experience} icons={techIcons} />
+          <Experience summary={profile.summary} entries={experience} icons={techIcons} labels={ui.labels} />
         </Section>
         <Divider />
         <Section id="education" heading={ui.headings.education}>
-          <Education entries={education.entries} majorProject={education.majorProject} certifications={certifications} icons={techIcons} />
+          <Education entries={education.entries} majorProject={education.majorProject} certifications={certifications} icons={techIcons} labels={ui.labels} />
         </Section>
         <Divider />
         <Section id="technology" heading={ui.headings.technology}>
-          <Technology groups={skills} languages={profile.languages} icons={techIcons} />
+          <Technology groups={skills} languages={profile.languages} icons={techIcons} labels={ui.labels} />
         </Section>
         <Divider />
         <Section id="contact" heading={ui.headings.contact}>

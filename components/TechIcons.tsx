@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { iconViewBoxes, strokeIconSlugs, techIconPaths } from "./techIconPaths";
 import type { IconSlug } from "../content/ids";
 import styles from "./TechIcons.module.css";
@@ -23,9 +24,33 @@ type TechListProps = {
   label: string;
 };
 
-export function TechList({ names, icons, size, label }: TechListProps) {
+type TechTilesProps = { size: TechListProps["size"]; label: string; children: ReactNode };
+
+export function TechTiles({ size, label, children }: TechTilesProps) {
   return (
     <ul className={`${styles.list} ${styles[size]}`} role="list" aria-label={label}>
+      {children}
+    </ul>
+  );
+}
+
+type TechTileProps = { mark: ReactNode; name: string; note?: ReactNode };
+
+export function TechTile({ mark, name, note }: TechTileProps) {
+  return (
+    <li>
+      <span className={styles.logo} data-reveal="pop">
+        {mark}
+        <span className={styles.name}>{name}</span>
+        {note}
+      </span>
+    </li>
+  );
+}
+
+export function TechList({ names, icons, size, label }: TechListProps) {
+  return (
+    <TechTiles size={size} label={label}>
       {names.map((name) => {
         const slug = icons[name];
         if (!slug || !(slug in techIconPaths)) {
@@ -35,19 +60,13 @@ export function TechList({ names, icons, size, label }: TechListProps) {
             </li>
           );
         }
-        return (
-          <li key={name}>
-            <span className={styles.logo} data-reveal="pop">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <use href={`#ti-${slug}`} />
-              </svg>
-              <span className={styles.name}>
-                {name}
-              </span>
-            </span>
-          </li>
+        const mark = (
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <use href={`#ti-${slug}`} />
+          </svg>
         );
+        return <TechTile key={name} mark={mark} name={name} />;
       })}
-    </ul>
+    </TechTiles>
   );
 }

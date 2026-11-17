@@ -18,13 +18,10 @@ type EducationProps = {
   majorProject?: { title: string; summary: string; tech: readonly string[] };
   certifications: readonly Certification[];
   icons: Readonly<Record<string, string>>;
+  labels: { technologies: string; newTab: string; certifications: string; majorProject: string };
 };
 
-const CERT_LABEL = "Certifications";
-const MAJOR_LABEL = "Major project";
-const TECH_LABEL = "Technologies";
-
-export function Education({ entries, majorProject, certifications, icons }: EducationProps) {
+export function Education({ entries, majorProject, certifications, icons, labels }: EducationProps) {
   return (
     <>
       <ul className={styles.entries}>
@@ -42,17 +39,17 @@ export function Education({ entries, majorProject, certifications, icons }: Educ
       {majorProject && (
         <div className={styles.block}>
           <h3 className={styles.school}>
-            {MAJOR_LABEL}: {majorProject.title}
+            {labels.majorProject}: {majorProject.title}
           </h3>
           <p>{majorProject.summary}</p>
           <div className={styles.tech}>
-            <TechList names={majorProject.tech} icons={icons} size="sm" label={TECH_LABEL} />
+            <TechList names={majorProject.tech} icons={icons} size="sm" label={labels.technologies} />
           </div>
         </div>
       )}
       <div className={styles.block}>
         <p id="education-certifications" className={styles.listHead}>
-          {CERT_LABEL}
+          {labels.certifications}
         </p>
         <ul className={styles.certs} aria-labelledby="education-certifications">
           {certifications.map((cert) => {
@@ -62,7 +59,7 @@ export function Education({ entries, majorProject, certifications, icons }: Educ
                 {cert.url ? (
                   <a href={cert.url} target="_blank" rel="noopener noreferrer">
                     {cert.name}
-                    <span className="sr-only"> (opens in a new tab)</span>
+                    <span className="sr-only"> {labels.newTab}</span>
                   </a>
                 ) : (
                   cert.name

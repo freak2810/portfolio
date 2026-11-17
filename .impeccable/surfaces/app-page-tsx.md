@@ -26,7 +26,7 @@ related_targets: []
 ## Chosen direction and memorable moment
 - Direction: gateway-as-page. One stone gateway in light-on-navy line art; each section is another gate.
 - Memorable moment: a glowing star inside an original pointed shield hanging in the arch, with the name below and the Warangal to Hyderabad route line in two scripts.
-- Source: /Users/adityamanikanthrao/.local/share/agent-stack/features/portfolio-rebuild/notes/design-direction.md (final version).
+- Source: the feature's design-direction note, kept outside the repo (final version).
 
 ## Unresolved decisions
 - Old project names (owner will supply later); the top three projects are provisional.

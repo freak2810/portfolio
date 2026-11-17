@@ -5,6 +5,8 @@ export const profile: Profile = {
   title: "Senior Backend Engineer | Tech Lead",
   summary:
     "Backend engineer and tech lead. 5+ years building distributed systems and AI agent platforms, from enterprise SaaS to startups. Led a team of 10+ from unclear requirements to shipped product.",
+  description:
+    "Backend engineer and tech lead in Hyderabad. Builds distributed systems and AI agent platforms for enterprise SaaS and startups.",
   base: {
     en: "Hyderabad",
     te: "హైదరాబాద్",

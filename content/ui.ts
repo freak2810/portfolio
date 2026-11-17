@@ -30,5 +30,18 @@ export const ui: Ui = {
     linkedin: "LinkedIn",
     resume: "Download resume (PDF)",
   },
+  labels: {
+    technologies: "Technologies",
+    newTab: "(opens in a new tab)",
+    certifications: "Certifications",
+    majorProject: "Major project",
+    spokenLanguages: "Spoken languages",
+    menu: "Menu",
+    website: "website",
+    onGitHub: "on GitHub",
+  },
+  motion: {
+    pause: "Pause motion",
+  },
   footer: "Built in Hyderabad, rooted in Warangal.",
 };

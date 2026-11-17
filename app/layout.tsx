@@ -6,13 +6,14 @@ import type { ReactNode } from "react";
 import { Big_Shoulders, Hanken_Grotesk } from "next/font/google";
 import { content } from "../content";
 import { withBase } from "../lib/base-path";
-import { siteUrl } from "../lib/site-url";
 
 const addJsClass = 'document.documentElement.classList.add("js")';
 
 const { profile, links, experience } = content;
+const siteUrl = links.site;
 const title = `${profile.name} | ${profile.title}`;
-const description = "Backend engineer and tech lead in Hyderabad. Builds distributed systems and AI agent platforms for enterprise SaaS and startups.";
+const description = profile.description;
+const employer = experience.find((entry) => entry.roles.some((role) => role.end === "present"));
 const image = { url: `${new URL(siteUrl).origin}${withBase("/og.png")}`, width: 1200, height: 630, alt: profile.name };
 
 const personLd = JSON.stringify({
@@ -23,7 +24,7 @@ const personLd = JSON.stringify({
   url: siteUrl,
   address: { "@type": "PostalAddress", addressLocality: profile.base.en, addressCountry: "IN" },
   sameAs: [links.github, links.linkedin],
-  worksFor: { "@type": "Organization", name: experience[0].company },
+  worksFor: employer && { "@type": "Organization", name: employer.company },
 }).replace(/</g, "\\u003c");
 
 export const metadata: Metadata = {
