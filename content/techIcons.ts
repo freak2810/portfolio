@@ -5,7 +5,6 @@ export const techIcons: Readonly<Record<string, TechIcon>> = {
   "Distributed Systems": "network",
   "API Design": "webhook",
   "Performance Optimization": "gauge",
-  "Performance Tuning": "slidershorizontal",
   "Observability": "activity",
   "Kafka": "apachekafka",
   "RabbitMQ": "rabbitmq",
@@ -56,10 +55,8 @@ export const techIcons: Readonly<Record<string, TechIcon>> = {
   "Stripe": "stripe",
   "Solidity": "solidity",
   "MetaMask": "wallet",
-  "Blockchain": "blocks",
   "Unit Testing": "flaskconical",
   "Agile": "refreshcw",
   "Object-Oriented Programming": "shapes",
   "Team Leadership": "flag",
-  "Team Management": "users",
 };

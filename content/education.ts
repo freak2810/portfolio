@@ -10,20 +10,6 @@ export const education: Content["education"] = {
       end: 2021,
       detail: "CGPA 8.01/10",
     },
-    {
-      id: "sri-chaitanya",
-      school: "Sri Chaitanya Junior College, Hyderabad",
-      degree: "Intermediate (MPC)",
-      start: 2015,
-      end: 2017,
-    },
-    {
-      id: "jsm",
-      school: "JSM High School",
-      degree: "10th Standard",
-      start: 2011,
-      end: 2015,
-    },
   ],
   majorProject: {
     title: "Secure banking system",

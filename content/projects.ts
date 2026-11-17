@@ -7,10 +7,10 @@ export const projects: readonly Project[] = [
     headline: "Agent engine built from zero for an AI automation platform",
     points: [
       { text: "Autonomous multi-step workflows with data sharing between workflows." },
-      { text: "Agents composed from instructions and skills, across GPT, LLaMA and Claude." },
+      { text: "Context managed within the model's token limit: distilled outputs, RAG overflow, short and long-term memory." },
     ],
     tech: ["Qdrant", "RAG", "GPT", "LLaMA", "Claude"],
-    stat: { value: "$0.5M", label: "angel funding raised by the product" },
+    stat: { value: "$0.5M", label: "angel funding the company raised" },
   },
   {
     id: "eventdesk-revival",
@@ -45,7 +45,6 @@ export const projects: readonly Project[] = [
     title: "CDC master-data pipeline",
     headline: "One store across DynamoDB and MongoDB",
     points: [
-      { text: "Unified master data from two platform versions." },
       { text: "Plant-ID partitioning and dedup, built for millions of records." },
     ],
     tech: ["DynamoDB", "MongoDB"],
@@ -55,8 +54,8 @@ export const projects: readonly Project[] = [
     title: "This portfolio",
     headline: "Static site on GitHub Pages",
     points: [
-      { text: "Typed content files feed the site and the PDF" },
-      { text: "Checked on every build" },
+      { text: "Typed content files feed both the site and the PDF." },
+      { text: "A content check runs on every build." },
     ],
     tech: ["Next.js", "TypeScript", "GitHub Actions"],
     repoUrl: "https://github.com/freak2810/Portfolio",

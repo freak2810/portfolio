@@ -3,7 +3,7 @@ import type { SkillGroup } from "./types.ts";
 export const skills: readonly SkillGroup[] = [
   {
     name: "Architecture",
-    items: ["System Design", "Distributed Systems", "API Design", "Performance Optimization", "Observability", "Performance Tuning"],
+    items: ["System Design", "Distributed Systems", "API Design", "Performance Optimization", "Observability"],
   },
   {
     name: "Messaging & Streaming",
@@ -35,10 +35,10 @@ export const skills: readonly SkillGroup[] = [
   },
   {
     name: "Blockchain",
-    items: ["Solidity", "MetaMask", "Blockchain"],
+    items: ["Solidity", "MetaMask"],
   },
   {
     name: "Engineering Practice",
-    items: ["Unit Testing", "Agile", "Object-Oriented Programming", "Team Leadership", "Team Management"],
+    items: ["Unit Testing", "Agile", "Object-Oriented Programming", "Team Leadership"],
   },
 ];

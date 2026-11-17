@@ -4,7 +4,7 @@ export const profile: Profile = {
   name: "Aditya Manikanth Rao",
   title: "Senior Backend Engineer | Tech Lead",
   summary:
-    "Backend engineer and tech lead with 5+ years building distributed systems and AI agent platforms across enterprise SaaS and startups. Owns performance, data pipelines and observability end to end. Has led teams of up to 10 engineers from unclear requirements to shipped product.",
+    "Backend engineer and tech lead with 5+ years building distributed systems and AI agent platforms across enterprise SaaS and startups. Owns performance, data pipelines and observability end to end. Has led a team of 10 engineers and interns from unclear requirements to shipped product.",
   base: {
     en: "Hyderabad",
     te: "హైదరాబాద్",

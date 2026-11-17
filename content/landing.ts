@@ -17,5 +17,5 @@ export const landing: Landing = {
     "“You get hurt, hurt ’em back. You get killed... walk it off.”",
   ],
   scrollCue: "Scroll to the record",
-  skipLabel: "Skip to resume",
+  skipLabel: "Skip to experience",
 };

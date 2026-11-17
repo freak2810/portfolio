@@ -82,13 +82,11 @@
   clip-path: inset(50%);
 }
 
-.logo:hover,
-.logo:focus-visible {
+.logo:hover {
   color: var(--accent);
 }
 
-.logo:hover .name,
-.logo:focus-visible .name {
+.logo:hover .name {
   overflow: visible;
   inline-size: auto;
   block-size: auto;
@@ -107,14 +105,48 @@
   line-height: 1.2;
 }
 
+/* The large list always shows its labels. */
+.lg {
+  align-items: flex-start;
+  row-gap: var(--space-3);
+  padding-bottom: 0;
+}
+
+.lg .logo {
+  flex-direction: column;
+  width: min-content;
+  min-width: 5.5rem;
+  height: auto;
+  gap: var(--space-1);
+  padding-block: var(--space-1);
+}
+
+.lg .chip {
+  align-self: flex-start;
+}
+
+.lg .name {
+  position: static;
+  translate: none;
+  padding-top: 0;
+  color: var(--muted);
+  text-align: center;
+  white-space: normal;
+  overflow: visible;
+  inline-size: auto;
+  block-size: auto;
+  clip-path: none;
+}
+
+/* The small list shows its labels on touch only; elsewhere a label appears on hover. */
 @media (hover: none) {
-  .list {
+  .sm {
     align-items: flex-start;
     row-gap: var(--space-3);
     padding-bottom: 0;
   }
 
-  .logo {
+  .sm .logo {
     flex-direction: column;
     width: min-content;
     min-width: 5.5rem;
@@ -123,11 +155,11 @@
     padding-block: var(--space-1);
   }
 
-  .chip {
+  .sm .chip {
     align-self: flex-start;
   }
 
-  .name {
+  .sm .name {
     position: static;
     translate: none;
     padding-top: 0;

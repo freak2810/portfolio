@@ -7,7 +7,7 @@ export const ui: Ui = {
     experience: "Experience",
     education: "Education",
     technology: "Technology",
-    contact: "About",
+    contact: "The road so far",
   },
   headings: {
     home: "Home",

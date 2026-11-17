@@ -6,9 +6,9 @@ export const iconSlugs = [
   "apachekafka", "rabbitmq", "docker", "githubactions", "sentry", "git", "github",
   "postgresql", "mongodb", "elasticsearch", "redis", "qdrant", "firebase", "stripe",
   "solidity", "langchain", "langgraph", "meta", "claude",
-  "openai", "layers", "network", "webhook", "gauge", "slidershorizontal", "activity", "inbox", "library",
+  "openai", "layers", "network", "webhook", "gauge", "activity", "inbox", "library",
   "filesearch", "scansearch", "bot", "brain", "sparkles", "cloud", "databasezap", "database",
-  "arrowleftright", "boxes", "zap", "wallet", "blocks", "flaskconical", "refreshcw", "shapes",
-  "flag", "users",
+  "arrowleftright", "boxes", "zap", "wallet", "flaskconical", "refreshcw", "shapes",
+  "flag",
 ] as const;
 export type IconSlug = (typeof iconSlugs)[number];

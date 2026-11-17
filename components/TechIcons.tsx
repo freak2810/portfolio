@@ -37,11 +37,11 @@ export function TechList({ names, icons, size, label }: TechListProps) {
         }
         return (
           <li key={name}>
-            <span className={styles.logo} role="img" aria-label={name} tabIndex={0} data-reveal="pop">
+            <span className={styles.logo} data-reveal="pop">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <use href={`#ti-${slug}`} />
               </svg>
-              <span className={styles.name} aria-hidden="true">
+              <span className={styles.name}>
                 {name}
               </span>
             </span>

@@ -7,7 +7,7 @@ type TechnologyProps = {
   icons: Readonly<Record<string, string>>;
 };
 
-const LANGUAGES_LABEL = "Languages";
+const LANGUAGES_LABEL = "Spoken languages";
 
 export function Technology({ groups, languages, icons }: TechnologyProps) {
   const spoken = languages.map((lang) => (lang.level ? `${lang.name} (${lang.level})` : lang.name));
