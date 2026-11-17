@@ -40,8 +40,5 @@ export const ui: Ui = {
     website: "website",
     onGitHub: "on GitHub",
   },
-  motion: {
-    pause: "Pause motion",
-  },
   footer: "Built in Hyderabad, rooted in Warangal.",
 };

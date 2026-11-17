@@ -68,7 +68,6 @@ export type Ui = {
     website: string;
     onGitHub: string;
   };
-  motion: { pause: string };
   footer: string;
 };
 export type Content = {

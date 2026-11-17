@@ -38,7 +38,6 @@ const hero = {
     resumeFilename: `${profile.name} - Resume.pdf`,
     labels: ui.social,
   },
-  motion: ui.motion,
 };
 
 export default function Home() {

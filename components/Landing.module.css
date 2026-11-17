@@ -218,9 +218,8 @@
     animation-delay: 8.1s;
   }
 
-  /* Two independent reasons to pause: off-screen (data-paused) and the visitor's own switch (html[data-motion-paused]). Either one pauses. */
-  :global(html.js) .muggu[data-paused] .line,
-  :global(html[data-motion-paused]) .line {
+  /* Pauses while off-screen (data-paused). */
+  :global(html.js) .muggu[data-paused] .line {
     animation-play-state: paused;
   }
 }

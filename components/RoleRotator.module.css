@@ -19,7 +19,7 @@
   display: none;
 }
 
-/* Loops forever; the pause switch (MotionToggle) sets html[data-motion-paused]. Each item gets a slot by length (short 3 s, mid 5 s, long 8 s; see RoleRotator.tsx) and starts at its own --at offset. Crossfade: an item rises over 1 s, holds for its slot, then falls over 1.4 s starting when the next item starts to rise; the fall is the longer ramp so the opacities sum to at least 1 and the line is never blank. Keyframes are tuned for the 57 s cycle the current items make (CYCLE_SECONDS in RoleRotator.tsx; the build throws if the content sums to anything else). Percent = seconds / 57 * 100: 1 s = 1.754%, 1.4 s = 2.456%. When the content changes, retune data-cycle, animation-duration and the three keyframes. --start defaults to 0 and an ancestor may set it. */
+/* Loops forever. Each item gets a slot by length (short 3 s, mid 5 s, long 8 s; see RoleRotator.tsx) and starts at its own --at offset. Crossfade: an item rises over 1 s, holds for its slot, then falls over 1.4 s starting when the next item starts to rise; the fall is the longer ramp so the opacities sum to at least 1 and the line is never blank. Keyframes are tuned for the 57 s cycle the current items make (CYCLE_SECONDS in RoleRotator.tsx; the build throws if the content sums to anything else). Percent = seconds / 57 * 100: 1 s = 1.754%, 1.4 s = 2.456%. When the content changes, retune data-cycle, animation-duration and the three keyframes. --start defaults to 0 and an ancestor may set it. */
 @media (prefers-reduced-motion: no-preference) {
   :global(html.js) .rotator[data-cycle="57"] {
     /* Animated copy shows; the list stays for screen readers only. */
@@ -59,10 +59,6 @@
     & .long {
       animation-name: cycle-long;
     }
-  }
-
-  :global(html[data-motion-paused]) .item {
-    animation-play-state: paused;
   }
 
   @keyframes cycle-short {
