@@ -6,8 +6,9 @@ export const projects: readonly Project[] = [
     title: "Wexa agent execution engine",
     headline: "Agent engine built from zero for an AI automation platform",
     points: [
-      { text: "Autonomous multi-step workflows with data sharing between workflows." },
-      { text: "Context managed within the model's token limit: distilled outputs, RAG overflow, short and long-term memory." },
+      { text: "Designed the agent execution engine: autonomous multi-step workflows with data sharing between workflows." },
+      { text: "Built an LLM-agnostic agent framework: agents composed from instructions and skills, across GPT, LLaMA and Claude." },
+      { text: "Led and mentored 10+ engineers and interns across the full development lifecycle." },
     ],
     tech: ["Qdrant", "RAG", "GPT", "LLaMA", "Claude"],
     stat: { value: "$0.5M", label: "angel funding the company raised" },

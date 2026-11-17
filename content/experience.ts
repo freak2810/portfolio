@@ -33,7 +33,7 @@ export const experience: readonly Experience[] = [
       { text: "Designed the agent execution engine: autonomous multi-step workflows with data sharing between workflows." },
       { text: "Built an LLM-agnostic agent framework (agents composed from instructions and skills) across GPT, LLaMA and Claude." },
       { text: "Built a RAG system on Qdrant with vector search." },
-      { text: "Led and mentored 10 engineers and interns." },
+      { text: "Led and mentored 10+ engineers and interns." },
       { text: "Turned client requirements into technical solutions and shaped the first roadmap. The product raised $0.5M angel funding." },
     ],
     tech: ["Qdrant", "GPT", "LLaMA", "Claude"],
