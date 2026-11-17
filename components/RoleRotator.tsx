@@ -21,8 +21,12 @@ export function RoleRotator({ items }: Props) {
     return slot;
   });
   return (
-    <p className={styles.rotator} data-count={items.length} data-cycle={offset}>
-      <span className="sr-only">{items[0]}</span>
+    <div className={styles.rotator} data-count={items.length} data-cycle={offset}>
+      <ul className={styles.list}>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
       <span className={styles.items} aria-hidden="true">
         {slots.map(({ item, length, at }) => (
           <span key={item} className={`${styles.item} ${styles[length]}`} style={{ "--at": `${at}s` } as CSSProperties}>
@@ -30,6 +34,6 @@ export function RoleRotator({ items }: Props) {
           </span>
         ))}
       </span>
-    </p>
+    </div>
   );
 }
